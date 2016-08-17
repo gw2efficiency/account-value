@@ -32,14 +32,14 @@ const accountData = {
 
 const expectedValues = {
   summary: {
-    liquidBuy: 9184,
-    liquidSell: 10192,
-    value: 15229
+    liquidBuy: 8897,
+    liquidSell: 9736,
+    value: 13881
   },
   bank: {
     liquidBuy: 10,
     liquidSell: 15,
-    value: 274
+    value: 264
   },
   materials: {
     liquidBuy: 25,
@@ -79,21 +79,21 @@ const expectedValues = {
     }
   },
   characters: {
-    liquidBuy: 978,
-    liquidSell: 1584,
-    value: 5028,
+    liquidBuy: 691,
+    liquidSell: 1128,
+    value: 3690,
     details: [
       {
         name: 'Some Character',
-        liquidBuy: 147,
-        liquidSell: 243,
-        value: 1625
+        liquidBuy: 3,
+        liquidSell: 15,
+        value: 1117
       },
       {
         name: 'Some other Character',
-        liquidBuy: 831,
-        liquidSell: 1341,
-        value: 3403
+        liquidBuy: 688,
+        liquidSell: 1113,
+        value: 2573
       }
     ]
   }
@@ -133,24 +133,17 @@ describe('account value', () => {
       44,
       58,
       74264,
-      71425,
-      49432,
       12134,
       12238,
-      8932,
-      9586,
       76453,
       44286,
       28083,
-      24647,
       39223,
       63604,
       69774,
       79031,
       77429,
-      39619,
       71436,
-      49428,
       77230,
       77239,
       78778,
@@ -166,17 +159,12 @@ describe('account value', () => {
       123,
       58,
       74264,
-      71425,
-      49432,
       44286,
-      24647,
       39223,
       63604,
       79031,
       77429,
-      39619,
-      71436,
-      49428
+      71436
     ])
 
     expect(boundItemIds({})).to.deep.equal([])

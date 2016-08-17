@@ -39,8 +39,11 @@ export function commerceItems (accountData) {
     return []
   }
 
+  const buys = accountData.commerce.buys || []
+  const sells = accountData.commerce.sells || []
+
   return [].concat(
-    accountData.commerce.buys.map(x => ({id: x.item_id})),
-    accountData.commerce.sells.map(x => ({id: x.item_id}))
+    buys.map(x => ({id: x.item_id})),
+    sells.map(x => ({id: x.item_id}))
   )
 }

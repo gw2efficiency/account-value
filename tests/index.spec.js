@@ -154,6 +154,7 @@ describe('account value', () => {
     ])
 
     expect(allItemIds({})).to.deep.equal([])
+    expect(allItemIds({commerce: {buys: null, sells: null}})).to.deep.equal([])
   })
 
   it('can fetch all bound ids', () => {

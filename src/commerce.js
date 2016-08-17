@@ -3,7 +3,9 @@ import {subFees, subTax} from 'gw2e-tradingpost-fees'
 import calculateSummary from './helpers/calculateSummary'
 
 export function commerceValue (accountData, values) {
-  if (!accountData.commerce) {
+  if (!accountData.commerce ||
+    !accountData.commerce.buys ||
+    !accountData.commerce.sells) {
     return null
   }
 
@@ -35,15 +37,14 @@ export function sumItems (items, itemValues, valueKey) {
 }
 
 export function commerceItems (accountData) {
-  if (!accountData.commerce) {
+  if (!accountData.commerce ||
+    !accountData.commerce.buys ||
+    !accountData.commerce.sells) {
     return []
   }
 
-  const buys = accountData.commerce.buys || []
-  const sells = accountData.commerce.sells || []
-
   return [].concat(
-    buys.map(x => ({id: x.item_id})),
-    sells.map(x => ({id: x.item_id}))
+    accountData.commerce.buys.map(x => ({id: x.item_id})),
+    accountData.commerce.sells.map(x => ({id: x.item_id}))
   )
 }

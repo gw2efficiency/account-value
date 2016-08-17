@@ -106,7 +106,7 @@ describe('account value', () => {
   })
 
   it('can calculate the account value with no data', () => {
-    expect(accountValue({}, values)).to.deep.equal({
+    const result = {
       summary: {
         liquidBuy: 0,
         liquidSell: 0,
@@ -120,7 +120,11 @@ describe('account value', () => {
       minis: null,
       skins: null,
       wallet: null
-    })
+    }
+
+    expect(accountValue({}, values)).to.deep.equal(result)
+    expect(accountValue({commerce: {buys: null, sells: null}}, values))
+      .to.deep.equal(result)
   })
 
   it('can fetch all item ids', () => {

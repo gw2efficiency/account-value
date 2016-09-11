@@ -6,7 +6,7 @@ import {skinsValue} from './skins'
 import {minisValue} from './minis'
 import {dyesValue} from './dyes'
 import {commerceValue, commerceItems} from './commerce'
-import calculateSummary from './helpers/calculateSummary'
+import {summaryValue} from './summary'
 
 export default function accountValue (accountData, values) {
   let account = {}
@@ -25,7 +25,7 @@ export default function accountValue (accountData, values) {
   account.characters = charactersValue(accountData, values)
 
   // Calculate the total summary
-  account.summary = calculateSummary(account)
+  account.summary = summaryValue(account)
   return account
 }
 

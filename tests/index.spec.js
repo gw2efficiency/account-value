@@ -107,11 +107,7 @@ describe('account value', () => {
 
   it('can calculate the account value with no data', () => {
     const result = {
-      summary: {
-        liquidBuy: 0,
-        liquidSell: 0,
-        value: 0
-      },
+      summary: null,
       bank: null,
       characters: null,
       commerce: null,
@@ -185,6 +181,8 @@ describe('account value', () => {
 
   it('calculates the wallet value correctly', () => {
     expect(walletValue(accountData, values)).to.deep.equal(expectedValues.wallet)
+    expect(walletValue({wallet: [{id: 5, value: 123}]}, values))
+      .to.deep.equal({value: 0, liquidBuy: 0, liquidSell: 0})
   })
 
   it('calculates the dyes value correctly', () => {
@@ -201,5 +199,16 @@ describe('account value', () => {
 
   it('calculates the characters value correctly', () => {
     expect(charactersValue(accountData, values)).to.deep.equal(expectedValues.characters)
+    expect(charactersValue({characters: [{name: 'Some Character without anything'}]}, values)).to.deep.equal({
+      value: 0,
+      liquidBuy: 0,
+      liquidSell: 0,
+      details: [{
+        liquidBuy: 0,
+        liquidSell: 0,
+        name: 'Some Character without anything',
+        value: 0
+      }]
+    })
   })
 })

@@ -8,7 +8,7 @@ import {walletValue} from '../src/wallet'
 import {dyesValue} from '../src/dyes'
 import {minisValue} from '../src/minis'
 import {commerceValue} from '../src/commerce'
-import {charactersValue} from '../src/characters'
+import {charactersValue, charactersItems} from '../src/characters'
 import bankData from './data/bank'
 import materialsData from './data/materials'
 import skinsData from './data/skins'
@@ -200,6 +200,7 @@ describe('account value', () => {
   it('calculates the characters value correctly', () => {
     expect(charactersValue(accountData, values)).to.deep.equal(expectedValues.characters)
     expect(charactersValue({characters: [{name: 'Inventories permission is missing'}]}, values)).to.deep.equal(null)
+    expect(charactersItems({characters: [{name: 'Inventories permission is missing'}]}, values)).to.deep.equal([])
     expect(charactersValue({characters: [{name: 'Some Character without anything', bags: [], equipment: []}]}, values)).to.deep.equal({
       value: 0,
       liquidBuy: 0,

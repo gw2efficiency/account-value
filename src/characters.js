@@ -42,6 +42,11 @@ export function charactersItems (accountData) {
     return []
   }
 
+  // Check if the "inventories" permission is set
+  if (typeof accountData.characters[0].bags === 'undefined') {
+    return []
+  }
+
   return accountData.characters
     .map(characterItems)
     .reduce((a, b) => a.concat(b), [])

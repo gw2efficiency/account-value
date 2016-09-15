@@ -10,6 +10,7 @@ import {dyesValue} from '../src/dyes'
 import {minisValue} from '../src/minis'
 import {commerceValue} from '../src/commerce'
 import {charactersValue, charactersItems} from '../src/characters'
+import accountData from './data/account'
 import bankData from './data/bank'
 import sharedData from './data/shared'
 import materialsData from './data/materials'
@@ -21,7 +22,8 @@ import commerceData from './data/commerce'
 import charactersData from './data/characters'
 import values from './data/_values'
 
-const accountData = {
+const account = {
+  account: accountData,
   bank: bankData,
   shared: sharedData,
   materials: materialsData,
@@ -37,7 +39,7 @@ const expectedValues = {
   summary: {
     liquidBuy: 9194,
     liquidSell: 10207,
-    value: 19734
+    value: 3019734
   },
   bank: {
     liquidBuy: 10,
@@ -68,6 +70,9 @@ const expectedValues = {
   },
   minis: {
     value: 28
+  },
+  unlocks: {
+    value: 3000000
   },
   commerce: {
     liquidBuy: 7171,
@@ -105,19 +110,18 @@ const expectedValues = {
       }
     ]
   }
-
 }
 
 describe('account value', () => {
   it('calculates the account value correctly', () => {
-    expect(accountValue(accountData, values)).to.deep.equal(expectedValues)
+    expect(accountValue(account, values)).to.deep.equal(expectedValues)
   })
 
-  it('calculates the account value faster than 10ms', () => {
+  it('calculates the account value fast', () => {
     let start = new Date()
-    accountValue(accountData, values)
+    accountValue(account, values)
     let diff = new Date() - start
-    expect(diff).to.be.below(10)
+    expect(diff).to.be.below(25)
   })
 
   it('can calculate the account value with no data', () => {
@@ -131,7 +135,8 @@ describe('account value', () => {
       materials: null,
       minis: null,
       skins: null,
-      wallet: null
+      wallet: null,
+      unlocks: null
     }
 
     expect(accountValue({}, values)).to.deep.equal(result)
@@ -140,7 +145,7 @@ describe('account value', () => {
   })
 
   it('can fetch all item ids', () => {
-    expect(allItemIds(accountData)).to.deep.equal([
+    expect(allItemIds(account)).to.deep.equal([
       123,
       44,
       58,
@@ -174,7 +179,7 @@ describe('account value', () => {
   })
 
   it('can fetch all bound ids', () => {
-    expect(boundItemIds(accountData)).to.deep.equal([
+    expect(boundItemIds(account)).to.deep.equal([
       123,
       58,
       74264,
@@ -195,42 +200,42 @@ describe('account value', () => {
   })
 
   it('calculates the bank value correctly', () => {
-    expect(bankValue(accountData, values)).to.deep.equal(expectedValues.bank)
+    expect(bankValue(account, values)).to.deep.equal(expectedValues.bank)
   })
 
   it('calculates the shared value correctly', () => {
-    expect(sharedInventoryValue(accountData, values)).to.deep.equal(expectedValues.shared)
+    expect(sharedInventoryValue(account, values)).to.deep.equal(expectedValues.shared)
   })
 
   it('calculates the materials value correctly', () => {
-    expect(materialsValue(accountData, values)).to.deep.equal(expectedValues.materials)
+    expect(materialsValue(account, values)).to.deep.equal(expectedValues.materials)
   })
 
   it('calculates the skins value correctly', () => {
     const ownedItems = [123]
-    expect(skinsValue(accountData, values, ownedItems)).to.deep.equal(expectedValues.skins)
+    expect(skinsValue(account, values, ownedItems)).to.deep.equal(expectedValues.skins)
   })
 
   it('calculates the wallet value correctly', () => {
-    expect(walletValue(accountData, values)).to.deep.equal(expectedValues.wallet)
+    expect(walletValue(account, values)).to.deep.equal(expectedValues.wallet)
     expect(walletValue({wallet: [{id: 5, value: 123}]}, values))
       .to.deep.equal({value: 0, liquidBuy: 0, liquidSell: 0})
   })
 
   it('calculates the dyes value correctly', () => {
-    expect(dyesValue(accountData, values)).to.deep.equal(expectedValues.dyes)
+    expect(dyesValue(account, values)).to.deep.equal(expectedValues.dyes)
   })
 
   it('calculates the minis value correctly', () => {
-    expect(minisValue(accountData, values)).to.deep.equal(expectedValues.minis)
+    expect(minisValue(account, values)).to.deep.equal(expectedValues.minis)
   })
 
   it('calculates the commerce value correctly', () => {
-    expect(commerceValue(accountData, values)).to.deep.equal(expectedValues.commerce)
+    expect(commerceValue(account, values)).to.deep.equal(expectedValues.commerce)
   })
 
   it('calculates the characters value correctly', () => {
-    expect(charactersValue(accountData, values)).to.deep.equal(expectedValues.characters)
+    expect(charactersValue(account, values)).to.deep.equal(expectedValues.characters)
     expect(charactersValue({characters: [{name: 'Inventories permission is missing'}]}, values)).to.deep.equal(null)
     expect(charactersItems({characters: [{name: 'Inventories permission is missing'}]}, values)).to.deep.equal([])
     expect(charactersValue({characters: []}, values)).to.deep.equal(null)

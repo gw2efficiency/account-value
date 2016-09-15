@@ -7,6 +7,7 @@ import {skinsValue} from './skins'
 import {minisValue} from './minis'
 import {dyesValue} from './dyes'
 import {commerceValue, commerceItems} from './commerce'
+import {unlocksValue} from './unlocks'
 import {summaryValue} from './summary'
 
 export default function accountValue (accountData, values) {
@@ -25,6 +26,7 @@ export default function accountValue (accountData, values) {
   account.dyes = dyesValue(accountData, values)
   account.minis = minisValue(accountData, values)
   account.characters = charactersValue(accountData, values)
+  account.unlocks = unlocksValue(accountData, values)
 
   // Calculate the total summary
   account.summary = summaryValue(account)

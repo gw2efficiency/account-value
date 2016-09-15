@@ -1,4 +1,5 @@
 import {bankValue, bankItems} from './bank'
+import {sharedInventoryValue, sharedInventoryItems} from './shared'
 import {materialsValue, materialsItems} from './materials'
 import {walletValue} from './wallet'
 import {charactersValue, charactersItems} from './characters'
@@ -17,6 +18,7 @@ export default function accountValue (accountData, values) {
   // Calculate the different parts of the account value
   account.wallet = walletValue(accountData)
   account.bank = bankValue(accountData, values)
+  account.shared = sharedInventoryValue(accountData, values)
   account.materials = materialsValue(accountData, values)
   account.commerce = commerceValue(accountData, values)
   account.skins = skinsValue(accountData, values, items)
@@ -33,7 +35,8 @@ export default function accountValue (accountData, values) {
 export function boundItemIds (accountData) {
   const items = [
     bankItems(accountData),
-    charactersItems(accountData)
+    charactersItems(accountData),
+    sharedInventoryItems(accountData)
   ]
 
   return items
@@ -49,7 +52,8 @@ export function allItemIds (accountData) {
     bankItems(accountData),
     materialsItems(accountData),
     charactersItems(accountData),
-    commerceItems(accountData)
+    commerceItems(accountData),
+    sharedInventoryItems(accountData)
   ]
 
   return items

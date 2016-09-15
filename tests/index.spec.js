@@ -2,6 +2,7 @@
 const expect = require('chai').expect
 import accountValue, {allItemIds, boundItemIds} from '../src/index'
 import {bankValue} from '../src/bank'
+import {sharedInventoryValue} from '../src/shared'
 import {materialsValue} from '../src/materials'
 import {skinsValue} from '../src/skins'
 import {walletValue} from '../src/wallet'
@@ -10,6 +11,7 @@ import {minisValue} from '../src/minis'
 import {commerceValue} from '../src/commerce'
 import {charactersValue, charactersItems} from '../src/characters'
 import bankData from './data/bank'
+import sharedData from './data/shared'
 import materialsData from './data/materials'
 import skinsData from './data/skins'
 import walletData from './data/wallet'
@@ -21,6 +23,7 @@ import values from './data/_values'
 
 const accountData = {
   bank: bankData,
+  shared: sharedData,
   materials: materialsData,
   skins: skinsData,
   wallet: walletData,
@@ -32,11 +35,16 @@ const accountData = {
 
 const expectedValues = {
   summary: {
-    liquidBuy: 8897,
-    liquidSell: 9736,
-    value: 13881
+    liquidBuy: 8907,
+    liquidSell: 9751,
+    value: 14145
   },
   bank: {
+    liquidBuy: 10,
+    liquidSell: 15,
+    value: 264
+  },
+  shared: {
     liquidBuy: 10,
     liquidSell: 15,
     value: 264
@@ -109,6 +117,7 @@ describe('account value', () => {
     const result = {
       summary: null,
       bank: null,
+      shared: null,
       characters: null,
       commerce: null,
       dyes: null,
@@ -168,6 +177,10 @@ describe('account value', () => {
 
   it('calculates the bank value correctly', () => {
     expect(bankValue(accountData, values)).to.deep.equal(expectedValues.bank)
+  })
+
+  it('calculates the shared value correctly', () => {
+    expect(sharedInventoryValue(accountData, values)).to.deep.equal(expectedValues.shared)
   })
 
   it('calculates the materials value correctly', () => {

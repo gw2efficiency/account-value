@@ -201,6 +201,8 @@ describe('account value', () => {
     expect(charactersValue(accountData, values)).to.deep.equal(expectedValues.characters)
     expect(charactersValue({characters: [{name: 'Inventories permission is missing'}]}, values)).to.deep.equal(null)
     expect(charactersItems({characters: [{name: 'Inventories permission is missing'}]}, values)).to.deep.equal([])
+    expect(charactersValue({characters: []}, values)).to.deep.equal(null)
+    expect(charactersItems({characters: []}, values)).to.deep.equal([])
     expect(charactersValue({characters: [{name: 'Some Character without anything', bags: [], equipment: []}]}, values)).to.deep.equal({
       value: 0,
       liquidBuy: 0,

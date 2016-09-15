@@ -4,7 +4,7 @@ import calculateSummary from './helpers/calculateSummary'
 import getItemIds from './helpers/getItemIds'
 
 export function charactersValue (accountData, values) {
-  if (!accountData.characters) {
+  if (!accountData.characters || accountData.characters.length === 0) {
     return null
   }
 
@@ -38,7 +38,7 @@ export function sumItems (items, itemValues, valueKey, includeBound = false) {
 }
 
 export function charactersItems (accountData) {
-  if (!accountData.characters) {
+  if (!accountData.characters || accountData.characters.length === 0) {
     return []
   }
 

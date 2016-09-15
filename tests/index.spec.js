@@ -35,9 +35,9 @@ const accountData = {
 
 const expectedValues = {
   summary: {
-    liquidBuy: 8907,
-    liquidSell: 9751,
-    value: 14145
+    liquidBuy: 9194,
+    liquidSell: 10207,
+    value: 14881
   },
   bank: {
     liquidBuy: 10,
@@ -87,21 +87,21 @@ const expectedValues = {
     }
   },
   characters: {
-    liquidBuy: 691,
-    liquidSell: 1128,
-    value: 3690,
+    liquidBuy: 978,
+    liquidSell: 1584,
+    value: 4426,
     details: [
       {
         name: 'Some Character',
-        liquidBuy: 3,
-        liquidSell: 15,
-        value: 1117
+        liquidBuy: 147,
+        liquidSell: 243,
+        value: 1485
       },
       {
         name: 'Some other Character',
-        liquidBuy: 688,
-        liquidSell: 1113,
-        value: 2573
+        liquidBuy: 831,
+        liquidSell: 1341,
+        value: 2941
       }
     ]
   }
@@ -140,6 +140,8 @@ describe('account value', () => {
       74264,
       12134,
       12238,
+      8932,
+      9586,
       76453,
       44286,
       28083,

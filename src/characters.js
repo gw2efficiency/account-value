@@ -53,8 +53,13 @@ export function charactersItems (accountData) {
 }
 
 export function characterItems (character) {
-  // The items in the bags
+  // The bag items themselves
   const bagItems = character.bags
+    .filter(x => x)
+    .map(x => ({id: x.id, count: 1}))
+
+  // The items in the bags
+  const inventoryItems = character.bags
     .filter(x => x)
     .reduce((a, b) => a.concat(b.inventory), [])
     .filter(x => x)
@@ -72,5 +77,5 @@ export function characterItems (character) {
     .map(getItemIds) // Get all item ids
     .reduce((a, b) => a.concat(b), [])
 
-  return [].concat(bagItems, equipmentItems)
+  return [].concat(bagItems, inventoryItems, equipmentItems)
 }

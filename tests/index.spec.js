@@ -37,7 +37,7 @@ const expectedValues = {
   summary: {
     liquidBuy: 9194,
     liquidSell: 10207,
-    value: 15503
+    value: 19734
   },
   bank: {
     liquidBuy: 10,
@@ -89,7 +89,7 @@ const expectedValues = {
   characters: {
     liquidBuy: 978,
     liquidSell: 1584,
-    value: 5028,
+    value: 9259,
     details: [
       {
         name: 'Some Character',
@@ -101,7 +101,7 @@ const expectedValues = {
         name: 'Some other Character',
         liquidBuy: 831,
         liquidSell: 1341,
-        value: 3403
+        value: 7634
       }
     ]
   }
@@ -111,6 +111,13 @@ const expectedValues = {
 describe('account value', () => {
   it('calculates the account value correctly', () => {
     expect(accountValue(accountData, values)).to.deep.equal(expectedValues)
+  })
+
+  it('calculates the account value faster than 10ms', () => {
+    let start = new Date()
+    accountValue(accountData, values)
+    let diff = new Date() - start
+    expect(diff).to.be.below(10)
   })
 
   it('can calculate the account value with no data', () => {

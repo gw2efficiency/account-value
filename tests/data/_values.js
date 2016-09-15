@@ -22,9 +22,9 @@ export default {
     44286: {value: 273, sell: {price: 173}, buy: {price: 73}},
     24647: {value: 140, sell: {price: 40}, buy: {price: 20}},
     39223: {value: 312, sell: {price: 212}, buy: {price: 112}},
-    77429: {value: 317, sell: {price: 217}, buy: {price: 117}},
-    39619: {value: 313, sell: {price: 213}, buy: {price: 113}},
-    71436: {value: 310, sell: {price: 210}, buy: {price: 110}},
+    77429: {value: 10, defaultUpgrades: [39619]},
+    39619: {value: 5000, sell: {price: 5000}, buy: {price: 4000}},
+    71436: {value: 310, sell: {price: 210}, buy: {price: 110}, defaultUpgrades: [71425, 49428]},
     49428: {value: 143, sell: {price: 43}, buy: {price: 23}},
     69774: {value: 362, sell: {price: 262}, buy: {price: 162}},
     79031: {value: 136, sell: {price: 36}, buy: {price: 66}}

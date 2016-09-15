@@ -17,20 +17,20 @@ export function sharedInventoryValue (accountData, values) {
 export function sumItems (items, itemValues, valueKey, includeBound = false) {
   return items
     .filter(item => item) // Ignore possible empty slots
-    .map(getItemIds) // Get all item ids
+    .map(item => getItemIds(item, itemValues)) // Get all item ids
     .reduce((a, b) => a.concat(b), [])
     .filter(item => includeBound || item.binding === undefined) // Bound items
     .map(item => item.count * _get(itemValues[item.id], valueKey, 0)) // Sum for stack
     .reduce((a, b) => a + b, 0) // Total sum
 }
 
-export function sharedInventoryItems (accountData) {
+export function sharedInventoryItems (accountData, itemValues = {}) {
   if (!accountData.shared) {
     return []
   }
 
   return accountData.shared
     .filter(item => item) // Ignore possible empty slots
-    .map(getItemIds) // Get all item ids
+    .map(item => getItemIds(item, itemValues)) // Get all item ids
     .reduce((a, b) => a.concat(b), [])
 }

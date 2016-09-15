@@ -20,7 +20,7 @@ export function charactersValue (accountData, values) {
 }
 
 function characterValue (character, values) {
-  const items = characterItems(character)
+  const items = characterItems(character, values.items)
 
   return {
     name: character.name,
@@ -37,7 +37,7 @@ export function sumItems (items, itemValues, valueKey, includeBound = false) {
     .reduce((a, b) => a + b, 0) // Total sum
 }
 
-export function charactersItems (accountData) {
+export function charactersItems (accountData, itemValues) {
   if (!accountData.characters || accountData.characters.length === 0) {
     return []
   }
@@ -48,11 +48,11 @@ export function charactersItems (accountData) {
   }
 
   return accountData.characters
-    .map(characterItems)
+    .map(character => characterItems(character, itemValues))
     .reduce((a, b) => a.concat(b), [])
 }
 
-export function characterItems (character) {
+export function characterItems (character, itemValues = {}) {
   // The bag items themselves
   const bagItems = character.bags
     .filter(x => x)
@@ -63,7 +63,7 @@ export function characterItems (character) {
     .filter(x => x)
     .reduce((a, b) => a.concat(b.inventory), [])
     .filter(x => x)
-    .map(getItemIds) // Get all item ids
+    .map(item => getItemIds(item, itemValues)) // Get all item ids
     .reduce((a, b) => a.concat(b), [])
 
   // The equipped items
@@ -74,7 +74,7 @@ export function characterItems (character) {
       binding: 'Character',
       bound_to: character.name
     }))
-    .map(getItemIds) // Get all item ids
+    .map(item => getItemIds(item, itemValues)) // Get all item ids
     .reduce((a, b) => a.concat(b), [])
 
   return [].concat(bagItems, inventoryItems, equipmentItems)

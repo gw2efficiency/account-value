@@ -8,6 +8,11 @@ export function charactersValue (accountData, values) {
     return null
   }
 
+  // Check if the "inventories" permission is set
+  if (typeof accountData.characters[0].bags === 'undefined') {
+    return null
+  }
+
   const details = accountData.characters.map(c => characterValue(c, values))
   const summary = calculateSummary(details)
 
@@ -44,7 +49,7 @@ export function charactersItems (accountData) {
 
 export function characterItems (character) {
   // The items in the bags
-  const bagItems = (character.bags || [])
+  const bagItems = character.bags
     .filter(x => x)
     .reduce((a, b) => a.concat(b.inventory), [])
     .filter(x => x)
@@ -52,7 +57,7 @@ export function characterItems (character) {
     .reduce((a, b) => a.concat(b), [])
 
   // The equipped items
-  const equipmentItems = (character.equipment || [])
+  const equipmentItems = character.equipment
     .map(x => ({
       ...x,
       count: 1,

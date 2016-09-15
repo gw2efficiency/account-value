@@ -199,7 +199,8 @@ describe('account value', () => {
 
   it('calculates the characters value correctly', () => {
     expect(charactersValue(accountData, values)).to.deep.equal(expectedValues.characters)
-    expect(charactersValue({characters: [{name: 'Some Character without anything'}]}, values)).to.deep.equal({
+    expect(charactersValue({characters: [{name: 'Inventories permission is missing'}]}, values)).to.deep.equal(null)
+    expect(charactersValue({characters: [{name: 'Some Character without anything', bags: [], equipment: []}]}, values)).to.deep.equal({
       value: 0,
       liquidBuy: 0,
       liquidSell: 0,

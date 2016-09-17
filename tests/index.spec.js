@@ -9,6 +9,7 @@ import {walletValue} from '../src/wallet'
 import {dyesValue} from '../src/dyes'
 import {minisValue} from '../src/minis'
 import {commerceValue} from '../src/commerce'
+import {unlocksValue} from '../src/unlocks'
 import {charactersValue, charactersItems} from '../src/characters'
 import accountData from './data/account'
 import bankData from './data/bank'
@@ -252,6 +253,11 @@ describe('account value', () => {
 
   it('calculates the commerce value correctly', () => {
     expect(commerceValue(account, values)).to.deep.equal(expectedValues.commerce)
+  })
+
+  it('calculates the unlocks value correctly', () => {
+    expect(unlocksValue(account, values)).to.deep.equal(expectedValues.unlocks)
+    expect(unlocksValue({account: {commander: false}, bank: [], characters: []}, values)).to.deep.equal({value: 0})
   })
 
   it('calculates the characters value correctly', () => {

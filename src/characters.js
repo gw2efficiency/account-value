@@ -20,10 +20,20 @@ export function charactersValue (accountData, values) {
 }
 
 function characterValue (character, values) {
-  const items = characterItems(character, values.items)
+  const equipment = partialValue(equipmentItems(character, values.items), values)
+  const inventory = partialValue(inventoryItems(character, values.items), values)
+  const summary = calculateSummary({equipment, inventory})
 
   return {
     name: character.name,
+    ...summary,
+    equipment,
+    inventory
+  }
+}
+
+export function partialValue (items, values) {
+  return {
     value: sumItems(items, values.items, 'value', true),
     liquidBuy: subFees(sumItems(items, values.items, 'buy.price')),
     liquidSell: subFees(sumItems(items, values.items, 'sell.price'))
@@ -53,6 +63,27 @@ export function charactersItems (accountData, itemValues) {
 }
 
 export function characterItems (character, itemValues = {}) {
+  return [].concat(
+    inventoryItems(character, itemValues),
+    equipmentItems(character, itemValues)
+  )
+}
+
+// Which items does the character have in his equipment
+export function equipmentItems (character, itemValues = {}) {
+  return character.equipment
+    .map(x => ({
+      ...x,
+      count: 1,
+      binding: 'Character',
+      bound_to: character.name
+    }))
+    .map(item => getItemIds(item, itemValues)) // Get all item ids
+    .reduce((a, b) => a.concat(b), [])
+}
+
+// Which items does the character have in his inventory & which bags
+export function inventoryItems (character, itemValues = {}) {
   // The bag items themselves
   const bagItems = character.bags
     .filter(x => x)
@@ -66,16 +97,5 @@ export function characterItems (character, itemValues = {}) {
     .map(item => getItemIds(item, itemValues)) // Get all item ids
     .reduce((a, b) => a.concat(b), [])
 
-  // The equipped items
-  const equipmentItems = character.equipment
-    .map(x => ({
-      ...x,
-      count: 1,
-      binding: 'Character',
-      bound_to: character.name
-    }))
-    .map(item => getItemIds(item, itemValues)) // Get all item ids
-    .reduce((a, b) => a.concat(b), [])
-
-  return [].concat(bagItems, inventoryItems, equipmentItems)
+  return [].concat(bagItems, inventoryItems)
 }

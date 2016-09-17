@@ -100,13 +100,33 @@ const expectedValues = {
         name: 'Some Character',
         liquidBuy: 147,
         liquidSell: 243,
-        value: 1625
+        value: 1625,
+        equipment: {
+          liquidBuy: 0,
+          liquidSell: 0,
+          value: 414
+        },
+        inventory: {
+          liquidBuy: 147,
+          liquidSell: 243,
+          value: 1211
+        }
       },
       {
         name: 'Some other Character',
         liquidBuy: 831,
         liquidSell: 1341,
-        value: 7634
+        value: 7634,
+        equipment: {
+          liquidBuy: 0,
+          liquidSell: 0,
+          value: 5320
+        },
+        inventory: {
+          liquidBuy: 831,
+          liquidSell: 1341,
+          value: 2314
+        }
       }
     ]
   }
@@ -248,7 +268,17 @@ describe('account value', () => {
         liquidBuy: 0,
         liquidSell: 0,
         name: 'Some Character without anything',
-        value: 0
+        value: 0,
+        equipment: {
+          liquidBuy: 0,
+          liquidSell: 0,
+          value: 0
+        },
+        inventory: {
+          liquidBuy: 0,
+          liquidSell: 0,
+          value: 0
+        }
       }]
     })
   })

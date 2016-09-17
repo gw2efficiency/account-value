@@ -40,7 +40,7 @@ const expectedValues = {
   summary: {
     liquidBuy: 9194,
     liquidSell: 10207,
-    value: 3029734,
+    value: 3031734,
     valueWithoutGemstore: 3019734
   },
   bank: {
@@ -73,10 +73,12 @@ const expectedValues = {
     value: 1000
   },
   dyes: {
-    value: 28
+    value: 1028,
+    valueWithoutGemstore: 28
   },
   minis: {
-    value: 28
+    value: 1028,
+    valueWithoutGemstore: 28
   },
   unlocks: {
     value: 3000000

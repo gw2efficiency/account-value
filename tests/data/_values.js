@@ -41,8 +41,17 @@ export default {
     994: {value: 1000, unlocks: [64740], gemstore: 50}
   },
 
-  // TODO DYES AND MINIS NEED GEMSTORE FLAG TOO !!!
-  dyes: {1: 3, 2: 6, 3: 19},
+  dyes: {
+    1: {value: 3, gemstore: false},
+    2: {value: 6, gemstore: false},
+    3: {value: 19, gemstore: false},
+    6: {value: 1000, gemstore: 50}
+  },
 
-  minis: {1: 3, 2: 6, 3: 19}
+  minis: {
+    1: {value: 3, gemstore: false},
+    2: {value: 6, gemstore: false},
+    3: {value: 19, gemstore: false},
+    6: {value: 1000, gemstore: 50}
+  }
 }

@@ -10,7 +10,7 @@ export default function valueItems (items, values) {
 
   return {
     value: sumItems(items, itemValues, 'value', true),
-    valueWithoutGemstore: sumItems(withoutGemstore, itemValues, 'value', true),
+    valueMinusGemItems: sumItems(withoutGemstore, itemValues, 'value', true),
     liquidBuy: subFees(sumItems(items, itemValues, 'buy.price')),
     liquidSell: subFees(sumItems(items, itemValues, 'sell.price'))
   }

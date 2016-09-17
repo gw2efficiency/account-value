@@ -13,6 +13,6 @@ export function dyesValue (accountData, values) {
 
   return {
     value: _sum(dyes, x => values.dyes[x].value),
-    valueWithoutGemstore: _sum(nonGemstoreDyes, x => values.dyes[x].value)
+    valueMinusGemItems: _sum(nonGemstoreDyes, x => values.dyes[x].value)
   }
 }

@@ -28,8 +28,8 @@ export function skinsValue (accountData, values, ownedItems) {
 
   return {
     value: _sum(valuedSkins, (x) => values.skins[x].value),
+    valueMinusGemItems: _sum(filterGemstoreSkins(valuedSkins), (x) => values.skins[x].value),
     fullValue: _sum(skins, (x) => values.skins[x].value),
-    valueWithoutGemstore: _sum(filterGemstoreSkins(valuedSkins), (x) => values.skins[x].value),
-    fullValueWithoutGemstore: _sum(filterGemstoreSkins(skins), (x) => values.skins[x].value)
+    fullValueMinusGemItems: _sum(filterGemstoreSkins(skins), (x) => values.skins[x].value)
   }
 }

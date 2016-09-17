@@ -40,17 +40,17 @@ const expectedValues = {
   summary: {
     liquidBuy: 9194,
     liquidSell: 10207,
-    value: 3019734
+    value: 3029734
   },
   bank: {
     liquidBuy: 10,
     liquidSell: 15,
-    value: 274
+    value: 3274
   },
   shared: {
     liquidBuy: 10,
     liquidSell: 15,
-    value: 274
+    value: 3274
   },
   materials: {
     liquidBuy: 25,
@@ -58,8 +58,8 @@ const expectedValues = {
     value: 100
   },
   skins: {
-    fullValue: 2040,
-    value: 840
+    fullValue: 3040,
+    value: 1840
   },
   wallet: {
     liquidBuy: 1000,
@@ -95,13 +95,13 @@ const expectedValues = {
   characters: {
     liquidBuy: 978,
     liquidSell: 1584,
-    value: 9259,
+    value: 12259,
     details: [
       {
         name: 'Some Character',
         liquidBuy: 147,
         liquidSell: 243,
-        value: 1625,
+        value: 4625,
         equipment: {
           liquidBuy: 0,
           liquidSell: 0,
@@ -110,7 +110,7 @@ const expectedValues = {
         inventory: {
           liquidBuy: 147,
           liquidSell: 243,
-          value: 1211
+          value: 4211
         }
       },
       {
@@ -169,6 +169,7 @@ describe('account value', () => {
     expect(allItemIds(account)).to.deep.equal([
       123,
       44,
+      36708,
       58,
       74264,
       71425,
@@ -201,6 +202,7 @@ describe('account value', () => {
 
   it('can fetch all bound ids', () => {
     expect(boundItemIds(account)).to.deep.equal([
+      36708,
       123,
       58,
       74264,

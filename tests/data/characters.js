@@ -12,7 +12,8 @@ export default [
           {id: 76453, count: 1},
           {id: 44286, count: 1, binding: 'Account'},
           {id: 28083, count: 1, upgrades: [24647]},
-          null, null, null, null
+          null, null, null, null,
+          {id: 36708, count: 1, binding: 'Account'}
         ]
       },
       {

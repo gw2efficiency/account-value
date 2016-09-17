@@ -18,6 +18,7 @@ export default [
     binding: 'Character',
     bound_to: 'SomeName'
   },
+  {id: 36708, count: 1, binding: 'Account'},
   {
     id: 74264,
     count: 1,

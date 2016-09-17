@@ -27,14 +27,18 @@ export default {
     71436: {value: 310, sell: {price: 210}, buy: {price: 110}, defaultUpgrades: [71425, 49428]},
     49428: {value: 143, sell: {price: 43}, buy: {price: 23}},
     69774: {value: 362, sell: {price: 262}, buy: {price: 162}},
-    79031: {value: 136, sell: {price: 36}, buy: {price: 66}}
+    79031: {value: 136, sell: {price: 36}, buy: {price: 66}},
+
+    // Gemstore items
+    36708: {value: 3000, price: {gems: 150}}
   },
 
   skins: {
-    1: {value: 1200, unlocks: [123, 56, 76]},
-    2: {value: 420, unlocks: [1337]},
-    4678: {value: 420, unlocks: [1337]},
-    4679: {value: 420, unlocks: [1337]}
+    1: {value: 1200, unlocks: [123, 56, 76], gemstore: false},
+    2: {value: 420, unlocks: [1337], gemstore: false},
+    4678: {value: 420, unlocks: [1337], gemstore: false},
+    4679: {value: 420, unlocks: [1337], gemstore: false},
+    994: {value: 1000, unlocks: [64740], gemstore: 50}
   },
 
   dyes: {1: 3, 2: 6, 3: 19},

@@ -1,16 +1,16 @@
 /* eslint-env node, mocha */
 const expect = require('chai').expect
 import accountValue, {allItemIds, boundItemIds} from '../src/index'
-import {bankValue} from '../src/bank'
-import {sharedInventoryValue} from '../src/shared'
-import {materialsValue} from '../src/materials'
+import {bankValue, bankItems} from '../src/bank'
+import {sharedInventoryValue, sharedInventoryItems} from '../src/shared'
+import {materialsValue, materialsItems} from '../src/materials'
 import {skinsValue} from '../src/skins'
 import {walletValue} from '../src/wallet'
 import {dyesValue} from '../src/dyes'
 import {minisValue} from '../src/minis'
 import {commerceValue} from '../src/commerce'
 import {unlocksValue} from '../src/unlocks'
-import {charactersValue, charactersItems} from '../src/characters'
+import {charactersValue, charactersItems, characterItems, equipmentItems, inventoryItems} from '../src/characters'
 import accountData from './data/account'
 import bankData from './data/bank'
 import sharedData from './data/shared'
@@ -289,5 +289,17 @@ describe('account value', () => {
         }
       }]
     })
+  })
+
+  // Let's be honest, I just want 100% test coverage
+  it('gets the items of an account correctly', () => {
+    let account = {}
+    expect(bankItems(account, {})).to.deep.equal([])
+    expect(sharedInventoryItems(account, {})).to.deep.equal([])
+    expect(materialsItems(account, {})).to.deep.equal([])
+    expect(charactersItems(account, {})).to.deep.equal([])
+    expect(characterItems({equipment: [], bags: []}, {})).to.deep.equal([])
+    expect(equipmentItems({equipment: []})).to.deep.equal([])
+    expect(inventoryItems({bags: []})).to.deep.equal([])
   })
 })

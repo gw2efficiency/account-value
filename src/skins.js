@@ -21,8 +21,15 @@ export function skinsValue (accountData, values, ownedItems) {
     return skinUnlocks.filter(i => ownedItems.indexOf(i) !== -1).length === 0
   })
 
+  // Filter for gemstore skins
+  const filterGemstoreSkins = (skins) => {
+    return skins.filter(skin => values.skins[skin].gemstore === false)
+  }
+
   return {
     value: _sum(valuedSkins, (x) => values.skins[x].value),
-    fullValue: _sum(skins, (x) => values.skins[x].value)
+    fullValue: _sum(skins, (x) => values.skins[x].value),
+    valueWithoutGemstore: _sum(filterGemstoreSkins(valuedSkins), (x) => values.skins[x].value),
+    fullValueWithoutGemstore: _sum(filterGemstoreSkins(skins), (x) => values.skins[x].value)
   }
 }

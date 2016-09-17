@@ -40,26 +40,32 @@ const expectedValues = {
   summary: {
     liquidBuy: 9194,
     liquidSell: 10207,
-    value: 3029734
+    value: 3029734,
+    valueWithoutGemstore: 3019734
   },
   bank: {
     liquidBuy: 10,
     liquidSell: 15,
-    value: 3274
+    value: 3274,
+    valueWithoutGemstore: 274
   },
   shared: {
     liquidBuy: 10,
     liquidSell: 15,
-    value: 3274
+    value: 3274,
+    valueWithoutGemstore: 274
   },
   materials: {
     liquidBuy: 25,
     liquidSell: 42,
-    value: 100
+    value: 100,
+    valueWithoutGemstore: 100
   },
   skins: {
     value: 1840,
-    fullValue: 3040
+    fullValue: 3040,
+    valueWithoutGemstore: 840,
+    fullValueWithoutGemstore: 2040
   },
   wallet: {
     liquidBuy: 1000,
@@ -79,6 +85,7 @@ const expectedValues = {
     liquidBuy: 7171,
     liquidSell: 7551,
     value: 7931,
+    valueWithoutGemstore: 7931,
     details: {
       buys: {
         liquidBuy: 6831,
@@ -96,21 +103,25 @@ const expectedValues = {
     liquidBuy: 978,
     liquidSell: 1584,
     value: 12259,
+    valueWithoutGemstore: 9259,
     details: [
       {
         name: 'Some Character',
         liquidBuy: 147,
         liquidSell: 243,
         value: 4625,
+        valueWithoutGemstore: 1625,
         equipment: {
           liquidBuy: 0,
           liquidSell: 0,
-          value: 414
+          value: 414,
+          valueWithoutGemstore: 414
         },
         inventory: {
           liquidBuy: 147,
           liquidSell: 243,
-          value: 4211
+          value: 4211,
+          valueWithoutGemstore: 1211
         }
       },
       {
@@ -118,15 +129,18 @@ const expectedValues = {
         liquidBuy: 831,
         liquidSell: 1341,
         value: 7634,
+        valueWithoutGemstore: 7634,
         equipment: {
           liquidBuy: 0,
           liquidSell: 0,
-          value: 5320
+          value: 5320,
+          valueWithoutGemstore: 5320
         },
         inventory: {
           liquidBuy: 831,
           liquidSell: 1341,
-          value: 2314
+          value: 2314,
+          valueWithoutGemstore: 2314
         }
       }
     ]
@@ -270,6 +284,7 @@ describe('account value', () => {
     expect(charactersItems({characters: []}, values)).to.deep.equal([])
     expect(charactersValue({characters: [{name: 'Some Character without anything', bags: [], equipment: []}]}, values)).to.deep.equal({
       value: 0,
+      valueWithoutGemstore: 0,
       liquidBuy: 0,
       liquidSell: 0,
       details: [{
@@ -277,15 +292,18 @@ describe('account value', () => {
         liquidSell: 0,
         name: 'Some Character without anything',
         value: 0,
+        valueWithoutGemstore: 0,
         equipment: {
           liquidBuy: 0,
           liquidSell: 0,
-          value: 0
+          value: 0,
+          valueWithoutGemstore: 0
         },
         inventory: {
           liquidBuy: 0,
           liquidSell: 0,
-          value: 0
+          value: 0,
+          valueWithoutGemstore: 0
         }
       }]
     })

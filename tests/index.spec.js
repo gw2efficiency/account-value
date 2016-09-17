@@ -10,7 +10,14 @@ import {dyesValue} from '../src/dyes'
 import {minisValue} from '../src/minis'
 import {commerceValue} from '../src/commerce'
 import {unlocksValue} from '../src/unlocks'
-import {charactersValue, charactersItems, characterItems, equipmentItems, inventoryItems} from '../src/characters'
+import {
+  charactersValue,
+  charactersItems,
+  characterItems,
+  equipmentItems,
+  inventoryItems,
+  unlockItems
+} from '../src/characters'
 import accountData from './data/account'
 import bankData from './data/bank'
 import sharedData from './data/shared'
@@ -40,7 +47,7 @@ const expectedValues = {
   summary: {
     liquidBuy: 9194,
     liquidSell: 10207,
-    value: 3031734,
+    value: 3037167,
     valueMinusGemItems: 3019734
   },
   bank: {
@@ -81,7 +88,8 @@ const expectedValues = {
     valueMinusGemItems: 28
   },
   unlocks: {
-    value: 3000000
+    value: 3004433,
+    valueMinusGemItems: 3000000
   },
   commerce: {
     liquidBuy: 7171,
@@ -104,14 +112,14 @@ const expectedValues = {
   characters: {
     liquidBuy: 978,
     liquidSell: 1584,
-    value: 12259,
+    value: 13259,
     valueMinusGemItems: 9259,
     details: [
       {
         name: 'Some Character',
         liquidBuy: 147,
         liquidSell: 243,
-        value: 4625,
+        value: 5625,
         valueMinusGemItems: 1625,
         equipment: {
           liquidBuy: 0,
@@ -124,6 +132,12 @@ const expectedValues = {
           liquidSell: 243,
           value: 4211,
           valueMinusGemItems: 1211
+        },
+        unlocks: {
+          liquidBuy: 0,
+          liquidSell: 0,
+          value: 1000,
+          valueMinusGemItems: 0
         }
       },
       {
@@ -143,6 +157,12 @@ const expectedValues = {
           liquidSell: 1341,
           value: 2314,
           valueMinusGemItems: 2314
+        },
+        unlocks: {
+          liquidBuy: 0,
+          liquidSell: 0,
+          value: 0,
+          valueMinusGemItems: 0
         }
       }
     ]
@@ -192,6 +212,7 @@ describe('account value', () => {
       49432,
       12134,
       12238,
+      56789,
       8932,
       9586,
       76453,
@@ -200,6 +221,7 @@ describe('account value', () => {
       24647,
       39223,
       63604,
+      19993,
       69774,
       79031,
       77429,
@@ -228,6 +250,7 @@ describe('account value', () => {
       24647,
       39223,
       63604,
+      19993,
       79031,
       77429,
       39619,
@@ -275,16 +298,44 @@ describe('account value', () => {
 
   it('calculates the unlocks value correctly', () => {
     expect(unlocksValue(account, values)).to.deep.equal(expectedValues.unlocks)
-    expect(unlocksValue({account: {commander: false}, bank: [], characters: []}, values)).to.deep.equal({value: 0})
+
+    const data = {
+      account: {commander: false},
+      bank: [
+        null, null, null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null, null, null, null
+      ],
+      characters: [
+        {crafting: []}, {crafting: []}, {crafting: []}, {crafting: []}, {crafting: []},
+        {crafting: []}, {crafting: []}, {crafting: []}, {crafting: []}, {crafting: []}
+      ],
+      shared: [],
+      materials: []
+    }
+    expect(unlocksValue(data, values)).to.deep.equal({value: 5000, valueMinusGemItems: 0})
   })
 
   it('calculates the characters value correctly', () => {
     expect(charactersValue(account, values)).to.deep.equal(expectedValues.characters)
+  })
+
+  it('calculates the characters value correctly for weird permissions', () => {
     expect(charactersValue({characters: [{name: 'Inventories permission is missing'}]}, values)).to.deep.equal(null)
     expect(charactersItems({characters: [{name: 'Inventories permission is missing'}]}, values)).to.deep.equal([])
     expect(charactersValue({characters: []}, values)).to.deep.equal(null)
     expect(charactersItems({characters: []}, values)).to.deep.equal([])
-    expect(charactersValue({characters: [{name: 'Some Character without anything', bags: [], equipment: []}]}, values)).to.deep.equal({
+  })
+
+  it('calculates the characters value correctly for an empty character', () => {
+    const input = {
+      characters: [{
+        name: 'Some Character without anything',
+        bags: [],
+        equipment: []
+      }]
+    }
+    const expected = {
       value: 0,
       valueMinusGemItems: 0,
       liquidBuy: 0,
@@ -306,9 +357,17 @@ describe('account value', () => {
           liquidSell: 0,
           value: 0,
           valueMinusGemItems: 0
+        },
+        unlocks: {
+          liquidBuy: 0,
+          liquidSell: 0,
+          value: 0,
+          valueMinusGemItems: 0
         }
       }]
-    })
+    }
+
+    expect(charactersValue(input, values)).to.deep.equal(expected)
   })
 
   // Let's be honest, I just want 100% test coverage
@@ -321,5 +380,6 @@ describe('account value', () => {
     expect(characterItems({equipment: [], bags: []}, {})).to.deep.equal([])
     expect(equipmentItems({equipment: []})).to.deep.equal([])
     expect(inventoryItems({bags: []})).to.deep.equal([])
+    expect(unlockItems({bags: []})).to.deep.equal([])
   })
 })

@@ -13,5 +13,10 @@ export default [
     id: 12147,
     category: 5,
     count: 0
+  },
+  {
+    id: 56789,
+    category: 5,
+    count: 501
   }
 ]

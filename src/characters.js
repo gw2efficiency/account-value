@@ -18,15 +18,18 @@ export function charactersValue (accountData, values) {
 }
 
 function characterValue (character, values) {
-  const equipment = valueItems(equipmentItems(character, values.items), values)
-  const inventory = valueItems(inventoryItems(character, values.items), values)
-  const summary = calculateSummary({equipment, inventory})
+  const details = {
+    equipment: valueItems(equipmentItems(character, values.items), values),
+    inventory: valueItems(inventoryItems(character, values.items), values),
+    unlocks: valueItems(unlockItems(character, values.items), values)
+  }
+
+  const summary = calculateSummary(details)
 
   return {
     name: character.name,
     ...summary,
-    equipment,
-    inventory
+    ...details
   }
 }
 
@@ -48,7 +51,8 @@ export function charactersItems (accountData, itemValues) {
 export function characterItems (character, itemValues = {}) {
   return [].concat(
     inventoryItems(character, itemValues),
-    equipmentItems(character, itemValues)
+    equipmentItems(character, itemValues),
+    unlockItems(character, itemValues)
   )
 }
 
@@ -81,4 +85,17 @@ export function inventoryItems (character, itemValues = {}) {
     .reduce((a, b) => a.concat(b), [])
 
   return [].concat(bagItems, inventoryItems)
+}
+
+// Which "items" does the character have unlocked
+export function unlockItems (character, itemValues = {}) {
+  let unlocks = []
+
+  // Character bound bag slots
+  const bagSlots = character.bags.length - 5
+  if (bagSlots > 0) {
+    unlocks.push({id: 19993, count: bagSlots, binding: 'Character'})
+  }
+
+  return unlocks
 }

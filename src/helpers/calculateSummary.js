@@ -6,7 +6,11 @@ export default function calculateSummary (details) {
 
   return {
     value: _sum(values, x => x.value || 0),
-    valueMinusGemItems: _sum(values, x => x.valueMinusGemItems || x.value),
+    valueMinusGemItems: _sum(values, x => {
+      return typeof x.valueMinusGemItems !== 'undefined'
+        ? x.valueMinusGemItems
+        : x.value
+    }),
     liquidBuy: _sum(values, x => x.liquidBuy || 0),
     liquidSell: _sum(values, x => x.liquidSell || 0)
   }

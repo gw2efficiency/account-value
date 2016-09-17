@@ -1,6 +1,7 @@
 export default [
   {
     name: 'Some Character',
+    crafting: [],
     equipment: [
       {id: 63604, slot: 'HelmAquatic'}
     ],
@@ -28,11 +29,20 @@ export default [
             bound_to: 'Some Character'
           }
         ]
-      }
+      },
+      null,
+      null,
+      null,
+      null
     ]
   },
   {
     name: 'Some other Character',
+    crafting: [
+      {discipline: 'Craft', rating: 100, active: true},
+      {discipline: 'Craft', rating: 100, active: true},
+      {discipline: 'Craft', rating: 100, active: true}
+    ],
     equipment: [
       {
         id: 77429,
@@ -60,7 +70,10 @@ export default [
             binding: 'Account'
           }
         ]
-      }
+      },
+      null,
+      null,
+      null
     ]
   }
 ]

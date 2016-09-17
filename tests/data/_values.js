@@ -30,7 +30,14 @@ export default {
     79031: {value: 136, sell: {price: 36}, buy: {price: 66}},
 
     // Gemstore items
-    36708: {value: 3000, price: {gems: 150}}
+    36708: {value: 3000, price: {gems: 150}},
+
+    19995: {value: 100, price: {gems: 100}}, // bank slot
+    19994: {value: 1000, price: {gems: 100}}, // character slot
+    67071: {value: 250, price: {gems: 100}}, // shared bag
+    42932: {value: 1000, price: {gems: 100}}, // storage expander
+    42970: {value: 333, price: {gems: 100}}, // additional crafting licence
+    19993: {value: 1000, price: {gems: 100}} // bag slot
   },
 
   skins: {

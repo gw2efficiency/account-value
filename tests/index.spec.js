@@ -58,8 +58,8 @@ const expectedValues = {
     value: 100
   },
   skins: {
-    fullValue: 3040,
-    value: 1840
+    value: 1840,
+    fullValue: 3040
   },
   wallet: {
     liquidBuy: 1000,

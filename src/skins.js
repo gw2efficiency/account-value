@@ -1,4 +1,5 @@
 import skinInheritance from './static/skinInheritance'
+import _sum from 'lodash.sumby'
 
 export function skinsValue (accountData, values, ownedItems) {
   if (!accountData.skins) {
@@ -21,7 +22,7 @@ export function skinsValue (accountData, values, ownedItems) {
   })
 
   return {
-    value: valuedSkins.map(x => values.skins[x].value).reduce((a, b) => a + b, 0),
-    fullValue: skins.map(x => values.skins[x].value).reduce((a, b) => a + b, 0)
+    value: _sum(valuedSkins, (x) => values.skins[x].value),
+    fullValue: _sum(skins, (x) => values.skins[x].value)
   }
 }

@@ -1,7 +1,6 @@
-import _get from 'lodash.get'
-import {subFees} from 'gw2e-tradingpost-fees'
 import calculateSummary from './helpers/calculateSummary'
 import getItemIds from './helpers/getItemIds'
+import valueItems from './helpers/valueItems'
 
 export function charactersValue (accountData, values) {
   if (!accountData.characters || accountData.characters.length === 0) {
@@ -15,13 +14,12 @@ export function charactersValue (accountData, values) {
 
   const details = accountData.characters.map(c => characterValue(c, values))
   const summary = calculateSummary(details)
-
   return {...summary, details}
 }
 
 function characterValue (character, values) {
-  const equipment = partialValue(equipmentItems(character, values.items), values)
-  const inventory = partialValue(inventoryItems(character, values.items), values)
+  const equipment = valueItems(equipmentItems(character, values.items), values)
+  const inventory = valueItems(inventoryItems(character, values.items), values)
   const summary = calculateSummary({equipment, inventory})
 
   return {
@@ -30,21 +28,6 @@ function characterValue (character, values) {
     equipment,
     inventory
   }
-}
-
-export function partialValue (items, values) {
-  return {
-    value: sumItems(items, values.items, 'value', true),
-    liquidBuy: subFees(sumItems(items, values.items, 'buy.price')),
-    liquidSell: subFees(sumItems(items, values.items, 'sell.price'))
-  }
-}
-
-export function sumItems (items, itemValues, valueKey, includeBound = false) {
-  return items
-    .filter(item => includeBound || item.binding === undefined) // Bound items
-    .map(item => item.count * _get(itemValues[item.id], valueKey, 0)) // Sum for stack
-    .reduce((a, b) => a + b, 0) // Total sum
 }
 
 export function charactersItems (accountData, itemValues) {

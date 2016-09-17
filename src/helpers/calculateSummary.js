@@ -1,10 +1,12 @@
+import _sum from 'lodash.sumby'
+
 // Calculate the summary based on a details object or array
 export default function calculateSummary (details) {
   const values = Object.values(details).filter(values => values)
 
   return {
-    value: values.reduce((x, y) => x + y.value, 0),
-    liquidBuy: values.reduce((x, y) => x + (y.liquidBuy || 0), 0),
-    liquidSell: values.reduce((x, y) => x + (y.liquidSell || 0), 0)
+    value: _sum(values, x => x.value || 0),
+    liquidBuy: _sum(values, x => x.liquidBuy || 0),
+    liquidSell: _sum(values, x => x.liquidSell || 0)
   }
 }

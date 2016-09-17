@@ -1,15 +1,13 @@
+import _sum from 'lodash.sumby'
+
 export function dyesValue (accountData, values) {
   if (!accountData.dyes) {
     return null
   }
 
   // Just sum up the value of all unlocked dyes
-  const sum = accountData.dyes
-    .map(x => values.dyes[x])
-    .filter(x => x)
-    .reduce((a, b) => a + b, 0)
-
+  const dyes = accountData.dyes
   return {
-    value: sum
+    value: _sum(dyes, x => values.dyes[x])
   }
 }

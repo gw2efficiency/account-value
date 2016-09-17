@@ -1,11 +1,10 @@
 import _get from 'lodash.get'
+import _sum from 'lodash.sumby'
 import {subFees, subTax} from 'gw2e-tradingpost-fees'
 import calculateSummary from './helpers/calculateSummary'
 
 export function commerceValue (accountData, values) {
-  if (!accountData.commerce ||
-    !accountData.commerce.buys ||
-    !accountData.commerce.sells) {
+  if (!accountData.commerce || !accountData.commerce.buys || !accountData.commerce.sells) {
     return null
   }
 
@@ -30,16 +29,12 @@ export function commerceValue (accountData, values) {
   return {...summary, details}
 }
 
-export function sumItems (items, itemValues, valueKey) {
-  return items
-    .map(item => item.quantity * _get(itemValues[item.item_id], valueKey, 0)) // Sum for stack
-    .reduce((a, b) => a + b, 0) // Total sum
+function sumItems (items, itemValues, valueKey) {
+  return _sum(items, x => x.quantity * _get(itemValues[x.item_id], valueKey, 0))
 }
 
 export function commerceItems (accountData) {
-  if (!accountData.commerce ||
-    !accountData.commerce.buys ||
-    !accountData.commerce.sells) {
+  if (!accountData.commerce || !accountData.commerce.buys || !accountData.commerce.sells) {
     return []
   }
 

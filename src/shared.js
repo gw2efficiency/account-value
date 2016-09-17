@@ -1,27 +1,13 @@
-import _get from 'lodash.get'
-import {subFees} from 'gw2e-tradingpost-fees'
 import getItemIds from './helpers/getItemIds'
+import valueItems from './helpers/valueItems'
 
 export function sharedInventoryValue (accountData, values) {
   if (!accountData.shared) {
     return null
   }
 
-  return {
-    value: sumItems(accountData.shared, values.items, 'value', true),
-    liquidBuy: subFees(sumItems(accountData.shared, values.items, 'buy.price')),
-    liquidSell: subFees(sumItems(accountData.shared, values.items, 'sell.price'))
-  }
-}
-
-export function sumItems (items, itemValues, valueKey, includeBound = false) {
-  return items
-    .filter(item => item) // Ignore possible empty slots
-    .map(item => getItemIds(item, itemValues)) // Get all item ids
-    .reduce((a, b) => a.concat(b), [])
-    .filter(item => includeBound || item.binding === undefined) // Bound items
-    .map(item => item.count * _get(itemValues[item.id], valueKey, 0)) // Sum for stack
-    .reduce((a, b) => a + b, 0) // Total sum
+  const items = sharedInventoryItems(accountData, values.items)
+  return valueItems(items, values)
 }
 
 export function sharedInventoryItems (accountData, itemValues = {}) {
@@ -32,5 +18,5 @@ export function sharedInventoryItems (accountData, itemValues = {}) {
   return accountData.shared
     .filter(item => item) // Ignore possible empty slots
     .map(item => getItemIds(item, itemValues)) // Get all item ids
-    .reduce((a, b) => a.concat(b), [])
+    .reduce((a, b) => a.concat(b), []) // Return a single array
 }

@@ -8,6 +8,7 @@ import {skinsValue} from '../src/skins'
 import {walletValue} from '../src/wallet'
 import {dyesValue} from '../src/dyes'
 import {minisValue} from '../src/minis'
+import {outfitsValue} from '../src/outfits'
 import {commerceValue} from '../src/commerce'
 import {unlocksValue} from '../src/unlocks'
 import {
@@ -26,6 +27,7 @@ import skinsData from './data/skins'
 import walletData from './data/wallet'
 import dyesData from './data/dyes'
 import minisData from './data/minis'
+import outfitsData from './data/outfits'
 import commerceData from './data/commerce'
 import charactersData from './data/characters'
 import values from './data/_values'
@@ -39,6 +41,7 @@ const account = {
   wallet: walletData,
   dyes: dyesData,
   minis: minisData,
+  outfits: outfitsData,
   commerce: commerceData,
   characters: charactersData
 }
@@ -47,8 +50,8 @@ const expectedValues = {
   summary: {
     liquidBuy: 9194,
     liquidSell: 10207,
-    value: 3037167,
-    valueMinusGemItems: 3019734
+    value: 3038195,
+    valueMinusGemItems: 3019762
   },
   bank: {
     liquidBuy: 10,
@@ -84,6 +87,10 @@ const expectedValues = {
     valueMinusGemItems: 28
   },
   minis: {
+    value: 1028,
+    valueMinusGemItems: 28
+  },
+  outfits: {
     value: 1028,
     valueMinusGemItems: 28
   },
@@ -191,6 +198,7 @@ describe('account value', () => {
       dyes: null,
       materials: null,
       minis: null,
+      outfits: null,
       skins: null,
       wallet: null,
       unlocks: null
@@ -290,6 +298,10 @@ describe('account value', () => {
 
   it('calculates the minis value correctly', () => {
     expect(minisValue(account, values)).to.deep.equal(expectedValues.minis)
+  })
+
+  it('calculates the outfits value correctly', () => {
+    expect(outfitsValue(account, values)).to.deep.equal(expectedValues.outfits)
   })
 
   it('calculates the commerce value correctly', () => {

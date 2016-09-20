@@ -9,7 +9,8 @@ export function minisValue (accountData, values) {
   const minis = accountData.minis
     .filter(mini => !!values.minis[mini])
 
-  const nonGemstoreMinis = minis.filter(dye => values.minis[dye].gemstore === false)
+  const nonGemstoreMinis = minis
+    .filter(mini => values.minis[mini].gemstore === false)
 
   return {
     value: _sum(minis, x => values.minis[x].value),

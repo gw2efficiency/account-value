@@ -5,6 +5,7 @@ import {walletValue} from './wallet'
 import {charactersValue, charactersItems} from './characters'
 import {skinsValue} from './skins'
 import {minisValue} from './minis'
+import {outfitsValue} from './outfits'
 import {dyesValue} from './dyes'
 import {commerceValue, commerceItems} from './commerce'
 import {unlocksValue} from './unlocks'
@@ -25,6 +26,7 @@ export default function accountValue (accountData, values) {
   account.skins = skinsValue(accountData, values, items)
   account.dyes = dyesValue(accountData, values)
   account.minis = minisValue(accountData, values)
+  account.outfits = outfitsValue(accountData, values)
   account.characters = charactersValue(accountData, values)
   account.unlocks = unlocksValue(accountData, values)
 

@@ -60,5 +60,12 @@ export default {
     2: {value: 6, gemstore: false},
     3: {value: 19, gemstore: false},
     6: {value: 1000, gemstore: 50}
+  },
+
+  outfits: {
+    1: {value: 3, gemstore: false},
+    2: {value: 6, gemstore: false},
+    3: {value: 19, gemstore: false},
+    6: {value: 1000, gemstore: 50}
   }
 }

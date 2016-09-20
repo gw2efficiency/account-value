@@ -69,6 +69,12 @@ export default {
     6: {value: 1000, gemstore: 50}
   },
 
+  recipes: {
+    1: {value: 3},
+    2: {value: 6},
+    3: {value: 19}
+  },
+
   finishers: {
     1: {value: 3, gemstore: false},
     2: {value: 6, gemstore: false},

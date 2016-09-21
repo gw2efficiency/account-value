@@ -58,7 +58,7 @@ const expectedValues = {
     liquidSell: 10207,
     value: 3040371,
     valueMinusGemItems: 3020938,
-    spentGems: 2000
+    spentGems: 2105
   },
   bank: {
     liquidBuy: 10,
@@ -145,7 +145,7 @@ const expectedValues = {
     liquidSell: 1584,
     value: 14379,
     valueMinusGemItems: 10379,
-    spentGems: 250,
+    spentGems: 355,
     details: [
       {
         name: 'Some Character',
@@ -153,7 +153,7 @@ const expectedValues = {
         liquidSell: 243,
         value: 5645,
         valueMinusGemItems: 1645,
-        spentGems: 250,
+        spentGems: 355,
         equipment: {
           liquidBuy: 0,
           liquidSell: 0,
@@ -166,7 +166,7 @@ const expectedValues = {
           liquidSell: 243,
           value: 4211,
           valueMinusGemItems: 1211,
-          spentGems: 150
+          spentGems: 255
         },
         unlocks: {
           liquidBuy: 0,
@@ -176,8 +176,6 @@ const expectedValues = {
           spentGems: 100
         },
         crafting: {
-          liquidBuy: 0,
-          liquidSell: 0,
           value: 20
         }
       },
@@ -210,8 +208,6 @@ const expectedValues = {
           spentGems: 0
         },
         crafting: {
-          liquidBuy: 0,
-          liquidSell: 0,
           value: 1100
         }
       }
@@ -273,6 +269,7 @@ describe('account value', () => {
       28083,
       24647,
       39223,
+      20017,
       63604,
       19993,
       69774,
@@ -302,6 +299,7 @@ describe('account value', () => {
       44286,
       24647,
       39223,
+      20017,
       63604,
       19993,
       79031,
@@ -436,8 +434,6 @@ describe('account value', () => {
           spentGems: 0
         },
         crafting: {
-          liquidBuy: 0,
-          liquidSell: 0,
           value: 0
         }
       }]

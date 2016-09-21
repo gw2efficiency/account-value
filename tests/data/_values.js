@@ -31,6 +31,7 @@ export default {
 
     // Gemstore items
     36708: {value: 3000, price: {gems: 150}},
+    20017: {value: false, price: {gems: 35}},
 
     19995: {value: 100, price: {gems: 100}}, // bank slot
     19994: {value: 1000, price: {gems: 100}}, // character slot

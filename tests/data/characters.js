@@ -30,7 +30,8 @@ export default [
             count: 1,
             binding: 'Character',
             bound_to: 'Some Character'
-          }
+          },
+          {id: 20017, count: 3, binding: 'Account'}
         ]
       },
       null,

@@ -59,11 +59,7 @@ function craftingValue (character, values) {
     return professionValue[maxRating]
   })
 
-  return {
-    value: _sum(professions),
-    liquidBuy: 0,
-    liquidSell: 0
-  }
+  return {value: _sum(professions)}
 }
 
 export function charactersItems (accountData, itemValues) {

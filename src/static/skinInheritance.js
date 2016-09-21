@@ -102,6 +102,10 @@ export default {
   6737: 6712, // "The Ambush" gets unlocked by "Tigris"
   6702: 6737, // "The Hunt" gets unlocked by "The Ambush"
 
+  6958: 6966, // "Endeavor" gets unlocked by "Eureka"
+  6959: 6958, // "Hypothesis" gets unlocked by "Endeavor"
+  6971: 6959, // "For Science" gets unlocked by "Hypothesis"
+
   6252: 6161, // "Nightfury" gets unlocked by "Nightfury"
 
   6306: 6161 // "Nightfury" gets unlocked by "Nightfury"

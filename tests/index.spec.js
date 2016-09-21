@@ -56,8 +56,8 @@ const expectedValues = {
   summary: {
     liquidBuy: 9194,
     liquidSell: 10207,
-    value: 3039251,
-    valueMinusGemItems: 3019818
+    value: 3040371,
+    valueMinusGemItems: 3020938
   },
   bank: {
     liquidBuy: 10,
@@ -132,15 +132,15 @@ const expectedValues = {
   characters: {
     liquidBuy: 978,
     liquidSell: 1584,
-    value: 13259,
-    valueMinusGemItems: 9259,
+    value: 14379,
+    valueMinusGemItems: 10379,
     details: [
       {
         name: 'Some Character',
         liquidBuy: 147,
         liquidSell: 243,
-        value: 5625,
-        valueMinusGemItems: 1625,
+        value: 5645,
+        valueMinusGemItems: 1645,
         equipment: {
           liquidBuy: 0,
           liquidSell: 0,
@@ -158,14 +158,20 @@ const expectedValues = {
           liquidSell: 0,
           value: 1000,
           valueMinusGemItems: 0
+        },
+        crafting: {
+          liquidBuy: 0,
+          liquidSell: 0,
+          value: 20,
+          valueMinusGemItems: 20
         }
       },
       {
         name: 'Some other Character',
         liquidBuy: 831,
         liquidSell: 1341,
-        value: 7634,
-        valueMinusGemItems: 7634,
+        value: 8734,
+        valueMinusGemItems: 8734,
         equipment: {
           liquidBuy: 0,
           liquidSell: 0,
@@ -183,6 +189,12 @@ const expectedValues = {
           liquidSell: 0,
           value: 0,
           valueMinusGemItems: 0
+        },
+        crafting: {
+          liquidBuy: 0,
+          liquidSell: 0,
+          value: 1100,
+          valueMinusGemItems: 1100
         }
       }
     ]
@@ -367,7 +379,8 @@ describe('account value', () => {
       characters: [{
         name: 'Some Character without anything',
         bags: [],
-        equipment: []
+        equipment: [],
+        crafting: []
       }]
     }
     const expected = {
@@ -394,6 +407,12 @@ describe('account value', () => {
           valueMinusGemItems: 0
         },
         unlocks: {
+          liquidBuy: 0,
+          liquidSell: 0,
+          value: 0,
+          valueMinusGemItems: 0
+        },
+        crafting: {
           liquidBuy: 0,
           liquidSell: 0,
           value: 0,

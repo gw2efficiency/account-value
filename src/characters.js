@@ -1,6 +1,7 @@
 import calculateSummary from './helpers/calculateSummary'
 import getItemIds from './helpers/getItemIds'
 import valueItems from './helpers/valueItems'
+import _sum from 'lodash.sumby'
 
 export function charactersValue (accountData, values) {
   if (!accountData.characters || accountData.characters.length === 0) {
@@ -21,7 +22,8 @@ function characterValue (character, values) {
   const details = {
     equipment: valueItems(equipmentItems(character, values.items), values),
     inventory: valueItems(inventoryItems(character, values.items), values),
-    unlocks: valueItems(unlockItems(character, values.items), values)
+    unlocks: valueItems(unlockItems(character, values.items), values),
+    crafting: craftingValue(character, values)
   }
 
   const summary = calculateSummary(details)
@@ -30,6 +32,38 @@ function characterValue (character, values) {
     name: character.name,
     ...summary,
     ...details
+  }
+}
+
+function craftingValue (character, values) {
+  const professions = character.crafting.map(profession => {
+    // Get the profession values by name
+    let name = profession.discipline.toLowerCase()
+    let professionValue = values.craftingProfessions[name]
+
+    // New / unknown crafting profession
+    if (!professionValue) {
+      return 0
+    }
+
+    // Get the highest rating that the user unlocked
+    let ratings = Object.keys(professionValue).filter(x => x <= profession.rating)
+    let maxRating = Math.max.apply(null, ratings)
+
+    // The rating is too low to have a value
+    if (ratings.length === 0) {
+      return 0
+    }
+
+    // Get the highest rating and return value of that
+    return professionValue[maxRating]
+  })
+
+  return {
+    value: _sum(professions),
+    valueMinusGemItems: _sum(professions),
+    liquidBuy: 0,
+    liquidSell: 0
   }
 }
 

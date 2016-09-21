@@ -1,7 +1,10 @@
 export default [
   {
     name: 'Some Character',
-    crafting: [],
+    crafting: [
+      {discipline: 'Chef', rating: 125, active: true},
+      {discipline: 'Weaponsmith', rating: 224, active: true}
+    ],
     equipment: [
       {id: 63604, slot: 'HelmAquatic'}
     ],
@@ -39,9 +42,9 @@ export default [
   {
     name: 'Some other Character',
     crafting: [
-      {discipline: 'Craft', rating: 100, active: true},
-      {discipline: 'Craft', rating: 100, active: true},
-      {discipline: 'Craft', rating: 100, active: true}
+      {discipline: 'Chef', rating: 400, active: true},
+      {discipline: 'Weaponsmith', rating: 500, active: true},
+      {discipline: 'SomethingUnknown', rating: 100, active: true}
     ],
     equipment: [
       {

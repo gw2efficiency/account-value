@@ -81,5 +81,19 @@ export default {
     3: {value: 19, gemstore: false},
     6: {value: 1000, gemstore: 50},
     11: {value: 999999, gemstore: 9999}
+  },
+
+  craftingProfessions: {
+    chef: {
+      400: 1000
+    },
+    weaponsmith: {
+      75: 10,
+      150: 20,
+      225: 30,
+      300: 40,
+      400: 50,
+      500: 100
+    }
   }
 }

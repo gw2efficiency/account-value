@@ -11,6 +11,7 @@ export default function calculateSummary (details) {
         ? x.valueMinusGemItems
         : x.value
     }),
+    spentGems: _sum(values, x => x.spentGems || 0),
     liquidBuy: _sum(values, x => x.liquidBuy || 0),
     liquidSell: _sum(values, x => x.liquidSell || 0)
   }

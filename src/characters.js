@@ -61,7 +61,6 @@ function craftingValue (character, values) {
 
   return {
     value: _sum(professions),
-    valueMinusGemItems: _sum(professions),
     liquidBuy: 0,
     liquidSell: 0
   }

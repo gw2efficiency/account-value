@@ -14,6 +14,7 @@ export function outfitsValue (accountData, values) {
 
   return {
     value: _sum(outfits, x => values.outfits[x].value),
-    valueMinusGemItems: _sum(nonGemstoreOutfits, x => values.outfits[x].value)
+    valueMinusGemItems: _sum(nonGemstoreOutfits, x => values.outfits[x].value),
+    spentGems: _sum(outfits, x => values.outfits[x].gemstore)
   }
 }

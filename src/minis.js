@@ -14,6 +14,7 @@ export function minisValue (accountData, values) {
 
   return {
     value: _sum(minis, x => values.minis[x].value),
-    valueMinusGemItems: _sum(nonGemstoreMinis, x => values.minis[x].value)
+    valueMinusGemItems: _sum(nonGemstoreMinis, x => values.minis[x].value),
+    spentGems: _sum(minis, x => values.minis[x].gemstore)
   }
 }

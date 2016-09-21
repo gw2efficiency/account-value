@@ -20,8 +20,9 @@ export function unlocksValue (accountData, values) {
   ]
 
   return {
-    value: _sum(goldUnlocks) + _sum(gemUnlocks),
-    valueMinusGemItems: _sum(goldUnlocks)
+    value: _sum(goldUnlocks) + _sum(gemUnlocks, 'gold'),
+    valueMinusGemItems: _sum(goldUnlocks),
+    spentGems: _sum(gemUnlocks, 'gems')
   }
 }
 
@@ -31,31 +32,50 @@ function commanderStatus (accountData) {
 
 function bankSlots (accountData, values) {
   const slots = accountData.bank.length / 30
-  return (slots - 1) * _get(values.items[19995], 'value', 0)
+
+  return {
+    gold: (slots - 1) * _get(values.items[19995], 'value', 0),
+    gems: (slots - 1) * _get(values.items[19995], 'price.gems', 0)
+  }
 }
 
 function characterSlots (accountData, values) {
   const slots = Math.max(5, accountData.characters.length)
-  return (slots - 5) * _get(values.items[19994], 'value', 0)
+
+  return {
+    gold: (slots - 5) * _get(values.items[19994], 'value', 0),
+    gems: (slots - 5) * _get(values.items[19994], 'price.gems', 0)
+  }
 }
 
 function sharedInventorySlots (accountData, values) {
   const slots = accountData.shared.length
-  return slots * _get(values.items[67071], 'value', 0)
+
+  return {
+    gold: slots * _get(values.items[67071], 'value', 0),
+    gems: slots * _get(values.items[67071], 'price.gems', 0)
+  }
 }
 
 function storageExpanders (accountData, values) {
   const stacks = accountData.materials.map(x => x.count)
   const maxStack = Math.max.apply(null, stacks)
   const slots = Math.max(1, Math.ceil(maxStack / 250))
-  return (slots - 1) * _get(values.items[42932], 'value', 0)
+
+  return {
+    gold: (slots - 1) * _get(values.items[42932], 'value', 0),
+    gems: (slots - 1) * _get(values.items[42932], 'price.gems', 0)
+  }
 }
 
 function craftingLicences (accountData, values) {
   const activeCrafts = accountData.characters.map(x => {
     return x.crafting.filter(y => y.active).length
   })
-
   const licenses = Math.max(2, Math.max.apply(null, activeCrafts))
-  return (licenses - 2) * _get(values.items[42970], 'value', 0)
+
+  return {
+    gold: (licenses - 2) * _get(values.items[42970], 'value', 0),
+    gems: (licenses - 2) * _get(values.items[42970], 'price.gems', 0)
+  }
 }

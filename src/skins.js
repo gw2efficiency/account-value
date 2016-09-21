@@ -30,6 +30,7 @@ export function skinsValue (accountData, values, ownedItems) {
     value: _sum(valuedSkins, (x) => values.skins[x].value),
     valueMinusGemItems: _sum(filterGemstoreSkins(valuedSkins), (x) => values.skins[x].value),
     fullValue: _sum(skins, (x) => values.skins[x].value),
-    fullValueMinusGemItems: _sum(filterGemstoreSkins(skins), (x) => values.skins[x].value)
+    fullValueMinusGemItems: _sum(filterGemstoreSkins(skins), (x) => values.skins[x].value),
+    spentGems: _sum(skins, x => values.skins[x].gemstore)
   }
 }

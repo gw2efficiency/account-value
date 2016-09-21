@@ -57,31 +57,36 @@ const expectedValues = {
     liquidBuy: 9194,
     liquidSell: 10207,
     value: 3040371,
-    valueMinusGemItems: 3020938
+    valueMinusGemItems: 3020938,
+    spentGems: 2000
   },
   bank: {
     liquidBuy: 10,
     liquidSell: 15,
     value: 3274,
-    valueMinusGemItems: 274
+    valueMinusGemItems: 274,
+    spentGems: 150
   },
   shared: {
     liquidBuy: 10,
     liquidSell: 15,
     value: 3274,
-    valueMinusGemItems: 274
+    valueMinusGemItems: 274,
+    spentGems: 150
   },
   materials: {
     liquidBuy: 25,
     liquidSell: 42,
     value: 100,
-    valueMinusGemItems: 100
+    valueMinusGemItems: 100,
+    spentGems: 0
   },
   skins: {
     value: 1840,
     fullValue: 3040,
     valueMinusGemItems: 840,
-    fullValueMinusGemItems: 2040
+    fullValueMinusGemItems: 2040,
+    spentGems: 50
   },
   wallet: {
     liquidBuy: 1000,
@@ -90,32 +95,38 @@ const expectedValues = {
   },
   dyes: {
     value: 1028,
-    valueMinusGemItems: 28
+    valueMinusGemItems: 28,
+    spentGems: 50
   },
   minis: {
     value: 1028,
-    valueMinusGemItems: 28
+    valueMinusGemItems: 28,
+    spentGems: 50
   },
   outfits: {
     value: 1028,
-    valueMinusGemItems: 28
+    valueMinusGemItems: 28,
+    spentGems: 50
   },
   recipes: {
     value: 28
   },
   finishers: {
     value: 1028,
-    valueMinusGemItems: 28
+    valueMinusGemItems: 28,
+    spentGems: 50
   },
   unlocks: {
     value: 3004433,
-    valueMinusGemItems: 3000000
+    valueMinusGemItems: 3000000,
+    spentGems: 1200
   },
   commerce: {
     liquidBuy: 7171,
     liquidSell: 7551,
     value: 7931,
     valueMinusGemItems: 7931,
+    spentGems: 0,
     details: {
       buys: {
         liquidBuy: 6831,
@@ -134,6 +145,7 @@ const expectedValues = {
     liquidSell: 1584,
     value: 14379,
     valueMinusGemItems: 10379,
+    spentGems: 250,
     details: [
       {
         name: 'Some Character',
@@ -141,29 +153,32 @@ const expectedValues = {
         liquidSell: 243,
         value: 5645,
         valueMinusGemItems: 1645,
+        spentGems: 250,
         equipment: {
           liquidBuy: 0,
           liquidSell: 0,
           value: 414,
-          valueMinusGemItems: 414
+          valueMinusGemItems: 414,
+          spentGems: 0
         },
         inventory: {
           liquidBuy: 147,
           liquidSell: 243,
           value: 4211,
-          valueMinusGemItems: 1211
+          valueMinusGemItems: 1211,
+          spentGems: 150
         },
         unlocks: {
           liquidBuy: 0,
           liquidSell: 0,
           value: 1000,
-          valueMinusGemItems: 0
+          valueMinusGemItems: 0,
+          spentGems: 100
         },
         crafting: {
           liquidBuy: 0,
           liquidSell: 0,
-          value: 20,
-          valueMinusGemItems: 20
+          value: 20
         }
       },
       {
@@ -172,29 +187,32 @@ const expectedValues = {
         liquidSell: 1341,
         value: 8734,
         valueMinusGemItems: 8734,
+        spentGems: 0,
         equipment: {
           liquidBuy: 0,
           liquidSell: 0,
           value: 5320,
-          valueMinusGemItems: 5320
+          valueMinusGemItems: 5320,
+          spentGems: 0
         },
         inventory: {
           liquidBuy: 831,
           liquidSell: 1341,
           value: 2314,
-          valueMinusGemItems: 2314
+          valueMinusGemItems: 2314,
+          spentGems: 0
         },
         unlocks: {
           liquidBuy: 0,
           liquidSell: 0,
           value: 0,
-          valueMinusGemItems: 0
+          valueMinusGemItems: 0,
+          spentGems: 0
         },
         crafting: {
           liquidBuy: 0,
           liquidSell: 0,
-          value: 1100,
-          valueMinusGemItems: 1100
+          value: 1100
         }
       }
     ]
@@ -360,7 +378,7 @@ describe('account value', () => {
       shared: [],
       materials: []
     }
-    expect(unlocksValue(data, values)).to.deep.equal({value: 5000, valueMinusGemItems: 0})
+    expect(unlocksValue(data, values)).to.deep.equal({value: 5000, valueMinusGemItems: 0, spentGems: 500})
   })
 
   it('calculates the characters value correctly', () => {
@@ -388,35 +406,39 @@ describe('account value', () => {
       valueMinusGemItems: 0,
       liquidBuy: 0,
       liquidSell: 0,
+      spentGems: 0,
       details: [{
         liquidBuy: 0,
         liquidSell: 0,
         name: 'Some Character without anything',
         value: 0,
         valueMinusGemItems: 0,
+        spentGems: 0,
         equipment: {
           liquidBuy: 0,
           liquidSell: 0,
           value: 0,
-          valueMinusGemItems: 0
+          valueMinusGemItems: 0,
+          spentGems: 0
         },
         inventory: {
           liquidBuy: 0,
           liquidSell: 0,
           value: 0,
-          valueMinusGemItems: 0
+          valueMinusGemItems: 0,
+          spentGems: 0
         },
         unlocks: {
           liquidBuy: 0,
           liquidSell: 0,
           value: 0,
-          valueMinusGemItems: 0
+          valueMinusGemItems: 0,
+          spentGems: 0
         },
         crafting: {
           liquidBuy: 0,
           liquidSell: 0,
-          value: 0,
-          valueMinusGemItems: 0
+          value: 0
         }
       }]
     }

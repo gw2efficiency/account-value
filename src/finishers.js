@@ -16,6 +16,7 @@ export function finishersValue (accountData, values) {
 
   return {
     value: _sum(finishers, x => values.finishers[x].value),
-    valueMinusGemItems: _sum(nonGemstoreOutfits, x => values.finishers[x].value)
+    valueMinusGemItems: _sum(nonGemstoreOutfits, x => values.finishers[x].value),
+    spentGems: _sum(finishers, x => values.finishers[x].gemstore)
   }
 }

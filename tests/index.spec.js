@@ -1,5 +1,5 @@
 /* eslint-env node, mocha */
-const expect = require('chai').expect
+import {expect} from 'chai'
 import accountValue, {allItemIds, boundItemIds} from '../src/index'
 import {bankValue, bankItems} from '../src/bank'
 import {sharedInventoryValue, sharedInventoryItems} from '../src/shared'

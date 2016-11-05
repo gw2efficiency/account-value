@@ -90,9 +90,7 @@ export function equipmentItems (character, itemValues = {}) {
   return character.equipment
     .map(x => ({
       ...x,
-      count: 1,
-      binding: 'Character',
-      bound_to: character.name
+      count: 1
     }))
     .map(item => getItemIds(item, itemValues)) // Get all item ids
     .reduce((a, b) => a.concat(b), [])

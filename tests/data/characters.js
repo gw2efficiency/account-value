@@ -6,7 +6,7 @@ export default [
       {discipline: 'Weaponsmith', rating: 224, active: true}
     ],
     equipment: [
-      {id: 63604, slot: 'HelmAquatic'}
+      {id: 63604, slot: 'HelmAquatic', binding: 'Character', bound_to: 'Some Character'}
     ],
     bags: [
       {
@@ -52,14 +52,18 @@ export default [
         id: 77429,
         slot: 'Backpack',
         infusions: [39619],
-        skin: 2338
+        skin: 2338,
+        binding: 'Character',
+        bound_to: 'Some other Character'
       },
       {
         id: 71436,
         slot: 'Coat',
         upgrades: [71425],
         infusions: [49428],
-        skin: 146
+        skin: 146,
+        binding: 'Character',
+        bound_to: 'Some other Character'
       }
     ],
     bags: [

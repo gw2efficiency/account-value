@@ -26,41 +26,78 @@ import accountValue from 'gw2e-account-value'
 
 // An object containing all the account data available for the API key
 const accountData = {
-  characters: /* ... */,
+  account: /* ... */,
   bank: /* ... */,
+  shared: /* ... */,
   materials: /* ... */,
-  commerce: {
-    buys: /* ... */,
-    sells: /* ... */
-  },
   skins: /* ... */,
   wallet: /* ... */,
   dyes: /* ... */,
   minis: /* ... */,
-
   outfits: /* ... */,
   recipes: /* ... */,
-  guilds: /* ... */,
-  inventory: /* ... */,
+  finishers: /* ... */,
+  commerce: {
+    buys: /* ... */,
+    sells: /* ... */
+  },
+  characters: /* ... */,
 
+  // These are not used yet, but might be in the future
+  guilds: /* ... */,
   titles: /* ... */,
   achievements: /* ... */
 }
 
 // The values for everything needed to calculate things
 const values = {
-  // Items have a value (& prices) given to them in the backend
   items: {
-    123: {value: 3, sell: {price: 2}, buy: {price: 1}}
+    123: {value: 3, sell: {price: 2}, buy: {price: 1}},
+    456: {value: 10, defaultUpgrades: [39619]},
+    789: {value: 3000, price: {gems: 150}}
   },
-  // Skin prices are pre-calculated based on some rules
+
   skins: {
-    1: {value: 1200, unlocks: [123, 56, 76]},
-    2: {value: 420, unlocks: [1337]}
+    1: {value: 1200, unlocks: [123, 56, 76], gemstore: false},
+    2: {value: 420, unlocks: [1337], gemstore: 50}
   },
-  // Dyes and miniatures just unlock, so we just need to know their value
-  dyes: {1: 3, 2: 6, 3: 19},
-  minis: {1: 3, 2: 6, 3: 19}
+
+  dyes: {
+    1: {value: 3, gemstore: false},
+    2: {value: 420, gemstore: 50}
+  },
+
+  minis: {
+    1: {value: 3, gemstore: false},
+    2: {value: 420, gemstore: 50}
+  },
+
+  outfits: {
+    1: {value: 3, gemstore: false},
+    2: {value: 420, gemstore: 50}
+  },
+
+  recipes: {
+    1: {value: 3},
+    2: {value: 420}
+  },
+
+  finishers: {
+    1: {value: 3, gemstore: false},
+    2: {value: 420, gemstore: 50}
+  },
+
+  craftingProfessions: {
+    weaponsmith: {
+      75: 10,
+      150: 20,
+      225: 30,
+      300: 40,
+      400: 50,
+      500: 100
+    },
+    // ...
+  }
 }
 
 // Calculate everything!

@@ -106,6 +106,10 @@ export default {
   6959: 6958, // "Hypothesis" gets unlocked by "Endeavor"
   6971: 6959, // "For Science" gets unlocked by "Hypothesis"
 
+  7035: 7024, // "Friendship" gets unlocked by "Shooshadoo"
+  7026: 7035, // "Loyalty" gets unlocked by "Friendship"
+  7022: 7026, // "For Science" gets unlocked by "Loyalty"
+
   6252: 6161, // "Nightfury" gets unlocked by "Nightfury"
 
   6306: 6161 // "Nightfury" gets unlocked by "Nightfury"

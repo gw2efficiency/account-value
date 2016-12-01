@@ -7,7 +7,7 @@ export function dyesValue (accountData, values) {
 
   // Just sum up the value of all unlocked dyes
   const dyes = accountData.dyes
-    .filter(dye => !!values.dyes[dye])
+    .filter(dye => values.dyes[dye] && values.dyes[dye].value)
 
   const nonGemstoreDyes = dyes.filter(dye => values.dyes[dye].gemstore === false)
 

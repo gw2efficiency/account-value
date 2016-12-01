@@ -7,7 +7,7 @@ export function minisValue (accountData, values) {
 
   // Just sum up the value of all unlocked minis
   const minis = accountData.minis
-    .filter(mini => !!values.minis[mini])
+    .filter(mini => values.minis[mini] && values.minis[mini].value)
 
   const nonGemstoreMinis = minis
     .filter(mini => values.minis[mini].gemstore === false)

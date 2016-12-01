@@ -9,7 +9,7 @@ export function skinsValue (accountData, values, ownedItems) {
   // Get the skins we have values for and remove skins that unlock each other
   // (e.g. for Sunrise -> Dawn -> ... only keep Sunrise and discard the others)
   const skins = accountData.skins
-    .filter(skin => !!values.skins[skin])
+    .filter(skin => values.skins[skin] && values.skins[skin].value)
     .filter(s => {
       const inheritance = skinInheritance[s]
       return !inheritance || accountData.skins.indexOf(inheritance) === -1

@@ -7,7 +7,7 @@ export function outfitsValue (accountData, values) {
 
   // Just sum up the value of all unlocked outfits
   const outfits = accountData.outfits
-    .filter(outfit => !!values.outfits[outfit])
+    .filter(outfit => values.outfits[outfit] && values.outfits[outfit].value)
 
   const nonGemstoreOutfits = outfits
     .filter(outfit => values.outfits[outfit].gemstore === false)

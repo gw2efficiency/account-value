@@ -327,6 +327,8 @@ describe('account value', () => {
   it('calculates the skins value correctly', () => {
     const ownedItems = [123]
     expect(skinsValue(account, values, ownedItems)).to.deep.equal(expectedValues.skins)
+    expect(skinsValue({skins: [1, 2]}, {skins: {2: {value: false, gemstore: false}}}))
+      .to.deep.equal({value: 0, valueMinusGemItems: 0, fullValue: 0, fullValueMinusGemItems: 0, spentGems: 0})
   })
 
   it('calculates the wallet value correctly', () => {
@@ -337,22 +339,32 @@ describe('account value', () => {
 
   it('calculates the dyes value correctly', () => {
     expect(dyesValue(account, values)).to.deep.equal(expectedValues.dyes)
+    expect(dyesValue({dyes: [1, 2]}, {dyes: {2: {value: false, gemstore: false}}}))
+      .to.deep.equal({value: 0, valueMinusGemItems: 0, spentGems: 0})
   })
 
   it('calculates the minis value correctly', () => {
     expect(minisValue(account, values)).to.deep.equal(expectedValues.minis)
+    expect(minisValue({minis: [1, 2]}, {minis: {2: {value: false, gemstore: false}}}))
+      .to.deep.equal({value: 0, valueMinusGemItems: 0, spentGems: 0})
   })
 
   it('calculates the outfits value correctly', () => {
     expect(outfitsValue(account, values)).to.deep.equal(expectedValues.outfits)
+    expect(outfitsValue({outfits: [1, 2]}, {outfits: {2: {value: false, gemstore: false}}}))
+      .to.deep.equal({value: 0, valueMinusGemItems: 0, spentGems: 0})
   })
 
   it('calculates the recipes value correctly', () => {
     expect(recipesValue(account, values)).to.deep.equal(expectedValues.recipes)
+    expect(recipesValue({recipes: [1, 2]}, {recipes: {2: {value: false, gemstore: false}}}))
+      .to.deep.equal({value: 0})
   })
 
   it('calculates the finishers value correctly', () => {
     expect(finishersValue(account, values)).to.deep.equal(expectedValues.finishers)
+    expect(finishersValue({finishers: [1, 2]}, {finishers: {2: {value: false, gemstore: false}}}))
+      .to.deep.equal({value: 0, valueMinusGemItems: 0, spentGems: 0})
   })
 
   it('calculates the commerce value correctly', () => {

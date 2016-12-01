@@ -9,14 +9,14 @@ export function finishersValue (accountData, values) {
   const finishers = accountData.finishers
     .filter(x => x.permanent === true)
     .map(x => x.id)
-    .filter(outfit => !!values.finishers[outfit])
+    .filter(finisher => values.finishers[finisher] && values.finishers[finisher].value)
 
-  const nonGemstoreOutfits = finishers
-    .filter(outfit => values.finishers[outfit].gemstore === false)
+  const nonGemstoreFinishers = finishers
+    .filter(finisher => values.finishers[finisher].gemstore === false)
 
   return {
     value: _sum(finishers, x => values.finishers[x].value),
-    valueMinusGemItems: _sum(nonGemstoreOutfits, x => values.finishers[x].value),
+    valueMinusGemItems: _sum(nonGemstoreFinishers, x => values.finishers[x].value),
     spentGems: _sum(finishers, x => values.finishers[x].gemstore)
   }
 }

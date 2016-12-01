@@ -108,7 +108,7 @@ export default {
 
   7035: 7024, // "Friendship" gets unlocked by "Shooshadoo"
   7026: 7035, // "Loyalty" gets unlocked by "Friendship"
-  7022: 7026, // "For Science" gets unlocked by "Loyalty"
+  7022: 7026, // "Trust" gets unlocked by "Loyalty"
 
   6252: 6161, // "Nightfury" gets unlocked by "Nightfury"
 

@@ -1,5 +1,5 @@
 import {subFees} from 'gw2e-tradingpost-fees'
-import _get from 'lodash.get'
+import _get from 'fast-get'
 import sumItems from './sumItems'
 
 export default function valueItems (items, values) {

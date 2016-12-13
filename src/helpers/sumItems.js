@@ -1,4 +1,4 @@
-import _get from 'lodash.get'
+import _get from 'fast-get'
 
 export default function sumItems (items, itemValues, valueKey, includeBound = false) {
   return items

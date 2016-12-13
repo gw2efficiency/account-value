@@ -1,4 +1,4 @@
-import _get from 'lodash.get'
+import _get from 'fast-get'
 import _sum from 'sum-by'
 import {subFees, subTax} from 'gw2e-tradingpost-fees'
 import calculateSummary from './helpers/calculateSummary'

@@ -1,5 +1,5 @@
 import _sum from 'sum-by'
-import _get from 'lodash.get'
+import _get from 'fast-get'
 
 export function unlocksValue (accountData, values) {
   if (!accountData.account || !accountData.shared || !accountData.bank || !accountData.characters || !accountData.materials) {

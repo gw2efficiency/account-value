@@ -1,5 +1,5 @@
 import _get from 'lodash.get'
-import _sum from 'lodash.sumby'
+import _sum from 'sum-by'
 import {subFees, subTax} from 'gw2e-tradingpost-fees'
 import calculateSummary from './helpers/calculateSummary'
 

@@ -1,4 +1,4 @@
-import _sum from 'lodash.sumby'
+import _sum from 'sum-by'
 import _get from 'lodash.get'
 
 export function unlocksValue (accountData, values) {
@@ -20,9 +20,9 @@ export function unlocksValue (accountData, values) {
   ]
 
   return {
-    value: _sum(goldUnlocks) + _sum(gemUnlocks, 'gold'),
+    value: _sum(goldUnlocks) + _sum(gemUnlocks, x => x.gold),
     valueMinusGemItems: _sum(goldUnlocks),
-    spentGems: _sum(gemUnlocks, 'gems')
+    spentGems: _sum(gemUnlocks, x => x.gems)
   }
 }
 

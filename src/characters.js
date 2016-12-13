@@ -1,7 +1,7 @@
 import calculateSummary from './helpers/calculateSummary'
 import getItemIds from './helpers/getItemIds'
 import valueItems from './helpers/valueItems'
-import _sum from 'lodash.sumby'
+import _sum from 'sum-by'
 
 export function charactersValue (accountData, values) {
   if (!accountData.characters || accountData.characters.length === 0) {

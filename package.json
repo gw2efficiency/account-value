@@ -20,6 +20,6 @@
   "dependencies": {
     "gw2e-tradingpost-fees": "^1.0.1",
     "lodash.get": "^4.4.1",
-    "lodash.sumby": "^4.6.0"
+    "sum-by": "^1.0.1"
   }
 }

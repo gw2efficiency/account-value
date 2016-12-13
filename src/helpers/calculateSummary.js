@@ -1,4 +1,4 @@
-import _sum from 'lodash.sumby'
+import _sum from 'sum-by'
 
 // Calculate the summary based on a details object or array
 export default function calculateSummary (details) {

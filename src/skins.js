@@ -1,5 +1,5 @@
 import skinInheritance from './static/skinInheritance'
-import _sum from 'lodash.sumby'
+import _sum from 'sum-by'
 
 export function skinsValue (accountData, values, ownedItems) {
   if (!accountData.skins) {

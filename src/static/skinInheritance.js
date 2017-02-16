@@ -110,6 +110,10 @@ export default {
   7026: 7035, // "Loyalty" gets unlocked by "Friendship"
   7022: 7026, // "Trust" gets unlocked by "Loyalty"
 
+  7080: 7078, // "Man o' War" gets unlocked by "The HMS Divinity"
+  7117: 7080, // "Frigate" gets unlocked by "Man o' War"
+  7086: 7117, // "Schooner" gets unlocked by "Frigate"
+
   6252: 6161, // "Nightfury" gets unlocked by "Nightfury"
 
   6306: 6161 // "Nightfury" gets unlocked by "Nightfury"

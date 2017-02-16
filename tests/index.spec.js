@@ -454,8 +454,141 @@ describe('account value', () => {
     expect(charactersValue(input, values)).to.deep.equal(expected)
   })
 
-  // Let's be honest, I just want 100% test coverage
   it('gets the items of an account correctly', () => {
+    const bank = [
+      {id: 123, count: 3},
+      {id: 44, count: 1},
+      {id: 36708, count: 1, binding: 'Account'},
+      {id: 123, count: 250, binding: 'Account'},
+      {id: 58, count: 1, binding: 'Character', bound_to: 'SomeName'},
+      {
+        id: 74264,
+        count: 1,
+        upgrades: [71425],
+        infusions: [49432, 49432],
+        skin: 234,
+        binding: 'Character',
+        bound_to: 'Some Character'
+      },
+      {id: 71425, count: 1, binding: 'Item'},
+      {id: 49432, count: 1, binding: 'Item'},
+      {id: 49432, count: 1, binding: 'Item'}
+    ]
+
+    const shared = [
+      {id: 123, count: 3},
+      {id: 44, count: 1},
+      {id: 123, count: 250, binding: 'Account'},
+      {id: 58, count: 1, binding: 'Character', bound_to: 'SomeName'},
+      {id: 36708, count: 1, binding: 'Account'},
+      {
+        id: 74264,
+        count: 1,
+        upgrades: [71425],
+        infusions: [49432, 49432],
+        skin: 234,
+        binding: 'Character',
+        bound_to: 'Some Character'
+      },
+      {id: 71425, count: 1, binding: 'Item'},
+      {id: 49432, count: 1, binding: 'Item'},
+      {id: 49432, count: 1, binding: 'Item'}
+    ]
+
+    const materials = [
+      {id: 12134, category: 5, count: 1},
+      {id: 12238, category: 5, count: 2},
+      {id: 56789, category: 5, count: 501}
+    ]
+
+    const characters = [
+      {id: 8932, count: 1, isBag: true},
+      {id: 9586, count: 1, isBag: true},
+      {id: 76453, count: 1},
+      {id: 44286, count: 1, binding: 'Account'},
+      {id: 28083, count: 1, upgrades: [24647]},
+      {id: 24647, count: 1, binding: 'Item'},
+      {id: 36708, count: 1, binding: 'Account'},
+      {
+        id: 39223,
+        count: 1,
+        binding: 'Character',
+        bound_to: 'Some Character'
+      },
+      {id: 20017, count: 3, binding: 'Account'},
+      {
+        id: 63604,
+        slot: 'HelmAquatic',
+        binding: 'Character',
+        bound_to: 'Some Character',
+        count: 1,
+        isEquipment: true
+      },
+      {id: 19993, count: 1, binding: 'Character'},
+      {id: 8932, count: 1, isBag: true},
+      {id: 69774, count: 5},
+      {id: 79031, count: 1, binding: 'Account'},
+      {
+        id: 77429,
+        slot: 'Backpack',
+        infusions: [39619],
+        skin: 2338,
+        binding: 'Character',
+        bound_to: 'Some other Character',
+        count: 1,
+        isEquipment: true
+      },
+      {id: 39619, count: 1, binding: 'Item'},
+      {
+        id: 71436,
+        slot: 'Coat',
+        upgrades: [71425],
+        infusions: [49428],
+        skin: 146,
+        binding: 'Character',
+        bound_to: 'Some other Character',
+        count: 1,
+        isEquipment: true
+      },
+      {id: 71425, count: 1, binding: 'Item'},
+      {id: 49428, count: 1, binding: 'Item'}
+    ]
+
+    const character = [
+      {id: 8932, count: 1, isBag: true},
+      {id: 9586, count: 1, isBag: true},
+      {id: 76453, count: 1},
+      {id: 44286, count: 1, binding: 'Account'},
+      {id: 28083, count: 1, upgrades: [24647]},
+      {id: 24647, count: 1, binding: 'Item'},
+      {id: 36708, count: 1, binding: 'Account'},
+      {
+        id: 39223,
+        count: 1,
+        binding: 'Character',
+        bound_to: 'Some Character'
+      },
+      {id: 20017, count: 3, binding: 'Account'},
+      {
+        id: 63604,
+        slot: 'HelmAquatic',
+        binding: 'Character',
+        bound_to: 'Some Character',
+        count: 1,
+        isEquipment: true
+      },
+      {id: 19993, count: 1, binding: 'Character'}
+    ]
+
+    expect(bankItems(account, {})).to.deep.equal(bank)
+    expect(sharedInventoryItems(account, {})).to.deep.equal(shared)
+    expect(materialsItems(account, {})).to.deep.equal(materials)
+    expect(charactersItems(account, {})).to.deep.equal(characters)
+    expect(characterItems(account.characters[0], {})).to.deep.equal(character)
+  })
+
+  // Let's be honest, I just want 100% test coverage
+  it('gets the items of an empty account correctly', () => {
     let account = {}
     expect(bankItems(account, {})).to.deep.equal([])
     expect(sharedInventoryItems(account, {})).to.deep.equal([])

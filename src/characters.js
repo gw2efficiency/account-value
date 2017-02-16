@@ -88,10 +88,7 @@ export function characterItems (character, itemValues = {}) {
 // Which items does the character have in his equipment
 export function equipmentItems (character, itemValues = {}) {
   return character.equipment
-    .map(x => ({
-      ...x,
-      count: 1
-    }))
+    .map(x => ({...x, count: 1, isEquipment: true}))
     .map(item => getItemIds(item, itemValues)) // Get all item ids
     .reduce((a, b) => a.concat(b), [])
 }
@@ -101,7 +98,7 @@ export function inventoryItems (character, itemValues = {}) {
   // The bag items themselves
   const bagItems = character.bags
     .filter(x => x)
-    .map(x => ({id: x.id, count: 1}))
+    .map(x => ({id: x.id, count: 1, isBag: true}))
 
   // The items in the bags
   const inventoryItems = character.bags
@@ -115,7 +112,7 @@ export function inventoryItems (character, itemValues = {}) {
 }
 
 // Which "items" does the character have unlocked
-export function unlockItems (character, itemValues = {}) {
+export function unlockItems (character) {
   let unlocks = []
 
   // Character bound bag slots

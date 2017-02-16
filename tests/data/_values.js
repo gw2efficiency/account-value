@@ -44,8 +44,8 @@ export default {
   skins: {
     1: {value: 1200, unlocks: [123, 56, 76], gemstore: false},
     2: {value: 420, unlocks: [1337], gemstore: false},
-    4678: {value: 420, unlocks: [1337], gemstore: false},
     4679: {value: 420, unlocks: [1337], gemstore: false},
+    6211: {value: 100, unlocks: [1337], gemstore: false},
     994: {value: 1000, unlocks: [64740], gemstore: 50}
   },
 

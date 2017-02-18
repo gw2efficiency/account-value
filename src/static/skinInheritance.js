@@ -1,18 +1,15 @@
-// NOTE: Eternity is not in this inheritance, because Eternity gets a hardcoded value of 1g,
-// because Sunrise's and Twilight's combined value is higher than Eternity's. Therefore the
-// value calculation uses Sunrise and Twilight instead of Eternity, so the user does not loose
-// value from crafting Eternity, but also doesn't get double value from having Eternity.
-
 export default {
   6234: 6344, // "Unbound" gets unlocked by "Ad Infinitum"
   2379: 6234, // "Fractal Capacitor (Infused)" gets unlocked by "Unbound"
   2378: 2379, // "Beta Fractal Capacitor (Infused)" gets unlocked by "Fractal Capacitor (Infused)"
   2377: 2378, // "Prototype Fractal Capacitor" gets unlocked by "Beta Fractal Capacitor (Infused)"
 
+  4679: 4678, // "Sunrise" gets unlocked by "Eternity"
   6211: 4679, // "Dawn" gets unlocked by "Sunrise"
   4850: 6211, // "Perfected Daysword" gets unlocked by "Dawn"
   6311: 4850, // "Dawn Experiment" gets unlocked by "Perfected Daysword"
 
+  4680: 4678, // "Twilight" gets unlocked by "Eternity"
   6424: 4680, // "Dusk" gets unlocked by "Twilight"
   4853: 6424, // "Perfected Nightsword" gets unlocked by "Dusk"
   6473: 4853, // "Dusk Experiment" gets unlocked by "Perfected Nightsword"

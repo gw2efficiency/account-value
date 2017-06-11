@@ -1,6 +1,6 @@
 import _get from 'fast-get'
 import _sum from 'sum-by'
-import {subFees, subTax} from 'gw2e-tradingpost-fees'
+import { subFees, subTax } from 'gw2e-tradingpost-fees'
 import calculateSummary from './helpers/calculateSummary'
 
 export function commerceValue (accountData, values) {
@@ -18,28 +18,44 @@ export function commerceValue (accountData, values) {
   // For the sell orders, use the sell & buy price, because everybody
   // can list things at astronomical values but it doesn't mean they are worth that
   const sells = {
-    value: sumItems(accountData.commerce.sells, values.items, 'value'),
-    liquidBuy: subFees(sumItems(accountData.commerce.sells, values.items, 'buy.price')),
-    liquidSell: subTax(sumItems(accountData.commerce.sells, values.items, 'sell.price'))
+    value: sumSells(accountData.commerce.sells, values.items, 'value'),
+    liquidBuy: subFees(sumSells(accountData.commerce.sells, values.items, 'buy.price')),
+    liquidSell: subTax(sumSells(accountData.commerce.sells, values.items, 'sell.price'))
+  }
+
+  // For deliveries, use the sell & buy price and add the coins that are waiting
+  const coins = accountData.commerce.delivery.coins
+  const delivery = {
+    value: coins + sumDelivery(accountData.commerce.delivery.items, values.items, 'value'),
+    liquidBuy: coins + subFees(sumDelivery(accountData.commerce.delivery.items, values.items, 'buy.price')),
+    liquidSell: coins + subFees(sumDelivery(accountData.commerce.delivery.items, values.items, 'sell.price'))
   }
 
   // Build the return values
-  const details = {buys, sells}
+  const details = {buys, sells, delivery}
   const summary = calculateSummary(details)
   return {...summary, details}
 }
 
-function sumItems (items, itemValues, valueKey) {
+function sumSells (items, itemValues, valueKey) {
   return _sum(items, x => x.quantity * _get(itemValues[x.item_id], valueKey, 0))
 }
 
+function sumDelivery (items, itemValues, valueKey) {
+  return _sum(items, x => x.count * _get(itemValues[x.id], valueKey, 0))
+}
+
 export function commerceItems (accountData) {
-  if (!accountData.commerce || !accountData.commerce.buys || !accountData.commerce.sells) {
+  if (!accountData.commerce ||
+    !accountData.commerce.buys ||
+    !accountData.commerce.sells ||
+    !accountData.commerce.delivery) {
     return []
   }
 
   return [].concat(
     accountData.commerce.buys.map(x => ({id: x.item_id})),
-    accountData.commerce.sells.map(x => ({id: x.item_id}))
+    accountData.commerce.sells.map(x => ({id: x.item_id})),
+    accountData.commerce.delivery.items
   )
 }

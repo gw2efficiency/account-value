@@ -11,6 +11,7 @@ import {minisValue} from '../src/minis'
 import {outfitsValue} from '../src/outfits'
 import {recipesValue} from '../src/recipes'
 import {finishersValue} from '../src/finishers'
+import {mailcarriersValue} from '../src/mailcarriers'
 import {commerceValue} from '../src/commerce'
 import {unlocksValue} from '../src/unlocks'
 import {
@@ -32,6 +33,7 @@ import minisData from './data/minis'
 import outfitsData from './data/outfits'
 import recipesData from './data/recipes'
 import finishersData from './data/finishers'
+import mailcarriersData from './data/mailcarriers'
 import commerceData from './data/commerce'
 import charactersData from './data/characters'
 import values from './data/_values'
@@ -48,6 +50,7 @@ const account = {
   outfits: outfitsData,
   recipes: recipesData,
   finishers: finishersData,
+  mailcarriers: mailcarriersData,
   commerce: commerceData,
   characters: charactersData
 }
@@ -56,9 +59,9 @@ const expectedValues = {
   summary: {
     liquidBuy: 9657,
     liquidSell: 11010,
-    value: 3041694,
-    valueMinusGemItems: 3022261,
-    spentGems: 2105
+    value: 3042722,
+    valueMinusGemItems: 3022289,
+    spentGems: 2155
   },
   bank: {
     liquidBuy: 10,
@@ -112,6 +115,11 @@ const expectedValues = {
     value: 28
   },
   finishers: {
+    value: 1028,
+    valueMinusGemItems: 28,
+    spentGems: 50
+  },
+  mailcarriers: {
     value: 1028,
     valueMinusGemItems: 28,
     spentGems: 50
@@ -245,6 +253,7 @@ describe('account value', () => {
       outfits: null,
       recipes: null,
       finishers: null,
+      mailcarriers: null,
       skins: null,
       wallet: null,
       unlocks: null
@@ -370,6 +379,12 @@ describe('account value', () => {
   it('calculates the finishers value correctly', () => {
     expect(finishersValue(account, values)).to.deep.equal(expectedValues.finishers)
     expect(finishersValue({finishers: [1, 2]}, {finishers: {2: {value: false, gemstore: false}}}))
+      .to.deep.equal({value: 0, valueMinusGemItems: 0, spentGems: 0})
+  })
+
+  it('calculates the mailcarriers value correctly', () => {
+    expect(mailcarriersValue(account, values)).to.deep.equal(expectedValues.mailcarriers)
+    expect(mailcarriersValue({mailcarriers: [1, 2]}, {mailcarriers: {2: {value: false, gemstore: false}}}))
       .to.deep.equal({value: 0, valueMinusGemItems: 0, spentGems: 0})
   })
 

@@ -12,6 +12,7 @@ import {dyesValue} from './dyes'
 import {mailcarriersValue} from './mailcarriers'
 import {nodesValue} from './nodes'
 import {glidersValue} from './gliders'
+import {heroesValue} from './heroes'
 import {commerceValue, commerceItems} from './commerce'
 import {unlocksValue} from './unlocks'
 import {summaryValue} from './summary'
@@ -37,6 +38,7 @@ export default function accountValue (accountData, values) {
   account.mailcarriers = mailcarriersValue(accountData, values)
   account.nodes = nodesValue(accountData, values)
   account.gliders = glidersValue(accountData, values)
+  account.heroes = heroesValue(accountData, values)
   account.characters = charactersValue(accountData, values)
   account.unlocks = unlocksValue(accountData, values)
 

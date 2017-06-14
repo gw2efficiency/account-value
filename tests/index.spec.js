@@ -13,6 +13,7 @@ import {recipesValue} from '../src/recipes'
 import {finishersValue} from '../src/finishers'
 import {mailcarriersValue} from '../src/mailcarriers'
 import {nodesValue} from '../src/nodes'
+import {glidersValue} from '../src/gliders'
 import {commerceValue} from '../src/commerce'
 import {unlocksValue} from '../src/unlocks'
 import {
@@ -36,6 +37,7 @@ import recipesData from './data/recipes'
 import finishersData from './data/finishers'
 import mailcarriersData from './data/mailcarriers'
 import nodesData from './data/nodes'
+import glidersData from './data/gliders'
 import commerceData from './data/commerce'
 import charactersData from './data/characters'
 import values from './data/_values'
@@ -53,6 +55,7 @@ const account = {
   recipes: recipesData,
   finishers: finishersData,
   mailcarriers: mailcarriersData,
+  gliders: glidersData,
   home: {
     nodes: nodesData
   },
@@ -64,9 +67,9 @@ const expectedValues = {
   summary: {
     liquidBuy: 9657,
     liquidSell: 11010,
-    value: 3043750,
-    valueMinusGemItems: 3022317,
-    spentGems: 2205
+    value: 3044778,
+    valueMinusGemItems: 3022345,
+    spentGems: 2255
   },
   bank: {
     liquidBuy: 10,
@@ -130,6 +133,11 @@ const expectedValues = {
     spentGems: 50
   },
   nodes: {
+    value: 1028,
+    valueMinusGemItems: 28,
+    spentGems: 50
+  },
+  gliders: {
     value: 1028,
     valueMinusGemItems: 28,
     spentGems: 50
@@ -265,6 +273,7 @@ describe('account value', () => {
       finishers: null,
       mailcarriers: null,
       nodes: null,
+      gliders: null,
       skins: null,
       wallet: null,
       unlocks: null
@@ -396,6 +405,12 @@ describe('account value', () => {
   it('calculates the mailcarriers value correctly', () => {
     expect(mailcarriersValue(account, values)).to.deep.equal(expectedValues.mailcarriers)
     expect(mailcarriersValue({mailcarriers: [1, 2]}, {mailcarriers: {2: {value: false, gemstore: false}}}))
+      .to.deep.equal({value: 0, valueMinusGemItems: 0, spentGems: 0})
+  })
+
+  it('calculates the gliders value correctly', () => {
+    expect(glidersValue(account, values)).to.deep.equal(expectedValues.gliders)
+    expect(glidersValue({gliders: [1, 2]}, {gliders: {2: {value: false, gemstore: false}}}))
       .to.deep.equal({value: 0, valueMinusGemItems: 0, spentGems: 0})
   })
 

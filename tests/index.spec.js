@@ -12,6 +12,7 @@ import {outfitsValue} from '../src/outfits'
 import {recipesValue} from '../src/recipes'
 import {finishersValue} from '../src/finishers'
 import {mailcarriersValue} from '../src/mailcarriers'
+import {nodesValue} from '../src/nodes'
 import {commerceValue} from '../src/commerce'
 import {unlocksValue} from '../src/unlocks'
 import {
@@ -34,6 +35,7 @@ import outfitsData from './data/outfits'
 import recipesData from './data/recipes'
 import finishersData from './data/finishers'
 import mailcarriersData from './data/mailcarriers'
+import nodesData from './data/nodes'
 import commerceData from './data/commerce'
 import charactersData from './data/characters'
 import values from './data/_values'
@@ -51,6 +53,9 @@ const account = {
   recipes: recipesData,
   finishers: finishersData,
   mailcarriers: mailcarriersData,
+  home: {
+    nodes: nodesData
+  },
   commerce: commerceData,
   characters: charactersData
 }
@@ -59,9 +64,9 @@ const expectedValues = {
   summary: {
     liquidBuy: 9657,
     liquidSell: 11010,
-    value: 3042722,
-    valueMinusGemItems: 3022289,
-    spentGems: 2155
+    value: 3043750,
+    valueMinusGemItems: 3022317,
+    spentGems: 2205
   },
   bank: {
     liquidBuy: 10,
@@ -120,6 +125,11 @@ const expectedValues = {
     spentGems: 50
   },
   mailcarriers: {
+    value: 1028,
+    valueMinusGemItems: 28,
+    spentGems: 50
+  },
+  nodes: {
     value: 1028,
     valueMinusGemItems: 28,
     spentGems: 50
@@ -254,6 +264,7 @@ describe('account value', () => {
       recipes: null,
       finishers: null,
       mailcarriers: null,
+      nodes: null,
       skins: null,
       wallet: null,
       unlocks: null
@@ -385,6 +396,13 @@ describe('account value', () => {
   it('calculates the mailcarriers value correctly', () => {
     expect(mailcarriersValue(account, values)).to.deep.equal(expectedValues.mailcarriers)
     expect(mailcarriersValue({mailcarriers: [1, 2]}, {mailcarriers: {2: {value: false, gemstore: false}}}))
+      .to.deep.equal({value: 0, valueMinusGemItems: 0, spentGems: 0})
+  })
+
+  it('calculates the nodes value correctly', () => {
+    expect(nodesValue(account, values)).to.deep.equal(expectedValues.nodes)
+    expect(nodesValue({home: {}})).to.deep.equal(null)
+    expect(nodesValue({home: {nodes: [1, 2]}}, {nodes: {2: {value: false, gemstore: false}}}))
       .to.deep.equal({value: 0, valueMinusGemItems: 0, spentGems: 0})
   })
 

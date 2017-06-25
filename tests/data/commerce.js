@@ -30,11 +30,5 @@ export default {
       quantity: 1,
       created: '2016-05-30T21:00:39+00:00'
     }
-  ],
-  delivery: {
-    coins: 123,
-    items: [
-      {id: 13371, count: 4}
-    ]
-  }
+  ]
 }

@@ -14,6 +14,7 @@ export default {
     // Commerce
     77239: {value: 300, sell: {price: 200}, buy: {price: 100}},
     78778: {value: 200, sell: {price: 200}, buy: {price: 100}},
+    13371: {value: 300, sell: {price: 200}, buy: {price: 100}},
 
     // Characters
     63604: {value: 414, sell: {price: 314}, buy: {price: 214}},

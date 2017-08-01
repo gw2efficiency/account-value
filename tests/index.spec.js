@@ -70,10 +70,10 @@ const account = {
 
 const expectedValues = {
   summary: {
-    liquidBuy: 9194,
-    liquidSell: 10207,
-    value: 3044483,
-    valueMinusGemItems: 3021050,
+    liquidBuy: 9657,
+    liquidSell: 11010,
+    value: 3045806,
+    valueMinusGemItems: 3022373,
     spentGems: 2305
   },
   bank: {
@@ -158,10 +158,10 @@ const expectedValues = {
     spentGems: 1200
   },
   commerce: {
-    liquidBuy: 7171,
-    liquidSell: 7551,
-    value: 7931,
-    valueMinusGemItems: 7931,
+    liquidBuy: 7634,
+    liquidSell: 8354,
+    value: 9254,
+    valueMinusGemItems: 9254,
     spentGems: 0,
     details: {
       buys: {
@@ -173,6 +173,11 @@ const expectedValues = {
         liquidBuy: 340,
         liquidSell: 720,
         value: 1100
+      },
+      delivery: {
+        liquidBuy: 463,
+        liquidSell: 803,
+        value: 1323
       }
     }
   },
@@ -286,7 +291,7 @@ describe('account value', () => {
     }
 
     expect(accountValue({}, values)).to.deep.equal(result)
-    expect(accountValue({commerce: {buys: null, sells: null}}, values))
+    expect(accountValue({commerce: {buys: null, sells: null, delivery: null}}, values))
       .to.deep.equal(result)
   })
 
@@ -321,11 +326,12 @@ describe('account value', () => {
       77230,
       77239,
       78778,
-      78757
+      78757,
+      13371
     ])
 
     expect(allItemIds({})).to.deep.equal([])
-    expect(allItemIds({commerce: {buys: null, sells: null}})).to.deep.equal([])
+    expect(allItemIds({commerce: {buys: null, sells: null, delivery: null}})).to.deep.equal([])
   })
 
   it('can fetch all bound ids', () => {

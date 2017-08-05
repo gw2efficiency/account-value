@@ -1,81 +1,62 @@
-import _sum from 'sum-by'
-import _get from 'fast-get'
+import valueItems from './helpers/valueItems'
 
 export function unlocksValue (accountData, values) {
   if (!accountData.account || !accountData.shared || !accountData.bank || !accountData.characters || !accountData.materials) {
     return null
   }
 
-  // Just sum up the value of all unlocks
-  const goldUnlocks = [
-    commanderStatus(accountData)
-  ]
+  const unlockItems = unlocksItems(accountData)
 
-  const gemUnlocks = [
-    bankSlots(accountData, values),
-    characterSlots(accountData, values),
-    sharedInventorySlots(accountData, values),
-    storageExpanders(accountData, values),
-    craftingLicences(accountData, values)
-  ]
+  let summary = valueItems(unlockItems, values)
+  delete summary['liquidBuy']
+  delete summary['liquidSell']
 
-  return {
-    value: _sum(goldUnlocks) + _sum(gemUnlocks, x => x.gold),
-    valueMinusGemItems: _sum(goldUnlocks),
-    spentGems: _sum(gemUnlocks, x => x.gems)
-  }
+  return summary
+}
+
+export function unlocksItems (accountData) {
+  return [].concat(
+    commanderStatus(accountData),
+    bankSlots(accountData),
+    characterSlots(accountData),
+    sharedInventorySlots(accountData),
+    storageExpanders(accountData),
+    craftingLicences(accountData)
+  ).filter(x => x.count > 0)
 }
 
 function commanderStatus (accountData) {
-  return accountData.account.commander ? 3000000 : 0
+  return accountData.account.commander ? [{id: 67335, count: 1}] : []
 }
 
-function bankSlots (accountData, values) {
-  const slots = accountData.bank.length / 30
-
-  return {
-    gold: (slots - 1) * _get(values.items[19995], 'value', 0),
-    gems: (slots - 1) * _get(values.items[19995], 'price.gems', 0)
-  }
+function bankSlots (accountData) {
+  const count = (accountData.bank.length / 30) - 1
+  return [{id: 19995, count: count}]
 }
 
-function characterSlots (accountData, values) {
-  const slots = Math.max(5, accountData.characters.length)
-
-  return {
-    gold: (slots - 5) * _get(values.items[19994], 'value', 0),
-    gems: (slots - 5) * _get(values.items[19994], 'price.gems', 0)
-  }
+function characterSlots (accountData) {
+  const count = Math.max(5, accountData.characters.length) - 5
+  return [{id: 19994, count: count}]
 }
 
-function sharedInventorySlots (accountData, values) {
-  const slots = accountData.shared.length
-
-  return {
-    gold: slots * _get(values.items[67071], 'value', 0),
-    gems: slots * _get(values.items[67071], 'price.gems', 0)
-  }
+function sharedInventorySlots (accountData) {
+  const count = accountData.shared.length
+  return [{id: 67071, count: count}]
 }
 
-function storageExpanders (accountData, values) {
+function storageExpanders (accountData) {
   const stacks = accountData.materials.map(x => x.count)
   const maxStack = Math.max.apply(null, stacks)
-  const slots = Math.max(1, Math.ceil(maxStack / 250))
+  const slots = Math.max(1, Math.ceil(maxStack / 250)) - 1
 
-  return {
-    gold: (slots - 1) * _get(values.items[42932], 'value', 0),
-    gems: (slots - 1) * _get(values.items[42932], 'price.gems', 0)
-  }
+  return [{id: 42932, count: slots}]
 }
 
-function craftingLicences (accountData, values) {
+function craftingLicences (accountData) {
   const activeCrafts = accountData.characters.map(x => {
     return x.crafting.filter(y => y.active).length
   })
-  const licenses = Math.max(2, Math.max.apply(null, activeCrafts))
+  const licenses = Math.max(2, Math.max.apply(null, activeCrafts)) - 2
 
-  return {
-    gold: (licenses - 2) * _get(values.items[42970], 'value', 0),
-    gems: (licenses - 2) * _get(values.items[42970], 'price.gems', 0)
-  }
+  return [{id: 42970, count: licenses}]
 }

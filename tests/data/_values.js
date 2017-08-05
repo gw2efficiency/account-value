@@ -1,5 +1,7 @@
 export default {
   items: {
+    67335: {value: 3000000},
+
     // Bank
     123: {value: 1, sell: {price: 6}, buy: {price: 4}},
     58: {value: 3, sell: {price: 3}, buy: {price: 1}},

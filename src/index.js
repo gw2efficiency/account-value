@@ -14,7 +14,7 @@ import {nodesValue} from './nodes'
 import {glidersValue} from './gliders'
 import {heroesValue} from './heroes'
 import {commerceValue, commerceItems} from './commerce'
-import {unlocksValue} from './unlocks'
+import {unlocksValue, unlocksItems} from './unlocks'
 import {summaryValue} from './summary'
 
 export default function accountValue (accountData, values) {
@@ -52,7 +52,8 @@ export function boundItemIds (accountData) {
   const items = [
     bankItems(accountData),
     charactersItems(accountData),
-    sharedInventoryItems(accountData)
+    sharedInventoryItems(accountData),
+    unlocksItems(accountData)
   ]
 
   return items
@@ -69,7 +70,8 @@ export function allItemIds (accountData) {
     materialsItems(accountData),
     charactersItems(accountData),
     commerceItems(accountData),
-    sharedInventoryItems(accountData)
+    sharedInventoryItems(accountData),
+    unlocksItems(accountData)
   ]
 
   return items

@@ -15,7 +15,7 @@ export function unlocksValue (accountData, values) {
 }
 
 export function unlocksItems (accountData) {
-  return [].concat(
+  const items = [
     commanderStatus(accountData),
     bankSlots(accountData),
     characterSlots(accountData),
@@ -23,29 +23,53 @@ export function unlocksItems (accountData) {
     storageExpanders(accountData),
     craftingLicences(accountData),
     characterBagSlots(accountData)
-  ).filter(x => x.count > 0)
+  ]
+
+  return items.reduce((arr, elem) => arr.concat(elem), [])
+    .filter(x => x.count > 0)
+    .map(x => ({...x, binding: 'AccountUnlock'}))
 }
 
 function commanderStatus (accountData) {
+  if (!accountData.account) {
+    return []
+  }
+
   return accountData.account.commander ? [{id: 67335, count: 1}] : []
 }
 
 function bankSlots (accountData) {
+  if (!accountData.bank) {
+    return []
+  }
+
   const count = (accountData.bank.length / 30) - 1
   return [{id: 19995, count: count}]
 }
 
 function characterSlots (accountData) {
+  if (!accountData.characters) {
+    return []
+  }
+
   const count = Math.max(5, accountData.characters.length) - 5
   return [{id: 19994, count: count}]
 }
 
 function sharedInventorySlots (accountData) {
+  if (!accountData.shared) {
+    return []
+  }
+
   const count = accountData.shared.length
   return [{id: 67071, count: count}]
 }
 
 function storageExpanders (accountData) {
+  if (!accountData.materials) {
+    return []
+  }
+
   const stacks = accountData.materials.map(x => x.count)
   const maxStack = Math.max.apply(null, stacks)
   const slots = Math.max(1, Math.ceil(maxStack / 250)) - 1
@@ -54,6 +78,10 @@ function storageExpanders (accountData) {
 }
 
 function craftingLicences (accountData) {
+  if (!accountData.characters) {
+    return []
+  }
+
   const activeCrafts = accountData.characters.map(x => {
     return x.crafting.filter(y => y.active).length
   })
@@ -63,6 +91,10 @@ function craftingLicences (accountData) {
 }
 
 function characterBagSlots (accountData) {
+  if (!accountData.characters) {
+    return []
+  }
+
   let sum = 0
 
   accountData.characters.map(character => {

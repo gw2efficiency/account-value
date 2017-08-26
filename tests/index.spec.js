@@ -311,7 +311,13 @@ describe('account value', () => {
       77239,
       78778,
       78757,
-      13371
+      13371,
+      67335,
+      19995,
+      67071,
+      42932,
+      42970,
+      19993
     ])
 
     expect(allItemIds({})).to.deep.equal([])
@@ -335,7 +341,13 @@ describe('account value', () => {
       77429,
       39619,
       71436,
-      49428
+      49428,
+      67335,
+      19995,
+      67071,
+      42932,
+      42970,
+      19993
     ])
 
     expect(boundItemIds({})).to.deep.equal([])
@@ -430,12 +442,12 @@ describe('account value', () => {
     expect(unlocksValue(account, values)).to.deep.equal(expectedValues.unlocks)
 
     expect(unlocksItems(account)).to.deep.equal([
-      {id: 67335, count: 1},
-      {id: 19995, count: 1},
-      {id: 67071, count: 8},
-      {id: 42932, count: 2},
-      {id: 42970, count: 1},
-      {id: 19993, count: 1}
+      {id: 67335, count: 1, binding: 'AccountUnlock'},
+      {id: 19995, count: 1, binding: 'AccountUnlock'},
+      {id: 67071, count: 8, binding: 'AccountUnlock'},
+      {id: 42932, count: 2, binding: 'AccountUnlock'},
+      {id: 42970, count: 1, binding: 'AccountUnlock'},
+      {id: 19993, count: 1, binding: 'AccountUnlock'}
     ])
 
     const data = {

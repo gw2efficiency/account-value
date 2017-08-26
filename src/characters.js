@@ -22,7 +22,6 @@ function characterValue (character, values) {
   const details = {
     equipment: valueItems(equipmentItems(character, values.items), values),
     inventory: valueItems(inventoryItems(character, values.items), values),
-    unlocks: valueItems(unlockItems(character, values.items), values),
     crafting: craftingValue(character, values)
   }
 
@@ -80,8 +79,7 @@ export function charactersItems (accountData, itemValues) {
 export function characterItems (character, itemValues = {}) {
   return [].concat(
     inventoryItems(character, itemValues),
-    equipmentItems(character, itemValues),
-    unlockItems(character, itemValues)
+    equipmentItems(character, itemValues)
   )
 }
 
@@ -109,17 +107,4 @@ export function inventoryItems (character, itemValues = {}) {
     .reduce((a, b) => a.concat(b), [])
 
   return [].concat(bagItems, inventoryItems)
-}
-
-// Which "items" does the character have unlocked
-export function unlockItems (character) {
-  let unlocks = []
-
-  // Character bound bag slots
-  const bagSlots = character.bags.length - 5
-  if (bagSlots > 0) {
-    unlocks.push({id: 19993, count: bagSlots, binding: 'Character'})
-  }
-
-  return unlocks
 }

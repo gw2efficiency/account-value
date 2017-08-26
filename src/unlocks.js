@@ -21,7 +21,8 @@ export function unlocksItems (accountData) {
     characterSlots(accountData),
     sharedInventorySlots(accountData),
     storageExpanders(accountData),
-    craftingLicences(accountData)
+    craftingLicences(accountData),
+    characterBagSlots(accountData)
   ).filter(x => x.count > 0)
 }
 
@@ -59,4 +60,14 @@ function craftingLicences (accountData) {
   const licenses = Math.max(2, Math.max.apply(null, activeCrafts)) - 2
 
   return [{id: 42970, count: licenses}]
+}
+
+function characterBagSlots (accountData) {
+  let sum = 0
+
+  accountData.characters.map(character => {
+    sum += Math.max(character.bags.length - 5, 0)
+  })
+
+  return [{id: 19993, count: sum}]
 }

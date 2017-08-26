@@ -22,8 +22,7 @@ import {
   charactersItems,
   characterItems,
   equipmentItems,
-  inventoryItems,
-  unlockItems
+  inventoryItems
 } from '../src/characters'
 import accountData from './data/account'
 import bankData from './data/bank'
@@ -153,9 +152,9 @@ const expectedValues = {
     spentGems: 50
   },
   unlocks: {
-    value: 3004433,
+    value: 3005433,
     valueMinusGemItems: 3000000,
-    spentGems: 1200
+    spentGems: 1300
   },
   commerce: {
     liquidBuy: 7634,
@@ -184,17 +183,17 @@ const expectedValues = {
   characters: {
     liquidBuy: 978,
     liquidSell: 1584,
-    value: 14379,
+    value: 13379,
     valueMinusGemItems: 10379,
-    spentGems: 355,
+    spentGems: 255,
     details: [
       {
         name: 'Some Character',
         liquidBuy: 147,
         liquidSell: 243,
-        value: 5645,
+        value: 4645,
         valueMinusGemItems: 1645,
-        spentGems: 355,
+        spentGems: 255,
         equipment: {
           liquidBuy: 0,
           liquidSell: 0,
@@ -208,13 +207,6 @@ const expectedValues = {
           value: 4211,
           valueMinusGemItems: 1211,
           spentGems: 255
-        },
-        unlocks: {
-          liquidBuy: 0,
-          liquidSell: 0,
-          value: 1000,
-          valueMinusGemItems: 0,
-          spentGems: 100
         },
         crafting: {
           value: 20
@@ -239,13 +231,6 @@ const expectedValues = {
           liquidSell: 1341,
           value: 2314,
           valueMinusGemItems: 2314,
-          spentGems: 0
-        },
-        unlocks: {
-          liquidBuy: 0,
-          liquidSell: 0,
-          value: 0,
-          valueMinusGemItems: 0,
           spentGems: 0
         },
         crafting: {
@@ -316,7 +301,6 @@ describe('account value', () => {
       39223,
       20017,
       63604,
-      19993,
       69774,
       79031,
       77429,
@@ -347,7 +331,6 @@ describe('account value', () => {
       39223,
       20017,
       63604,
-      19993,
       79031,
       77429,
       39619,
@@ -451,7 +434,8 @@ describe('account value', () => {
       {id: 19995, count: 1},
       {id: 67071, count: 8},
       {id: 42932, count: 2},
-      {id: 42970, count: 1}
+      {id: 42970, count: 1},
+      {id: 19993, count: 1}
     ])
 
     const data = {
@@ -462,13 +446,21 @@ describe('account value', () => {
         null, null, null, null, null, null, null, null, null, null
       ],
       characters: [
-        {crafting: []}, {crafting: []}, {crafting: []}, {crafting: []}, {crafting: []},
-        {crafting: []}, {crafting: []}, {crafting: []}, {crafting: []}, {crafting: []}
+        {bags: [], crafting: []},
+        {bags: [], crafting: []},
+        {bags: [], crafting: []},
+        {bags: [], crafting: []},
+        {bags: [1, 2, 3, 4, 5, 6], crafting: []},
+        {bags: [], crafting: []},
+        {bags: [], crafting: []},
+        {bags: [], crafting: []},
+        {bags: [], crafting: []},
+        {bags: [], crafting: []}
       ],
       shared: [],
       materials: []
     }
-    expect(unlocksValue(data, values)).to.deep.equal({value: 5000, valueMinusGemItems: 0, spentGems: 500})
+    expect(unlocksValue(data, values)).to.deep.equal({value: 6000, valueMinusGemItems: 0, spentGems: 600})
   })
 
   it('calculates the characters value correctly', () => {
@@ -512,13 +504,6 @@ describe('account value', () => {
           spentGems: 0
         },
         inventory: {
-          liquidBuy: 0,
-          liquidSell: 0,
-          value: 0,
-          valueMinusGemItems: 0,
-          spentGems: 0
-        },
-        unlocks: {
           liquidBuy: 0,
           liquidSell: 0,
           value: 0,
@@ -604,7 +589,6 @@ describe('account value', () => {
         count: 1,
         isEquipment: true
       },
-      {id: 19993, count: 1, binding: 'Character'},
       {id: 8932, count: 1, isBag: true},
       {id: 69774, count: 5},
       {id: 79031, count: 1, binding: 'Account'},
@@ -656,8 +640,7 @@ describe('account value', () => {
         bound_to: 'Some Character',
         count: 1,
         isEquipment: true
-      },
-      {id: 19993, count: 1, binding: 'Character'}
+      }
     ]
 
     expect(bankItems(account, {})).to.deep.equal(bank)
@@ -677,6 +660,5 @@ describe('account value', () => {
     expect(characterItems({equipment: [], bags: []}, {})).to.deep.equal([])
     expect(equipmentItems({equipment: []})).to.deep.equal([])
     expect(inventoryItems({bags: []})).to.deep.equal([])
-    expect(unlockItems({bags: []})).to.deep.equal([])
   })
 })

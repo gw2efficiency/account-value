@@ -465,7 +465,7 @@ describe('account value', () => {
         {bags: [1, 2, 3, 4, 5, 6], crafting: []},
         {bags: [], crafting: []},
         {bags: [], crafting: []},
-        {bags: [], crafting: []},
+        {crafting: []},
         {bags: [], crafting: []},
         {bags: [], crafting: []}
       ],

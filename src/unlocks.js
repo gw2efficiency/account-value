@@ -98,6 +98,10 @@ function characterBagSlots (accountData) {
   let sum = 0
 
   accountData.characters.map(character => {
+    if (!character.bags) {
+      return
+    }
+
     sum += Math.max(character.bags.length - 5, 0)
   })
 

@@ -1,120 +1,282 @@
-export default {
-  6234: 6344, // "Unbound" gets unlocked by "Ad Infinitum"
-  2379: 6234, // "Fractal Capacitor (Infused)" gets unlocked by "Unbound"
-  2378: 2379, // "Beta Fractal Capacitor (Infused)" gets unlocked by "Fractal Capacitor (Infused)"
-  2377: 2378, // "Prototype Fractal Capacitor" gets unlocked by "Beta Fractal Capacitor (Infused)"
+const data = [
+  // ------------------------------------------------------------
+  // WEAPONS (GENERATION 1)
+  // ------------------------------------------------------------
 
-  4679: 4678, // "Sunrise" gets unlocked by "Eternity"
-  6211: 4679, // "Dawn" gets unlocked by "Sunrise"
-  4850: 6211, // "Perfected Daysword" gets unlocked by "Dawn"
-  6311: 4850, // "Dawn Experiment" gets unlocked by "Perfected Daysword"
+  [
+    4683, // The Bifrost
+    6231, // The Legend
+    4890, // Perfected Staff
+    6157 // The Legend Experiment
+  ],
 
-  4680: 4678, // "Twilight" gets unlocked by "Eternity"
-  6424: 4680, // "Dusk" gets unlocked by "Twilight"
-  4853: 6424, // "Perfected Nightsword" gets unlocked by "Dusk"
-  6473: 4853, // "Dusk Experiment" gets unlocked by "Perfected Nightsword"
+  [
+    4684, // Bolt
+    6286, // Zap
+    4804, // Perfected Sword
+    6400 // Zap Experiment
+  ],
 
-  6505: 4666, // "Venom" gets unlocked by "Kraitkin"
-  4277: 6505, // "Perfected Trident" gets unlocked by "Venom"
-  6327: 4277, // "Venom Experiment" gets unlocked by "Perfected Trident"
+  [
+    4669, // The Dreamer
+    6427, // The Lover
+    4756, // Perfected Short Bow
+    6238 // The Lover Experiment
+  ],
 
-  6259: 4682, // "Spark" gets unlocked by "Incinerator"
-  4751: 6259, // "Perfected Dagger" gets unlocked by "Spark"
-  6182: 4751, // "Spark Experiment" gets unlocked by "Perfected Dagger"
+  [
+    4675, // The Flameseeker Prophecies
+    6481, // The Chosen
+    4824, // Perfected Shield
+    6223 // The Chosen Experiment
+  ],
 
-  6363: 4667, // "Howl" gets unlocked by "Howler"
-  4724: 6363, // "Perfected Warhorn" gets unlocked by "Howl"
-  6310: 4724, // "Howl Experiment" gets unlocked by "Perfected Warhorn"
+  [
+    4664, // Frenzy
+    6233, // Rage
+    4735, // Perfected Harpoon Gun
+    6480 // Rage Experiment
+  ],
 
-  6231: 4683, // "The Legend" gets unlocked by "The Bifrost"
-  4890: 6231, // "Perfected Staff" gets unlocked by "The Legend"
-  6157: 4890, // "The Legend Experiment" gets unlocked by "Perfected Staff"
+  [
+    4674, // Frostfang
+    6509, // Tooth of Frostfang
+    3930, // Perfected Axe
+    6525 // Tooth of Frostfang Experiment
+  ],
 
-  6427: 4669, // "The Lover" gets unlocked by "The Dreamer"
-  4756: 6427, // "Perfected Short Bow" gets unlocked by "The Lover"
-  6238: 4756, // "The Lover Experiment" gets unlocked by "Perfected Short Bow"
+  [
+    4667, // Howler
+    6363, // Howl
+    4724, // Perfected Warhorn
+    6310 // Howl Experiment
+  ],
 
-  6240: 4668, // "Chaos Gun" gets unlocked by "Quip"
-  4695: 6240, // "Perfected Pistol" gets unlocked by "Chaos Gun"
-  6490: 4695, // "Chaos Gun Experiment" gets unlocked by "Perfected Pistol"
+  [
+    4682, // Incinerator
+    6259, // Spark
+    4751, // Perfected Dagger
+    6182 // Spark Experiment
+  ],
 
-  6286: 4684, // "Zap" gets unlocked by "Bolt"
-  4804: 6286, // "Perfected Sword" gets unlocked by "Zap"
-  6400: 4804, // "Zap Experiment" gets unlocked by "Perfected Sword"
+  [
+    4681, // The Juggernaut
+    6284, // The Colossus
+    4838, // Perfected Hammer
+    6483 // The Colossus Experiment
+  ],
 
-  6265: 4670, // "The Energizer" gets unlocked by "The Moot"
-  4311: 6265, // "Perfected Mace" gets unlocked by "The Energizer"
-  6314: 4311, // "The Energizer Experiment" gets unlocked by "Perfected Mace"
+  [
+    4676, // Kudzu
+    6421, // Leaf of Kudzu
+    5072, // Perfected Longbow
+    6324 // Kudzu Experiment
+  ],
 
-  6230: 4671, // "Carcharias" gets unlocked by "Kamohoali'i Kotaki"
-  4770: 6230, // "Perfected Spear" gets unlocked by "Carcharias"
-  6282: 4770, // "Carcharias Experiment" gets unlocked by "Perfected Spear"
+  [
+    4666, // Kraitkin
+    6505, // Venom
+    4277, // Perfected Trident
+    6327 // Venom Experiment
+  ],
 
-  6199: 4672, // "The Bard" gets unlocked by "The Minstrel"
-  4799: 6199, // "Perfected Focus" gets unlocked by "The Bard"
-  6245: 4799, // "The Bard Experiment" gets unlocked by "Perfected Focus"
+  [
+    4671, // Kamohoali'i Kotaki
+    6230, // Carcharias
+    4770, // Perfected Spear
+    6282 // Carcharias Experiment
+  ],
 
-  6269: 4673, // "Storm" gets unlocked by "Meteorlogicus"
-  4822: 6269, // "Perfected Scepter" gets unlocked by "Storm"
-  6278: 4822, // "Storm Experiment" gets unlocked by "Perfected Scepter"
+  [
+    4673, // Meteorlogicus
+    6269, // Storm
+    4822, // Perfected Scepter
+    6278 // Storm Experiment
+  ],
 
-  6509: 4674, // "Tooth of Frostfang" gets unlocked by "Frostfang"
-  3930: 6509, // "Perfected Axe" gets unlocked by "Tooth of Frostfang"
-  6525: 3930, // "Tooth of Frostfang Experiment" gets unlocked by "Perfected Axe"
+  [
+    4672, // The Minstrel
+    6199, // The Bard
+    4799, // Perfected Focus
+    6245 // The Bard Experiment
+  ],
 
-  6481: 4675, // "The Chosen" gets unlocked by "The Flameseeker Prophecies"
-  4824: 6481, // "Perfected Shield" gets unlocked by "The Chosen"
-  6223: 4824, // "The Chosen Experiment" gets unlocked by "Perfected Shield"
+  [
+    4670, // The Moot
+    6265, // The Energizer
+    4311, // Perfected Mace
+    6314 // The Energizer Experiment
+  ],
 
-  6421: 4676, // "Leaf of Kudzu" gets unlocked by "Kudzu"
-  5072: 6421, // "Perfected Longbow" gets unlocked by "Leaf of Kudzu"
-  6324: 5072, // "Kudzu Experiment" gets unlocked by "Perfected Longbow"
+  [
+    4677, // The Predator
+    6514, // The Hunter
+    4693, // Perfected Rifle
+    6494 // The Hunter Experiment
+  ],
 
-  6514: 4677, // "The Hunter" gets unlocked by "The Predator"
-  4693: 6514, // "Perfected Rifle" gets unlocked by "The Hunter"
-  6494: 4693, // "The Hunter Experiment" gets unlocked by "Perfected Rifle"
+  [
+    4668, // Quip
+    6240, // Chaos Gun
+    4695, // Perfected Pistol
+    6490 // Chaos Gun Experiment
+  ],
 
-  6233: 4664, // "Rage" gets unlocked by "Frenzy"
-  4735: 6233, // "Perfected Harpoon Gun" gets unlocked by "Rage"
-  6480: 4735, // "Rage Experiment" gets unlocked by "Perfected Harpoon Gun"
+  [
+    4665, // Rodgort
+    6451, // Rodgort's Flame
+    4737, // Perfected Torch
+    6432 // Rodgort's Flame Experiment
+  ],
 
-  6451: 4665, // "Rodgort's Flame" gets unlocked by "Rodgort"
-  4737: 6451, // "Perfected Torch" gets unlocked by "Rodgort's Flame"
-  6432: 4737, // "Rodgort's Flame Experiment" gets unlocked by "Perfected Torch"
+  [
+    4678, // Eternity
+    4679, // Sunrise
+    6211, // Dawn
+    4850, // Perfected Daysword
+    6311 // Dawn Experiment
+  ],
 
-  6284: 4681, // "The Colossus" gets unlocked by "The Juggernaut"
-  4838: 6284, // "Perfected Hammer" gets unlocked by "The Colossus"
-  6483: 4838, // "The Colossus Experiment" gets unlocked by "Perfected Hammer"
+  [
+    4678, // Eternity
+    4680, // Twilight
+    6424, // Dusk
+    4853, // Perfected Nightsword
+    6473 // Dusk Experiment
+  ],
 
-  6333: 6276, // "Prototype" gets unlocked by "HOPE"
-  6213: 6333, // "Development" gets unlocked by "Prototype"
-  6237: 6213, // "Research" gets unlocked by "Development"
+  // ------------------------------------------------------------
+  // WEAPONS (GENERATION 2)
+  // ------------------------------------------------------------
 
-  6331: 6506, // "The Mechanism" gets unlocked by "Astralaria"
-  6285: 6331, // "The Apparatus" gets unlocked by "The Mechanism"
-  6184: 6285, // "The Device" gets unlocked by "The Apparatus"
+  [
+    6506, // Astralaria
+    6331, // The Mechanism
+    6285, // The Apparatus
+    6184 // The Device
+  ],
 
-  6224: 6466, // "The Raven Staff" gets unlocked by "Nevermore"
-  6422: 6224, // "Ravenswood Staff" gets unlocked by "The Raven Staff"
-  6330: 6422, // "Ravenswood Branch" gets unlocked by "Ravenswood Staff"
+  [
+    6717, // Chuka and Champawat
+    6712, // Tigris
+    6737, // The Ambush
+    6702 // The Hunt
+  ],
 
-  6712: 6717, // "Tigris" gets unlocked by "Chuka and Champawat"
-  6737: 6712, // "The Ambush" gets unlocked by "Tigris"
-  6702: 6737, // "The Hunt" gets unlocked by "The Ambush"
+  [
+    6966, // Eureka
+    6958, // Endeavor
+    6959, // Hypothesis
+    6971 // For Science
+  ],
 
-  6958: 6966, // "Endeavor" gets unlocked by "Eureka"
-  6959: 6958, // "Hypothesis" gets unlocked by "Endeavor"
-  6971: 6959, // "For Science" gets unlocked by "Hypothesis"
+  [
+    7078, // The HMS Divinity
+    7080, // Man o' War
+    7117, // Frigate
+    7086 // Schooner
+  ],
 
-  7035: 7024, // "Friendship" gets unlocked by "Shooshadoo"
-  7026: 7035, // "Loyalty" gets unlocked by "Friendship"
-  7022: 7026, // "Trust" gets unlocked by "Loyalty"
+  [
+    6276, // HOPE
+    6333, // Prototype
+    6213, // Development
+    6237 // Research
+  ],
 
-  7080: 7078, // "Man o' War" gets unlocked by "The HMS Divinity"
-  7117: 7080, // "Frigate" gets unlocked by "Man o' War"
-  7086: 7117, // "Schooner" gets unlocked by "Frigate"
+  [
+    6466, // Nevermore
+    6224, // The Raven Staff
+    6422, // Ravenswood Staff
+    6330 // Ravenswood Branch
+  ],
 
-  6252: 6161, // "Nightfury" gets unlocked by "Nightfury"
+  [
+    7024, // Shooshadoo
+    7035, // Friendship
+    7026, // Loyalty
+    7022 // Trust
+  ],
 
-  6306: 6161 // "Nightfury" gets unlocked by "Nightfury"
-}
+  [
+    7206, // Flames of War
+    7219, // Liturgy
+    7215, // Neophyte's Beacon
+    7207 // Forgotten Brilliance
+  ],
+
+  [
+    7337, // Sharur
+    7312, // Might of Arah
+    7298, // Reclamation
+    7318 // Vizier's Folly
+  ],
+
+  [
+    7300, // The Shining Blade
+    7306, // Save the Queen
+    7315, // Vengeance
+    7335 // Exemplar's Edge
+  ],
+
+  [
+    7907, // The Binding of Ipos
+    7850, // Ars Goetia
+    7860, // The True Name
+    7857 // Mark of the Unnamed
+  ],
+
+  // ------------------------------------------------------------
+  // BACKPIECES
+  // ------------------------------------------------------------
+
+  [
+    6344, // Ad Infinitum
+    6234, // Unbound
+    2379, // Fractal Capacitor (Infused)
+    2378, // Beta Fractal Capacitor (Infused)
+    2377 // Prototype Fractal Capacitor
+  ],
+
+  [
+    6561, // The Ascension
+    6556 // Wings of Ascension
+  ],
+
+  [
+    7272, // Warbringer
+    7248 // Warcry
+  ],
+
+  // ------------------------------------------------------------
+  // SPECIALS
+  // ------------------------------------------------------------
+
+  [
+    6161, // Nightfury
+    6252 // Nightfury
+  ],
+
+  [
+    6161, // Nightfury
+    6306 // Nightfury
+  ]
+]
+
+// Build a map where the key is the skin we want to look up ("input") and the value
+// is the skin that includes the input in it's unlock inheritance ("output")
+// e.g. "Dawn": "Sunrise"
+const unlockMap = data.reduce((obj, row) => {
+  for (let i = 0; i !== row.length; i++) {
+    const input = row[i + 1]
+    const output = row[i]
+
+    if (input) {
+      obj[input] = output
+    }
+  }
+
+  return obj
+}, {})
+
+export default unlockMap

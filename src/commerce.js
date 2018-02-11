@@ -53,9 +53,11 @@ export function commerceItems (accountData) {
     return []
   }
 
+  const mapFromCommerce = x => ({id: x.item_id, count: x.quantity})
+
   return [].concat(
-    accountData.commerce.buys.map(x => ({id: x.item_id})),
-    accountData.commerce.sells.map(x => ({id: x.item_id})),
+    accountData.commerce.buys.map(mapFromCommerce),
+    accountData.commerce.sells.map(mapFromCommerce),
     accountData.commerce.delivery.items
   )
 }

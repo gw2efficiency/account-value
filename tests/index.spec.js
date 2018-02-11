@@ -15,7 +15,7 @@ import {mailcarriersValue} from '../src/mailcarriers'
 import {nodesValue} from '../src/nodes'
 import {heroesValue} from '../src/heroes'
 import {glidersValue} from '../src/gliders'
-import {commerceValue} from '../src/commerce'
+import {commerceValue, commerceItems} from '../src/commerce'
 import {unlocksValue, unlocksItems} from '../src/unlocks'
 import {
   charactersValue,
@@ -436,6 +436,14 @@ describe('account value', () => {
 
   it('calculates the commerce value correctly', () => {
     expect(commerceValue(account, values)).to.deep.equal(expectedValues.commerce)
+
+    expect(commerceItems(account)).to.deep.equal([
+      {id: 77230, count: 1},
+      {id: 77239, count: 3},
+      {id: 78778, count: 1},
+      {id: 78757, count: 1},
+      {id: 13371, count: 4}
+    ])
   })
 
   it('calculates the unlocks value correctly', () => {

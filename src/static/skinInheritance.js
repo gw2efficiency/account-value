@@ -226,6 +226,27 @@ const data = [
     7857 // Mark of the Unnamed
   ],
 
+  [
+    8051, // Claw of the Khan-Ur
+    8046, // Claw of Resolution
+    8036,  // Claw of Retribution
+    8034  // Claw of Execution
+  ],
+
+  [
+    8145, // Verdarach
+    8177, // Call of the Void
+    8173, // Lament
+    8160 // Hifthorn
+  ],
+
+  [
+    8389, // Xiuquatl
+    8341, // Tlehco
+    8339, // Anima
+    8422 // Obelisk
+  ],
+
   // ------------------------------------------------------------
   // BACKPIECES
   // ------------------------------------------------------------

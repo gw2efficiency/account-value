@@ -15,7 +15,7 @@
     "url": "https://github.com/gw2efficiency/account-value"
   },
   "devDependencies": {
-    "abc-environment": "^2.0.0"
+    "abc-environment": "^2.0.3"
   },
   "dependencies": {
     "fast-get": "^1.0.1",

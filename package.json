@@ -18,7 +18,7 @@
     "abc-environment": "^2.0.0"
   },
   "dependencies": {
-    "fast-get": "^1.0.1",
+    "fast-get": "^1.0.5",
     "gw2e-tradingpost-fees": "^1.0.1",
     "sum-by": "^1.0.1"
   }

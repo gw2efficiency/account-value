@@ -8,6 +8,7 @@ import {skinsValue} from '../src/skins'
 import {walletValue} from '../src/wallet'
 import {dyesValue} from '../src/dyes'
 import {minisValue} from '../src/minis'
+import {mountsValue} from '../src/mounts'
 import {outfitsValue} from '../src/outfits'
 import {recipesValue} from '../src/recipes'
 import {finishersValue} from '../src/finishers'
@@ -32,6 +33,7 @@ import skinsData from './data/skins'
 import walletData from './data/wallet'
 import dyesData from './data/dyes'
 import minisData from './data/minis'
+import mountsData from './data/mounts'
 import outfitsData from './data/outfits'
 import recipesData from './data/recipes'
 import finishersData from './data/finishers'
@@ -52,6 +54,9 @@ const account = {
   wallet: walletData,
   dyes: dyesData,
   minis: minisData,
+  mounts: {
+    skins: mountsData
+  },
   outfits: outfitsData,
   recipes: recipesData,
   finishers: finishersData,
@@ -71,9 +76,9 @@ const expectedValues = {
   summary: {
     liquidBuy: 9657,
     liquidSell: 11010,
-    value: 3045806,
-    valueMinusGemItems: 3022373,
-    spentGems: 2305
+    value: 3046834,
+    valueMinusGemItems: 3022401,
+    spentGems: 2355
   },
   bank: {
     liquidBuy: 10,
@@ -114,6 +119,11 @@ const expectedValues = {
     spentGems: 50
   },
   minis: {
+    value: 1028,
+    valueMinusGemItems: 28,
+    spentGems: 50
+  },
+  mounts: {
     value: 1028,
     valueMinusGemItems: 28,
     spentGems: 50
@@ -263,6 +273,7 @@ describe('account value', () => {
       dyes: null,
       materials: null,
       minis: null,
+      mounts: null,
       outfits: null,
       recipes: null,
       finishers: null,
@@ -387,6 +398,12 @@ describe('account value', () => {
   it('calculates the minis value correctly', () => {
     expect(minisValue(account, values)).to.deep.equal(expectedValues.minis)
     expect(minisValue({minis: [1, 2]}, {minis: {2: {value: false, gemstore: false}}}))
+      .to.deep.equal({value: 0, valueMinusGemItems: 0, spentGems: 0})
+  })
+
+  it('calculates the mounts value correctly', () => {
+    expect(mountsValue(account, values)).to.deep.equal(expectedValues.mounts)
+    expect(mountsValue({mounts: {skins: [1, 2]}}, {mounts: {2: {value: false, gemstore: false}}}))
       .to.deep.equal({value: 0, valueMinusGemItems: 0, spentGems: 0})
   })
 

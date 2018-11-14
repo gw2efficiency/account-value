@@ -24,11 +24,12 @@ export function commerceValue (accountData, values) {
   }
 
   // For deliveries, use the sell & buy price and add the coins that are waiting
-  const coins = accountData.commerce.delivery.coins
+  const accountDelivery = accountData.commerce.delivery || {coins: 0, items: []}
+  const coins = accountDelivery.coins
   const delivery = {
-    value: coins + sumDelivery(accountData.commerce.delivery.items, values.items, 'value'),
-    liquidBuy: coins + subFees(sumDelivery(accountData.commerce.delivery.items, values.items, 'buy.price')),
-    liquidSell: coins + subFees(sumDelivery(accountData.commerce.delivery.items, values.items, 'sell.price'))
+    value: coins + sumDelivery(accountDelivery.items, values.items, 'value'),
+    liquidBuy: coins + subFees(sumDelivery(accountDelivery.items, values.items, 'buy.price')),
+    liquidSell: coins + subFees(sumDelivery(accountDelivery.items, values.items, 'sell.price'))
   }
 
   // Build the return values

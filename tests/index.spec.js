@@ -454,6 +454,32 @@ describe('account value', () => {
   it('calculates the commerce value correctly', () => {
     expect(commerceValue(account, values)).to.deep.equal(expectedValues.commerce)
 
+    expect(commerceValue({commerce: {buys: [], sells: [], delivery: null}}, values))
+      .to.deep.equal({
+        liquidBuy: 0,
+        liquidSell: 0,
+        spentGems: 0,
+        value: 0,
+        valueMinusGemItems: 0,
+        details: {
+          buys: {
+            liquidBuy: 0,
+            liquidSell: 0,
+            value: 0
+          },
+          delivery: {
+            liquidBuy: 0,
+            liquidSell: 0,
+            value: 0
+          },
+          sells: {
+            liquidBuy: 0,
+            liquidSell: 0,
+            value: 0
+          }
+        }
+      })
+
     expect(commerceItems(account)).to.deep.equal([
       {id: 77230, count: 1},
       {id: 77239, count: 3},

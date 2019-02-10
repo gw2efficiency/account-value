@@ -229,8 +229,8 @@ const data = [
   [
     8051, // Claw of the Khan-Ur
     8046, // Claw of Resolution
-    8036,  // Claw of Retribution
-    8034  // Claw of Execution
+    8036, // Claw of Retribution
+    8034 // Claw of Execution
   ],
 
   [
@@ -245,6 +245,13 @@ const data = [
     8341, // Tlehco
     8339, // Anima
     8422 // Obelisk
+  ],
+
+  [
+    8576, // Pharus
+    8600, // Spero
+    8589, // Doctrina
+    8598 // Exitus
   ],
 
   // ------------------------------------------------------------

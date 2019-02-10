@@ -1,4 +1,8 @@
 export default {
+  wallet: {
+    gems: 42
+  },
+
   items: {
     67335: {value: 3000000},
 

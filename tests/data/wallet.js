@@ -10,5 +10,9 @@ export default [
   {
     id: 3,
     value: 250
+  },
+  {
+    id: 4,
+    value: 3
   }
 ]

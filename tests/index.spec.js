@@ -74,10 +74,10 @@ const account = {
 
 const expectedValues = {
   summary: {
-    liquidBuy: 9657,
-    liquidSell: 11010,
-    value: 3046834,
-    valueMinusGemItems: 3022401,
+    liquidBuy: 9783,
+    liquidSell: 11136,
+    value: 3046960,
+    valueMinusGemItems: 3022527,
     spentGems: 2355
   },
   bank: {
@@ -109,9 +109,9 @@ const expectedValues = {
     spentGems: 50
   },
   wallet: {
-    liquidBuy: 1000,
-    liquidSell: 1000,
-    value: 1000
+    liquidBuy: 1126,
+    liquidSell: 1126,
+    value: 1126
   },
   dyes: {
     value: 1028,
@@ -385,6 +385,10 @@ describe('account value', () => {
 
   it('calculates the wallet value correctly', () => {
     expect(walletValue(account, values)).to.deep.equal(expectedValues.wallet)
+    expect(walletValue({wallet: [{id: 1, value: 2}]}, values))
+      .to.deep.equal({value: 2, liquidBuy: 2, liquidSell: 2})
+    expect(walletValue({wallet: [{id: 4, value: 2}]}, values))
+      .to.deep.equal({value: 84, liquidBuy: 84, liquidSell: 84})
     expect(walletValue({wallet: [{id: 5, value: 123}]}, values))
       .to.deep.equal({value: 0, liquidBuy: 0, liquidSell: 0})
   })

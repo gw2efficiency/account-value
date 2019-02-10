@@ -25,7 +25,7 @@ export default function accountValue (accountData, values) {
   const items = boundItemIds(accountData)
 
   // Calculate the different parts of the account value
-  account.wallet = walletValue(accountData)
+  account.wallet = walletValue(accountData, values)
   account.bank = bankValue(accountData, values)
   account.shared = sharedInventoryValue(accountData, values)
   account.materials = materialsValue(accountData, values)

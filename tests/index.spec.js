@@ -1,9 +1,9 @@
 /* eslint-env node, mocha */
 import {expect} from 'chai'
 import accountValue, {allItemIds, boundItemIds} from '../src/index'
-import {bankValue, bankItems} from '../src/bank'
-import {sharedInventoryValue, sharedInventoryItems} from '../src/shared'
-import {materialsValue, materialsItems} from '../src/materials'
+import {bankItems, bankValue} from '../src/bank'
+import {sharedInventoryItems, sharedInventoryValue} from '../src/shared'
+import {materialsItems, materialsValue} from '../src/materials'
 import {skinsValue} from '../src/skins'
 import {walletValue} from '../src/wallet'
 import {dyesValue} from '../src/dyes'
@@ -16,12 +16,12 @@ import {mailcarriersValue} from '../src/mailcarriers'
 import {nodesValue} from '../src/nodes'
 import {heroesValue} from '../src/heroes'
 import {glidersValue} from '../src/gliders'
-import {commerceValue, commerceItems} from '../src/commerce'
-import {unlocksValue, unlocksItems} from '../src/unlocks'
+import {commerceItems, commerceValue} from '../src/commerce'
+import {unlocksItems, unlocksValue} from '../src/unlocks'
 import {
-  charactersValue,
-  charactersItems,
   characterItems,
+  charactersItems,
+  charactersValue,
   equipmentItems,
   inventoryItems
 } from '../src/characters'
@@ -602,9 +602,48 @@ describe('account value', () => {
         binding: 'Character',
         bound_to: 'Some Character'
       },
-      {id: 71425, count: 1, binding: 'Item'},
-      {id: 49432, count: 1, binding: 'Item'},
-      {id: 49432, count: 1, binding: 'Item'}
+      {
+        id: 71425,
+        count: 1,
+        binding: 'Item',
+        equippedInItem: {
+          id: 74264,
+          count: 1,
+          upgrades: [71425],
+          infusions: [49432, 49432],
+          skin: 234,
+          binding: 'Character',
+          bound_to: 'Some Character'
+        }
+      },
+      {
+        id: 49432,
+        count: 1,
+        binding: 'Item',
+        equippedInItem: {
+          id: 74264,
+          count: 1,
+          upgrades: [71425],
+          infusions: [49432, 49432],
+          skin: 234,
+          binding: 'Character',
+          bound_to: 'Some Character'
+        }
+      },
+      {
+        id: 49432,
+        count: 1,
+        binding: 'Item',
+        equippedInItem: {
+          id: 74264,
+          count: 1,
+          upgrades: [71425],
+          infusions: [49432, 49432],
+          skin: 234,
+          binding: 'Character',
+          bound_to: 'Some Character'
+        }
+      }
     ]
 
     const shared = [
@@ -622,9 +661,48 @@ describe('account value', () => {
         binding: 'Character',
         bound_to: 'Some Character'
       },
-      {id: 71425, count: 1, binding: 'Item'},
-      {id: 49432, count: 1, binding: 'Item'},
-      {id: 49432, count: 1, binding: 'Item'}
+      {
+        id: 71425,
+        count: 1,
+        binding: 'Item',
+        equippedInItem: {
+          id: 74264,
+          count: 1,
+          upgrades: [71425],
+          infusions: [49432, 49432],
+          skin: 234,
+          binding: 'Character',
+          bound_to: 'Some Character'
+        }
+      },
+      {
+        id: 49432,
+        count: 1,
+        binding: 'Item',
+        equippedInItem: {
+          id: 74264,
+          count: 1,
+          upgrades: [71425],
+          infusions: [49432, 49432],
+          skin: 234,
+          binding: 'Character',
+          bound_to: 'Some Character'
+        }
+      },
+      {
+        id: 49432,
+        count: 1,
+        binding: 'Item',
+        equippedInItem: {
+          id: 74264,
+          count: 1,
+          upgrades: [71425],
+          infusions: [49432, 49432],
+          skin: 234,
+          binding: 'Character',
+          bound_to: 'Some Character'
+        }
+      }
     ]
 
     const materials = [
@@ -639,7 +717,12 @@ describe('account value', () => {
       {id: 76453, count: 1},
       {id: 44286, count: 1, binding: 'Account'},
       {id: 28083, count: 1, upgrades: [24647]},
-      {id: 24647, count: 1, binding: 'Item'},
+      {
+        id: 24647,
+        count: 1,
+        binding: 'Item',
+        equippedInItem: {id: 28083, count: 1, upgrades: [24647]}
+      },
       {id: 36708, count: 1, binding: 'Account'},
       {
         id: 39223,
@@ -669,7 +752,21 @@ describe('account value', () => {
         count: 1,
         isEquipment: true
       },
-      {id: 39619, count: 1, binding: 'Item'},
+      {
+        id: 39619,
+        count: 1,
+        binding: 'Item',
+        equippedInItem: {
+          id: 77429,
+          slot: 'Backpack',
+          infusions: [39619],
+          skin: 2338,
+          binding: 'Character',
+          bound_to: 'Some other Character',
+          count: 1,
+          isEquipment: true
+        }
+      },
       {
         id: 71436,
         slot: 'Coat',
@@ -681,8 +778,38 @@ describe('account value', () => {
         count: 1,
         isEquipment: true
       },
-      {id: 71425, count: 1, binding: 'Item'},
-      {id: 49428, count: 1, binding: 'Item'}
+      {
+        id: 71425,
+        count: 1,
+        binding: 'Item',
+        equippedInItem: {
+          id: 71436,
+          slot: 'Coat',
+          upgrades: [71425],
+          infusions: [49428],
+          skin: 146,
+          binding: 'Character',
+          bound_to: 'Some other Character',
+          count: 1,
+          isEquipment: true
+        }
+      },
+      {
+        id: 49428,
+        count: 1,
+        binding: 'Item',
+        equippedInItem: {
+          id: 71436,
+          slot: 'Coat',
+          upgrades: [71425],
+          infusions: [49428],
+          skin: 146,
+          binding: 'Character',
+          bound_to: 'Some other Character',
+          count: 1,
+          isEquipment: true
+        }
+      }
     ]
 
     const character = [
@@ -691,7 +818,12 @@ describe('account value', () => {
       {id: 76453, count: 1},
       {id: 44286, count: 1, binding: 'Account'},
       {id: 28083, count: 1, upgrades: [24647]},
-      {id: 24647, count: 1, binding: 'Item'},
+      {
+        id: 24647,
+        count: 1,
+        binding: 'Item',
+        equippedInItem: {id: 28083, count: 1, upgrades: [24647]}
+      },
       {id: 36708, count: 1, binding: 'Account'},
       {
         id: 39223,

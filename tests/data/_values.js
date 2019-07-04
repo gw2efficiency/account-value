@@ -84,6 +84,13 @@ export default {
     6: {value: 1000, gemstore: 50}
   },
 
+  novelties: {
+    1: {value: 3, gemstore: false},
+    2: {value: 6, gemstore: false},
+    3: {value: 19, gemstore: false},
+    6: {value: 1000, gemstore: 50}
+  },
+
   recipes: {
     1: {value: 3},
     2: {value: 6},

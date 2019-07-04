@@ -10,6 +10,7 @@ import {dyesValue} from '../src/dyes'
 import {minisValue} from '../src/minis'
 import {mountsValue} from '../src/mounts'
 import {outfitsValue} from '../src/outfits'
+import {noveltiesValue} from '../src/novelties'
 import {recipesValue} from '../src/recipes'
 import {finishersValue} from '../src/finishers'
 import {mailcarriersValue} from '../src/mailcarriers'
@@ -35,6 +36,7 @@ import dyesData from './data/dyes'
 import minisData from './data/minis'
 import mountsData from './data/mounts'
 import outfitsData from './data/outfits'
+import noveltiesData from './data/novelties'
 import recipesData from './data/recipes'
 import finishersData from './data/finishers'
 import mailcarriersData from './data/mailcarriers'
@@ -58,6 +60,7 @@ const account = {
     skins: mountsData
   },
   outfits: outfitsData,
+  novelties: noveltiesData,
   recipes: recipesData,
   finishers: finishersData,
   mailcarriers: mailcarriersData,
@@ -76,9 +79,9 @@ const expectedValues = {
   summary: {
     liquidBuy: 9783,
     liquidSell: 11136,
-    value: 3046960,
-    valueMinusGemItems: 3022527,
-    spentGems: 2355
+    value: 3046960 + 1028,
+    valueMinusGemItems: 3022527 + 28,
+    spentGems: 2355 + 50
   },
   bank: {
     liquidBuy: 10,
@@ -129,6 +132,11 @@ const expectedValues = {
     spentGems: 50
   },
   outfits: {
+    value: 1028,
+    valueMinusGemItems: 28,
+    spentGems: 50
+  },
+  novelties: {
     value: 1028,
     valueMinusGemItems: 28,
     spentGems: 50
@@ -275,6 +283,7 @@ describe('account value', () => {
       minis: null,
       mounts: null,
       outfits: null,
+      novelties: null,
       recipes: null,
       finishers: null,
       mailcarriers: null,
@@ -414,6 +423,12 @@ describe('account value', () => {
   it('calculates the outfits value correctly', () => {
     expect(outfitsValue(account, values)).to.deep.equal(expectedValues.outfits)
     expect(outfitsValue({outfits: [1, 2]}, {outfits: {2: {value: false, gemstore: false}}}))
+      .to.deep.equal({value: 0, valueMinusGemItems: 0, spentGems: 0})
+  })
+
+  it('calculates the novelties value correctly', () => {
+    expect(noveltiesValue(account, values)).to.deep.equal(expectedValues.novelties)
+    expect(noveltiesValue({novelties: [1, 2]}, {novelties: {2: {value: false, gemstore: false}}}))
       .to.deep.equal({value: 0, valueMinusGemItems: 0, spentGems: 0})
   })
 

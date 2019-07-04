@@ -12,6 +12,7 @@ import {finishersValue} from './finishers'
 import {dyesValue} from './dyes'
 import {mailcarriersValue} from './mailcarriers'
 import {nodesValue} from './nodes'
+import {noveltiesValue} from './novelties'
 import {glidersValue} from './gliders'
 import {heroesValue} from './heroes'
 import {commerceValue, commerceItems} from './commerce'
@@ -35,6 +36,7 @@ export default function accountValue (accountData, values) {
   account.minis = minisValue(accountData, values)
   account.mounts = mountsValue(accountData, values)
   account.outfits = outfitsValue(accountData, values)
+  account.novelties = noveltiesValue(accountData, values)
   account.recipes = recipesValue(accountData, values)
   account.finishers = finishersValue(accountData, values)
   account.mailcarriers = mailcarriersValue(accountData, values)

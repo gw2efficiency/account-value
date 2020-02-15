@@ -77,7 +77,7 @@ const account = {
 
 const expectedValues = {
   summary: {
-    liquidBuy: 9783,
+    liquidBuy: 9794,
     liquidSell: 11136,
     value: 3046960 + 1028,
     valueMinusGemItems: 3022527 + 28,
@@ -199,7 +199,7 @@ const expectedValues = {
     }
   },
   characters: {
-    liquidBuy: 978,
+    liquidBuy: 989,
     liquidSell: 1584,
     value: 13379,
     valueMinusGemItems: 10379,
@@ -207,7 +207,7 @@ const expectedValues = {
     details: [
       {
         name: 'Some Character',
-        liquidBuy: 147,
+        liquidBuy: 158,
         liquidSell: 243,
         value: 4645,
         valueMinusGemItems: 1645,
@@ -220,7 +220,7 @@ const expectedValues = {
           spentGems: 0
         },
         inventory: {
-          liquidBuy: 147,
+          liquidBuy: 158,
           liquidSell: 243,
           value: 4211,
           valueMinusGemItems: 1211,

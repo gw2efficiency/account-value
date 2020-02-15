@@ -9,10 +9,36 @@ export default function valueItems (items, values) {
   })
 
   return {
-    value: sumItems(items, itemValues, 'value', true),
-    valueMinusGemItems: sumItems(withoutGemstore, itemValues, 'value', true),
-    spentGems: sumItems(items, itemValues, 'price.gems', true),
-    liquidBuy: subFees(sumItems(items, itemValues, 'buy.price')),
-    liquidSell: subFees(sumItems(items, itemValues, 'sell.price'))
+    value: sumItems({
+      items,
+      itemValues,
+      valueKey: 'value',
+      includeBound: true
+    }),
+    valueMinusGemItems: sumItems({
+      items: withoutGemstore,
+      itemValues,
+      valueKey: 'value',
+      includeBound: true
+    }),
+    spentGems: sumItems({
+      items,
+      itemValues,
+      valueKey: 'price.gems',
+      includeBound: true
+    }),
+    liquidBuy: subFees(sumItems({
+      items,
+      itemValues,
+      valueKey: 'buy.price',
+      includeBound: false
+    })),
+    liquidSell: subFees(sumItems({
+      items,
+      itemValues,
+      valueKey: 'sell.price',
+      fallbackValueKey: 'buy.price',
+      includeBound: false
+    }))
   }
 }

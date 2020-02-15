@@ -25,7 +25,7 @@ export default {
     // Characters
     63604: {value: 414, sell: {price: 314}, buy: {price: 214}},
     8932: {value: 368, sell: {price: 268}, buy: {price: 168}},
-    76453: {value: 118, sell: {price: 18}, buy: {price: 5}},
+    76453: {value: 118, sell: {price: 0}, buy: {price: 18}},
     44286: {value: 273, sell: {price: 173}, buy: {price: 73}},
     24647: {value: 140, sell: {price: 40}, buy: {price: 20}},
     39223: {value: 312, sell: {price: 212}, buy: {price: 112}},

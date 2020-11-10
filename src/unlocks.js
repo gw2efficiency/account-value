@@ -22,7 +22,10 @@ export function unlocksItems (accountData) {
     sharedInventorySlots(accountData),
     storageExpanders(accountData),
     craftingLicences(accountData),
-    characterBagSlots(accountData)
+    characterBagSlots(accountData),
+    buildTemplates(accountData),
+    equipmentTemplates(accountData),
+    buildStorage(accountData)
   ]
 
   return items.reduce((arr, elem) => arr.concat(elem), [])
@@ -106,4 +109,56 @@ function characterBagSlots (accountData) {
   })
 
   return [{id: 19993, count: sum}]
+}
+
+function buildTemplates (accountData) {
+  if (!accountData.characters) {
+    return []
+  }
+
+  let sum = 0
+
+  // A character has 3 tabs available by default and can be expanded up to 6 by purchasing
+  // a Build Template Expansion (one item for one tab). These templates are character specific.
+  accountData.characters.map(character => {
+    if (!character.build_tabs_unlocked) {
+      return
+    }
+
+    sum += Math.max(character.build_tabs_unlocked - 3, 0)
+  })
+
+  return [{id: 92209, count: sum}]
+}
+
+function equipmentTemplates (accountData) {
+  if (!accountData.characters) {
+    return []
+  }
+
+  let sum = 0
+
+  // A character has 2 tabs available by default and can be expanded up to 6 by purchasing
+  // a Equipment Template Expansion (one item for one tab). These templates are character specific.
+  accountData.characters.map(character => {
+    if (!character.equipment_tabs_unlocked) {
+      return
+    }
+
+    sum += Math.max(character.equipment_tabs_unlocked - 2, 0)
+  })
+
+  return [{id: 92203, count: sum}]
+}
+
+function buildStorage (accountData) {
+  if (!accountData.account) {
+    return []
+  }
+
+  // An account has 3 tabs available by default and can be expanded up to 24 by purchasing
+  // a Build Storage Expansion (one item for 3 tabs).
+  const sum = accountData.account.build_storage_slots - 3
+
+  return [{id: 92206, count: Math.floor(sum / 3)}]
 }

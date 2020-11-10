@@ -337,7 +337,10 @@ describe('account value', () => {
       67071,
       42932,
       42970,
-      19993
+      19993,
+      92209,
+      92203,
+      92206
     ])
 
     expect(allItemIds({})).to.deep.equal([])
@@ -367,7 +370,10 @@ describe('account value', () => {
       67071,
       42932,
       42970,
-      19993
+      19993,
+      92209,
+      92203,
+      92206
     ])
 
     expect(boundItemIds({})).to.deep.equal([])
@@ -517,7 +523,10 @@ describe('account value', () => {
       {id: 67071, count: 8, binding: 'AccountUnlock'},
       {id: 42932, count: 2, binding: 'AccountUnlock'},
       {id: 42970, count: 1, binding: 'AccountUnlock'},
-      {id: 19993, count: 1, binding: 'AccountUnlock'}
+      {id: 19993, count: 1, binding: 'AccountUnlock'},
+      {id: 92209, count: 1, binding: 'AccountUnlock'},
+      {id: 92203, count: 1, binding: 'AccountUnlock'},
+      {id: 92206, count: 1, binding: 'AccountUnlock'}
     ])
 
     const data = {

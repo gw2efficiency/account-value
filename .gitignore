@@ -17,6 +17,7 @@ yarn.lock
 
 # Webflow
 .idea/
+.history/
 
 # Operating System
 .DS_Store

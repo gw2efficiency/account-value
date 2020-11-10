@@ -82,6 +82,8 @@ export default [
       null,
       null,
       null
-    ]
+    ],
+    build_tabs_unlocked: 4,
+    equipment_tabs_unlocked: 3
   }
 ]

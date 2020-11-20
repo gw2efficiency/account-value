@@ -93,6 +93,10 @@ export function equipmentItems (character, itemValues = {}) {
 
 // Which items does the character have in his inventory & which bags
 export function inventoryItems (character, itemValues = {}) {
+  if (!character.bags) {
+    return []
+  }
+
   // The bag items themselves
   const bagItems = character.bags
     .filter(x => x)

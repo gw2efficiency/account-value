@@ -1,7 +1,7 @@
 import _sum from 'sum-by'
 
 export function finishersValue (accountData, values) {
-  if (!accountData.finishers) {
+  if (!accountData.finishers || !Array.isArray(accountData.finishers)) {
     return null
   }
 

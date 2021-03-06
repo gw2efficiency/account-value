@@ -19,7 +19,7 @@ export function commerceValue (accountData, values) {
   // can list things at astronomical values but it doesn't mean they are worth that
   const sells = {
     value: sumSells(accountData.commerce.sells, values.items, 'value'),
-    liquidBuy: subFees(sumSells(accountData.commerce.sells, values.items, 'buy.price')),
+    liquidBuy: subTax(sumSells(accountData.commerce.sells, values.items, 'buy.price')),
     liquidSell: subTax(sumSells(accountData.commerce.sells, values.items, 'sell.price'))
   }
 

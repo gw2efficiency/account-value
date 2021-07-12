@@ -6,6 +6,7 @@ export default function sumItems (options) {
   return items
     .filter(item => item) // Ignore possible empty slots
     .reduce((a, b) => a.concat(b), []) // Get a single array
+    .filter(item => item.ignoreForValue !== true) // Filter out items that are ignored for valuation
     .filter(item => includeBound || item.binding === undefined) // Bound items setting
     .map(item => {
       let value = _get(itemValues[item.id], valueKey, 0)

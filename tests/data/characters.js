@@ -47,6 +47,7 @@ export default [
       {discipline: 'Weaponsmith', rating: 500, active: true},
       {discipline: 'SomethingUnknown', rating: 100, active: true}
     ],
+    last_modified: '2021-07-22T21:58:00Z',
     equipment: [
       {
         id: 77429,
@@ -57,7 +58,7 @@ export default [
         bound_to: 'Some other Character'
       },
       {
-        id: 71436,
+        id: 80578,
         slot: 'Coat',
         upgrades: [71425],
         infusions: [49428],

@@ -79,8 +79,8 @@ const expectedValues = {
   summary: {
     liquidBuy: 9814,
     liquidSell: 11136,
-    value: 3046960 + 1028,
-    valueMinusGemItems: 3022527 + 28,
+    value: 3047678,
+    valueMinusGemItems: 3022245,
     spentGems: 2355 + 50
   },
   bank: {
@@ -201,8 +201,8 @@ const expectedValues = {
   characters: {
     liquidBuy: 989,
     liquidSell: 1584,
-    value: 13379,
-    valueMinusGemItems: 10379,
+    value: 13069,
+    valueMinusGemItems: 10069,
     spentGems: 255,
     details: [
       {
@@ -234,14 +234,14 @@ const expectedValues = {
         name: 'Some other Character',
         liquidBuy: 831,
         liquidSell: 1341,
-        value: 8734,
-        valueMinusGemItems: 8734,
+        value: 8424,
+        valueMinusGemItems: 8424,
         spentGems: 0,
         equipment: {
           liquidBuy: 0,
           liquidSell: 0,
-          value: 5320,
-          valueMinusGemItems: 5320,
+          value: 5010,
+          valueMinusGemItems: 5010,
           spentGems: 0
         },
         inventory: {
@@ -325,7 +325,7 @@ describe('account value', () => {
       79031,
       77429,
       39619,
-      71436,
+      80578,
       49428,
       77230,
       77239,
@@ -363,7 +363,7 @@ describe('account value', () => {
       79031,
       77429,
       39619,
-      71436,
+      80578,
       49428,
       67335,
       19995,
@@ -761,7 +761,8 @@ describe('account value', () => {
         binding: 'Character',
         bound_to: 'Some Character',
         count: 1,
-        isEquipment: true
+        isEquipment: true,
+        ignoreForValue: false
       },
       {id: 8932, count: 1, isBag: true},
       {id: 69774, count: 5},
@@ -774,7 +775,8 @@ describe('account value', () => {
         binding: 'Character',
         bound_to: 'Some other Character',
         count: 1,
-        isEquipment: true
+        isEquipment: true,
+        ignoreForValue: false
       },
       {
         id: 39619,
@@ -789,10 +791,11 @@ describe('account value', () => {
           bound_to: 'Some other Character',
           count: 1,
           isEquipment: true
-        }
+        },
+        ignoreForValue: false
       },
       {
-        id: 71436,
+        id: 80578,
         slot: 'Coat',
         upgrades: [71425],
         infusions: [49428],
@@ -800,14 +803,15 @@ describe('account value', () => {
         binding: 'Character',
         bound_to: 'Some other Character',
         count: 1,
-        isEquipment: true
+        isEquipment: true,
+        ignoreForValue: true
       },
       {
         id: 71425,
         count: 1,
         binding: 'Item',
         equippedInItem: {
-          id: 71436,
+          id: 80578,
           slot: 'Coat',
           upgrades: [71425],
           infusions: [49428],
@@ -816,14 +820,15 @@ describe('account value', () => {
           bound_to: 'Some other Character',
           count: 1,
           isEquipment: true
-        }
+        },
+        ignoreForValue: false
       },
       {
         id: 49428,
         count: 1,
         binding: 'Item',
         equippedInItem: {
-          id: 71436,
+          id: 80578,
           slot: 'Coat',
           upgrades: [71425],
           infusions: [49428],
@@ -832,7 +837,8 @@ describe('account value', () => {
           bound_to: 'Some other Character',
           count: 1,
           isEquipment: true
-        }
+        },
+        ignoreForValue: false
       }
     ]
 
@@ -862,7 +868,8 @@ describe('account value', () => {
         binding: 'Character',
         bound_to: 'Some Character',
         count: 1,
-        isEquipment: true
+        isEquipment: true,
+        ignoreForValue: false
       }
     ]
 

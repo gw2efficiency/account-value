@@ -79,8 +79,8 @@ const expectedValues = {
   summary: {
     liquidBuy: 9814,
     liquidSell: 11136,
-    value: 3047678,
-    valueMinusGemItems: 3022245,
+    value: 3048678,
+    valueMinusGemItems: 3023245,
     spentGems: 2355 + 50
   },
   bank: {
@@ -105,10 +105,10 @@ const expectedValues = {
     spentGems: 0
   },
   skins: {
-    value: 1840,
-    fullValue: 3040,
-    valueMinusGemItems: 840,
-    fullValueMinusGemItems: 2040,
+    value: 2840,
+    fullValue: 4040,
+    valueMinusGemItems: 1840,
+    fullValueMinusGemItems: 3040,
     spentGems: 50
   },
   wallet: {

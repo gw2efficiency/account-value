@@ -53,7 +53,8 @@ export default {
     2: {value: 420, unlocks: [1337], gemstore: false},
     4679: {value: 420, unlocks: [1337], gemstore: false},
     6211: {value: 100, unlocks: [1337], gemstore: false},
-    994: {value: 1000, unlocks: [64740], gemstore: 50}
+    994: {value: 1000, unlocks: [64740], gemstore: 50},
+    7083: {value: 1000, unlocks: [80578], gemstore: false}
   },
 
   dyes: {

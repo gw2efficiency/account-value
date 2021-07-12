@@ -23,7 +23,7 @@ export default function accountValue (accountData, values) {
   let account = {}
 
   // Grab all the account's items (for the calculation of the skin values)
-  const items = boundItemIds(accountData)
+  const items = boundItemIds(accountData, true)
 
   // Calculate the different parts of the account value
   account.wallet = walletValue(accountData, values)
@@ -52,7 +52,7 @@ export default function accountValue (accountData, values) {
 }
 
 // Get all items bound to the account
-export function boundItemIds (accountData) {
+export function boundItemIds (accountData, filterIgnoreForValue = false) {
   const items = [
     bankItems(accountData),
     charactersItems(accountData),
@@ -63,6 +63,7 @@ export function boundItemIds (accountData) {
   return items
     .reduce((a, b) => a.concat(b), [])
     .filter(x => x.binding) // Ignore unbound items
+    .filter(x => filterIgnoreForValue ? x.ignoreForValue !== true : true)
     .map(x => x.id) // Get the item ids
     .filter((x, i, self) => self.indexOf(x) === i) // Unique items
 }

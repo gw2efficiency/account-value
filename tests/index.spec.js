@@ -758,23 +758,25 @@ describe('account value', () => {
     const characters = [
       {id: 8932, count: 1, isBag: true},
       {id: 9586, count: 1, isBag: true},
-      {id: 76453, count: 1},
-      {id: 44286, count: 1, binding: 'Account'},
-      {id: 28083, count: 1, upgrades: [24647]},
+      {id: 76453, count: 1, ignoreForValue: false},
+      {id: 44286, count: 1, binding: 'Account', ignoreForValue: false},
+      {id: 28083, count: 1, upgrades: [24647], ignoreForValue: false},
       {
         id: 24647,
         count: 1,
         binding: 'Item',
-        equippedInItem: {id: 28083, count: 1, upgrades: [24647]}
+        equippedInItem: {id: 28083, count: 1, upgrades: [24647]},
+        ignoreForValue: false
       },
-      {id: 36708, count: 1, binding: 'Account'},
+      {id: 36708, count: 1, binding: 'Account', ignoreForValue: false},
       {
         id: 39223,
         count: 1,
         binding: 'Character',
-        bound_to: 'Some Character'
+        bound_to: 'Some Character',
+        ignoreForValue: false
       },
-      {id: 20017, count: 3, binding: 'Account'},
+      {id: 20017, count: 3, binding: 'Account', ignoreForValue: false},
       {
         id: 63604,
         slot: 'HelmAquatic',
@@ -798,8 +800,8 @@ describe('account value', () => {
         ignoreForValue: true
       },
       {id: 8932, count: 1, isBag: true},
-      {id: 69774, count: 5},
-      {id: 79031, count: 1, binding: 'Account'},
+      {id: 69774, count: 5, ignoreForValue: false},
+      {id: 79031, count: 1, binding: 'Account', ignoreForValue: false},
       {
         id: 77429,
         slot: 'Backpack',
@@ -878,23 +880,25 @@ describe('account value', () => {
     const character = [
       {id: 8932, count: 1, isBag: true},
       {id: 9586, count: 1, isBag: true},
-      {id: 76453, count: 1},
-      {id: 44286, count: 1, binding: 'Account'},
-      {id: 28083, count: 1, upgrades: [24647]},
+      {id: 76453, count: 1, ignoreForValue: false},
+      {id: 44286, count: 1, binding: 'Account', ignoreForValue: false},
+      {id: 28083, count: 1, upgrades: [24647], ignoreForValue: false},
       {
         id: 24647,
         count: 1,
         binding: 'Item',
-        equippedInItem: {id: 28083, count: 1, upgrades: [24647]}
+        equippedInItem: {id: 28083, count: 1, upgrades: [24647]},
+        ignoreForValue: false
       },
-      {id: 36708, count: 1, binding: 'Account'},
+      {id: 36708, count: 1, binding: 'Account', ignoreForValue: false},
       {
         id: 39223,
         count: 1,
         binding: 'Character',
-        bound_to: 'Some Character'
+        bound_to: 'Some Character',
+        ignoreForValue: false
       },
-      {id: 20017, count: 3, binding: 'Account'},
+      {id: 20017, count: 3, binding: 'Account', ignoreForValue: false},
       {
         id: 63604,
         slot: 'HelmAquatic',

@@ -111,6 +111,8 @@ export function inventoryItems (character, itemValues = {}) {
     return []
   }
 
+  const loggedInAfterArmouryRelease = new Date(character.last_modified) > new Date('2021-07-13T12:00:00.000Z')
+
   // The bag items themselves
   const bagItems = character.bags
     .filter(x => x)
@@ -123,6 +125,12 @@ export function inventoryItems (character, itemValues = {}) {
     .filter(x => x)
     .map(item => getItemIds(item, itemValues)) // Get all item ids
     .reduce((a, b) => a.concat(b), [])
+    .map(item => ({
+      ...item,
+      // Some legendaries did not get sucked into the legendary armory and remain as account bound items.
+      // The players however received replacements for them, so they should not count for the value.
+      ignoreForValue: loggedInAfterArmouryRelease && LEGENDARY_ITEM_IDS.includes(item.id) && item.binding === 'Account'
+    }))
 
   return [].concat(bagItems, inventoryItems)
 }

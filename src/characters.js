@@ -94,7 +94,9 @@ export function equipmentItems (character, itemValues = {}) {
     .reduce((a, b) => a.concat(b), [])
     .map(item => ({
       ...item,
-      ignoreForValue: loggedInAfterArmouryRelease && LEGENDARY_ITEM_IDS.includes(item.id)
+      ignoreForValue: 
+        ['LegendaryArmory', 'EquippedFromLegendaryArmory'].includes(item.location) ||
+        (loggedInAfterArmouryRelease && LEGENDARY_ITEM_IDS.includes(item.id))
     }))
 }
 

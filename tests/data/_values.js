@@ -36,6 +36,9 @@ export default {
     69774: {value: 362, sell: {price: 262}, buy: {price: 162}},
     79031: {value: 136, sell: {price: 36}, buy: {price: 66}},
 
+    // Legendary armory
+    81957: {value: 100, sell: {price: 999999}, buy: {price: 999999}},
+
     // Gemstore items
     36708: {value: 3000, price: {gems: 150}},
     20017: {value: false, price: {gems: 35}},

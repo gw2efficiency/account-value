@@ -4,6 +4,7 @@ import {materialsValue, materialsItems} from './materials'
 import {walletValue} from './wallet'
 import {charactersValue, charactersItems} from './characters'
 import {skinsValue} from './skins'
+import {legendaryarmoryItems, legendaryarmoryValue} from './legendaryarmory'
 import {minisValue} from './minis'
 import {mountsValue} from './mounts'
 import {outfitsValue} from './outfits'
@@ -33,6 +34,7 @@ export default function accountValue (accountData, values) {
   account.commerce = commerceValue(accountData, values)
   account.skins = skinsValue(accountData, values, items)
   account.dyes = dyesValue(accountData, values)
+  account.legendaryarmory = legendaryarmoryValue(accountData, values)
   account.minis = minisValue(accountData, values)
   account.mounts = mountsValue(accountData, values)
   account.outfits = outfitsValue(accountData, values)
@@ -57,7 +59,8 @@ export function boundItemIds (accountData) {
     bankItems(accountData),
     charactersItems(accountData),
     sharedInventoryItems(accountData),
-    unlocksItems(accountData)
+    unlocksItems(accountData),
+    legendaryarmoryItems(accountData)
   ]
 
   return items
@@ -76,7 +79,8 @@ export function allItemIds (accountData) {
     charactersItems(accountData),
     commerceItems(accountData),
     sharedInventoryItems(accountData),
-    unlocksItems(accountData)
+    unlocksItems(accountData),
+    legendaryarmoryItems(accountData)
   ]
 
   return items

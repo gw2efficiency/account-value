@@ -7,6 +7,7 @@ import {materialsItems, materialsValue} from '../src/materials'
 import {skinsValue} from '../src/skins'
 import {walletValue} from '../src/wallet'
 import {dyesValue} from '../src/dyes'
+import {legendaryarmoryValue} from '../src/legendaryarmory'
 import {minisValue} from '../src/minis'
 import {mountsValue} from '../src/mounts'
 import {outfitsValue} from '../src/outfits'
@@ -33,6 +34,7 @@ import materialsData from './data/materials'
 import skinsData from './data/skins'
 import walletData from './data/wallet'
 import dyesData from './data/dyes'
+import legendaryarmoryData from './data/legendaryarmory'
 import minisData from './data/minis'
 import mountsData from './data/mounts'
 import outfitsData from './data/outfits'
@@ -55,6 +57,7 @@ const account = {
   skins: skinsData,
   wallet: walletData,
   dyes: dyesData,
+  legendaryarmory: legendaryarmoryData,
   minis: minisData,
   mounts: {
     skins: mountsData
@@ -79,8 +82,8 @@ const expectedValues = {
   summary: {
     liquidBuy: 9814,
     liquidSell: 11136,
-    value: 3048678,
-    valueMinusGemItems: 3023245,
+    value: 3048878,
+    valueMinusGemItems: 3023445,
     spentGems: 2355 + 50
   },
   bank: {
@@ -120,6 +123,13 @@ const expectedValues = {
     value: 1028,
     valueMinusGemItems: 28,
     spentGems: 50
+  },
+  legendaryarmory: {
+    value: 200,
+    valueMinusGemItems: 200,
+    spentGems: 0,
+    liquidBuy: 0,
+    liquidSell: 0
   },
   minis: {
     value: 1028,
@@ -280,6 +290,7 @@ describe('account value', () => {
       commerce: null,
       dyes: null,
       materials: null,
+      legendaryarmory: null,
       minis: null,
       mounts: null,
       outfits: null,
@@ -340,7 +351,9 @@ describe('account value', () => {
       19993,
       92209,
       92203,
-      92206
+      92206,
+      30699,
+      81957
     ])
 
     expect(allItemIds({})).to.deep.equal([])
@@ -372,7 +385,9 @@ describe('account value', () => {
       19993,
       92209,
       92203,
-      92206
+      92206,
+      30699,
+      81957
     ])
 
     expect(boundItemIds({})).to.deep.equal([])
@@ -411,6 +426,12 @@ describe('account value', () => {
     expect(dyesValue(account, values)).to.deep.equal(expectedValues.dyes)
     expect(dyesValue({dyes: [1, 2]}, {dyes: {2: {value: false, gemstore: false}}}))
       .to.deep.equal({value: 0, valueMinusGemItems: 0, spentGems: 0})
+  })
+
+  it('calculates the legendaryarmory value correctly', () => {
+    expect(legendaryarmoryValue(account, values)).to.deep.equal(expectedValues.legendaryarmory)
+    expect(legendaryarmoryValue({legendaryarmory: [{ id: 1, count: 1 }]}, {items: {}}))
+      .to.deep.equal({value: 0, valueMinusGemItems: 0, spentGems: 0, liquidBuy: 0, liquidSell: 0})
   })
 
   it('calculates the minis value correctly', () => {

@@ -102,6 +102,7 @@ export function equipmentItems (character, itemValues = {}) {
 
 // Which items does the character have in his inventory & which bags
 export function inventoryItems (character, itemValues = {}) {
+  // istanbul ignore next
   if (!character.bags) {
     return []
   }

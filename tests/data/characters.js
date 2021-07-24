@@ -6,7 +6,17 @@ export default [
       {discipline: 'Weaponsmith', rating: 224, active: true}
     ],
     equipment: [
-      {id: 63604, slot: 'HelmAquatic', binding: 'Character', bound_to: 'Some Character'}
+      {id: 63604, slot: 'HelmAquatic', binding: 'Character', bound_to: 'Some Character'},
+      {
+        id: 80578,
+        slot: 'Coat',
+        upgrades: [],
+        infusions: [],
+        skin: 146,
+        binding: 'Character',
+        bound_to: 'Some Character',
+        location: 'LegendaryArmory'
+      }
     ],
     bags: [
       {

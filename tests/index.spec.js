@@ -321,11 +321,11 @@ describe('account value', () => {
       39223,
       20017,
       63604,
+      80578,
       69774,
       79031,
       77429,
       39619,
-      80578,
       49428,
       77230,
       77239,
@@ -763,6 +763,19 @@ describe('account value', () => {
         isEquipment: true,
         ignoreForValue: false
       },
+      {
+        id: 80578,
+        slot: 'Coat',
+        upgrades: [],
+        infusions: [],
+        location: 'LegendaryArmory',
+        skin: 146,
+        binding: 'Character',
+        bound_to: 'Some Character',
+        count: 1,
+        isEquipment: true,
+        ignoreForValue: true
+      },
       {id: 8932, count: 1, isBag: true},
       {id: 69774, count: 5},
       {id: 79031, count: 1, binding: 'Account'},
@@ -869,6 +882,19 @@ describe('account value', () => {
         count: 1,
         isEquipment: true,
         ignoreForValue: false
+      },
+      {
+        id: 80578,
+        slot: 'Coat',
+        upgrades: [],
+        infusions: [],
+        location: 'LegendaryArmory',
+        skin: 146,
+        binding: 'Character',
+        bound_to: 'Some Character',
+        count: 1,
+        isEquipment: true,
+        ignoreForValue: true
       }
     ]
 

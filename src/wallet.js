@@ -8,6 +8,7 @@ export function walletValue (accountData, values) {
 
   return {
     value: gold + gems,
+    valueMinusGemItems: gold,
     liquidBuy: gold + gems,
     liquidSell: gold + gems
   }

@@ -80,22 +80,22 @@ const account = {
 
 const expectedValues = {
   summary: {
-    liquidBuy: 9814,
-    liquidSell: 11136,
+    liquidBuy: 13218,
+    liquidSell: 15394,
     value: 3048878,
     valueMinusGemItems: 3023319,
     spentGems: 2355 + 50
   },
   bank: {
-    liquidBuy: 10,
-    liquidSell: 15,
+    liquidBuy: 12,
+    liquidSell: 19,
     value: 3274,
     valueMinusGemItems: 274,
     spentGems: 150
   },
   shared: {
-    liquidBuy: 10,
-    liquidSell: 15,
+    liquidBuy: 12,
+    liquidSell: 19,
     value: 3274,
     valueMinusGemItems: 274,
     spentGems: 150
@@ -210,8 +210,8 @@ const expectedValues = {
     }
   },
   characters: {
-    liquidBuy: 989,
-    liquidSell: 1584,
+    liquidBuy: 989 + 3400,
+    liquidSell: 1584 + 4250,
     value: 13069,
     valueMinusGemItems: 10069,
     spentGems: 255,
@@ -243,14 +243,14 @@ const expectedValues = {
       },
       {
         name: 'Some other Character',
-        liquidBuy: 831,
-        liquidSell: 1341,
+        liquidBuy: 831 + 3400,
+        liquidSell: 1341 + 4250,
         value: 8424,
         valueMinusGemItems: 8424,
         spentGems: 0,
         equipment: {
-          liquidBuy: 0,
-          liquidSell: 0,
+          liquidBuy: 3400,
+          liquidSell: 4250,
           value: 5010,
           valueMinusGemItems: 5010,
           spentGems: 0
@@ -368,7 +368,6 @@ describe('account value', () => {
       58,
       74264,
       71425,
-      49432,
       44286,
       24647,
       39223,
@@ -376,8 +375,6 @@ describe('account value', () => {
       63604,
       79031,
       77429,
-      39619,
-      49428,
       67335,
       19995,
       67071,
@@ -664,7 +661,6 @@ describe('account value', () => {
       {
         id: 49432,
         count: 1,
-        binding: 'Item',
         equippedInItem: {
           id: 74264,
           count: 1,
@@ -678,7 +674,6 @@ describe('account value', () => {
       {
         id: 49432,
         count: 1,
-        binding: 'Item',
         equippedInItem: {
           id: 74264,
           count: 1,
@@ -723,7 +718,6 @@ describe('account value', () => {
       {
         id: 49432,
         count: 1,
-        binding: 'Item',
         equippedInItem: {
           id: 74264,
           count: 1,
@@ -737,7 +731,6 @@ describe('account value', () => {
       {
         id: 49432,
         count: 1,
-        binding: 'Item',
         equippedInItem: {
           id: 74264,
           count: 1,
@@ -817,7 +810,6 @@ describe('account value', () => {
       {
         id: 39619,
         count: 1,
-        binding: 'Item',
         equippedInItem: {
           id: 77429,
           slot: 'Backpack',
@@ -862,7 +854,6 @@ describe('account value', () => {
       {
         id: 49428,
         count: 1,
-        binding: 'Item',
         equippedInItem: {
           id: 80578,
           slot: 'Coat',

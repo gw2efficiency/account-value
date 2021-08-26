@@ -1,11 +1,16 @@
 // Get all ids attached to one item
 export default function getItemIds (item, items) {
-  // Get possible infusions and upgrades
-  let itemUpgrades = [...(item.upgrades || []), ...(item.infusions || [])]
+  const itemUpgrades = (item.upgrades || [])
     .map(x => ({id: x, count: 1, binding: 'Item', equippedInItem: item}))
 
+  const itemInfusions = (item.infusions || [])
+    .map(x => ({id: x, count: 1, equippedInItem: item})) // Infusions are not bound because they can be easily extracted
+
+  // Get possible infusions and upgrades
+  let itemCombinedUpgrades = [...itemUpgrades, ...itemInfusions]
+
   // There are no upgrades, no logic necessary
-  if (itemUpgrades.length === 0) {
+  if (itemCombinedUpgrades.length === 0) {
     return [item]
   }
 
@@ -14,9 +19,9 @@ export default function getItemIds (item, items) {
   let defaultUpgrades = items[item.id] ? items[item.id].defaultUpgrades : false
   let sellPrice = items[item.id] && items[item.id].sell && items[item.id].sell.price
   if (sellPrice && defaultUpgrades) {
-    itemUpgrades = itemUpgrades.filter(x => defaultUpgrades.indexOf(x.id) === -1)
+    itemCombinedUpgrades = itemCombinedUpgrades.filter(x => defaultUpgrades.indexOf(x.id) === -1)
   }
 
   // Return the item, upgrades and infusions
-  return [].concat(item, itemUpgrades)
+  return [].concat(item, itemCombinedUpgrades)
 }

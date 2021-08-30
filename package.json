@@ -1,6 +1,6 @@
 {
   "name": "gw2e-account-value",
-  "version": "3.13.0",
+  "version": "3.13.1",
   "description": "Calculate the value of guildwars2 accounts",
   "main": "./build/index.js",
   "scripts": {

@@ -96,12 +96,12 @@ export function equipmentItems (character, itemValues = {}) {
     .map(item => ({...item, count: 1, isEquipment: true}))
     .map(item => getItemIds(item, itemValues)) // Get all item ids
     .reduce((a, b) => a.concat(b), [])
-    .map(item => ({
-      ...item,
-      ignoreForValue:
-        ['LegendaryArmory', 'EquippedFromLegendaryArmory'].includes(item.location) ||
+    .map(item => {
+      const ignoreForValue = ['LegendaryArmory', 'EquippedFromLegendaryArmory'].includes(item.location) ||
         (loggedInAfterArmouryRelease && LEGENDARY_ITEM_IDS.includes(item.id))
-    }))
+
+      return { ...item, ignoreForValue, ignoreForStatistics: ignoreForValue }
+    })
 }
 
 // Which items does the character have in his inventory & which bags
@@ -129,6 +129,7 @@ export function inventoryItems (character, itemValues = {}) {
       ...item,
       // Some legendaries did not get sucked into the legendary armory and remain as account bound items.
       // The players however received replacements for them, so they should not count for the value.
+      // We do count them for the statistics tho, to get LI/LD statistics working correctly.
       ignoreForValue: loggedInAfterArmouryRelease && LEGENDARY_ITEM_IDS.includes(item.id) && item.binding === 'Account'
     }))
 

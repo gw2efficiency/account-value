@@ -778,7 +778,8 @@ describe('account value', () => {
         bound_to: 'Some Character',
         count: 1,
         isEquipment: true,
-        ignoreForValue: false
+        ignoreForValue: false,
+        ignoreForStatistics: false
       },
       {
         id: 80578,
@@ -791,7 +792,8 @@ describe('account value', () => {
         bound_to: 'Some Character',
         count: 1,
         isEquipment: true,
-        ignoreForValue: true
+        ignoreForValue: true,
+        ignoreForStatistics: true
       },
       {id: 8932, count: 1, isBag: true},
       {id: 69774, count: 5, ignoreForValue: false},
@@ -805,7 +807,8 @@ describe('account value', () => {
         bound_to: 'Some other Character',
         count: 1,
         isEquipment: true,
-        ignoreForValue: false
+        ignoreForValue: false,
+        ignoreForStatistics: false
       },
       {
         id: 39619,
@@ -820,7 +823,8 @@ describe('account value', () => {
           count: 1,
           isEquipment: true
         },
-        ignoreForValue: false
+        ignoreForValue: false,
+        ignoreForStatistics: false
       },
       {
         id: 80578,
@@ -832,7 +836,8 @@ describe('account value', () => {
         bound_to: 'Some other Character',
         count: 1,
         isEquipment: true,
-        ignoreForValue: true
+        ignoreForValue: true,
+        ignoreForStatistics: true
       },
       {
         id: 71425,
@@ -849,7 +854,8 @@ describe('account value', () => {
           count: 1,
           isEquipment: true
         },
-        ignoreForValue: false
+        ignoreForValue: false,
+        ignoreForStatistics: false
       },
       {
         id: 49428,
@@ -865,7 +871,8 @@ describe('account value', () => {
           count: 1,
           isEquipment: true
         },
-        ignoreForValue: false
+        ignoreForValue: false,
+        ignoreForStatistics: false
       }
     ]
 
@@ -898,7 +905,8 @@ describe('account value', () => {
         bound_to: 'Some Character',
         count: 1,
         isEquipment: true,
-        ignoreForValue: false
+        ignoreForValue: false,
+        ignoreForStatistics: false
       },
       {
         id: 80578,
@@ -911,7 +919,8 @@ describe('account value', () => {
         bound_to: 'Some Character',
         count: 1,
         isEquipment: true,
-        ignoreForValue: true
+        ignoreForValue: true,
+        ignoreForStatistics: true
       }
     ]
 

@@ -262,6 +262,75 @@ const data = [
   ],
 
   // ------------------------------------------------------------
+  // WEAPONS (GENERATION 3)
+  // ------------------------------------------------------------
+
+  [
+    96356, // Aurene's Bite
+    96357 // Dragon's Bite
+  ],
+  [
+    95675, // Aurene's Fang
+    95994 // Dragon's Fang
+  ],
+  [
+    95684, // Aurene's Weight
+    95920 // Dragon's Weight
+  ],
+  [
+    96203, // Aurene's Claw
+    95967 // Dragon's Claw
+  ],
+  [
+    97590, // Aurene's Flight
+    95834 // Dragon's Flight
+  ],
+  [
+    96652, // Aurene's Insight
+    95814 // Dragon's Insight
+  ],
+  [
+    97077, // Aurene's Wing
+    96330 // Dragon's Wing
+  ],
+  [
+    96221, // Aurene's Wisdom
+    96193 // Dragon's Wisdom
+  ],
+  [
+    95808, // Aurene's Argument
+    96915 // Dragon's Argument
+  ],
+  [
+    97099, // Aurene's Breath
+    96925 // Dragon's Breath
+  ],
+  [
+    97165, // Aurene's Gaze
+    96303 // Dragon's Gaze
+  ],
+  [
+    97377, // Aurene's Persuasion
+    97267 // Dragon's Persuasion
+  ],
+  [
+    96937, // Aurene's Rending
+    97449 // Dragon's Rending
+  ],
+  [
+    96028, // Aurene's Scale
+    97691 // Dragon's Scale
+  ],
+  [
+    95612, // Aurene's Tail
+    96827 // Dragon's Tail
+  ],
+  [
+    97783, // Aurene's Voice
+    97513 // Dragon's Voice
+  ],
+
+  // ------------------------------------------------------------
   // BACKPIECES
   // ------------------------------------------------------------
 

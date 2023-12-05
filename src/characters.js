@@ -93,7 +93,7 @@ export function equipmentItems (character, itemValues = {}) {
   const loggedInAfterArmouryRelease = new Date(character.last_modified) > new Date('2021-07-13T12:00:00.000Z')
 
   return character.equipment
-    .map(item => ({...item, count: 1, isEquipment: true}))
+    .map(item => ({...item, count: item.count || 1, isEquipment: true}))
     .map(item => getItemIds(item, itemValues)) // Get all item ids
     .reduce((a, b) => a.concat(b), [])
     .map(item => {

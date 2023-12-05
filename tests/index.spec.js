@@ -334,6 +334,7 @@ describe('account value', () => {
       20017,
       63604,
       80578,
+      24836,
       69774,
       79031,
       77429,
@@ -777,6 +778,7 @@ describe('account value', () => {
         binding: 'Character',
         bound_to: 'Some Character',
         count: 1,
+        location: 'Equipped',
         isEquipment: true,
         ignoreForValue: false,
         ignoreForStatistics: false
@@ -794,6 +796,15 @@ describe('account value', () => {
         isEquipment: true,
         ignoreForValue: true,
         ignoreForStatistics: true
+      },
+      {
+        id: 24836,
+        location: 'Armory',
+        count: 6,
+        tabs: [2],
+        isEquipment: true,
+        ignoreForValue: false,
+        ignoreForStatistics: false
       },
       {id: 8932, count: 1, isBag: true},
       {id: 69774, count: 5, ignoreForValue: false},
@@ -903,6 +914,7 @@ describe('account value', () => {
         slot: 'HelmAquatic',
         binding: 'Character',
         bound_to: 'Some Character',
+        location: 'Equipped',
         count: 1,
         isEquipment: true,
         ignoreForValue: false,
@@ -921,6 +933,15 @@ describe('account value', () => {
         isEquipment: true,
         ignoreForValue: true,
         ignoreForStatistics: true
+      },
+      {
+        id: 24836,
+        location: 'Armory',
+        count: 6,
+        tabs: [2],
+        isEquipment: true,
+        ignoreForValue: false,
+        ignoreForStatistics: false
       }
     ]
 

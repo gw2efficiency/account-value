@@ -6,7 +6,13 @@ export default [
       {discipline: 'Weaponsmith', rating: 224, active: true}
     ],
     equipment: [
-      {id: 63604, slot: 'HelmAquatic', binding: 'Character', bound_to: 'Some Character'},
+      {
+        id: 63604,
+        slot: 'HelmAquatic',
+        binding: 'Character',
+        bound_to: 'Some Character',
+        location: 'Equipped'
+      },
       {
         id: 80578,
         slot: 'Coat',
@@ -16,6 +22,12 @@ export default [
         binding: 'Character',
         bound_to: 'Some Character',
         location: 'LegendaryArmory'
+      },
+      {
+        id: 24836, // Rune that is part of a different equipment template
+        count: 6,
+        location: 'Armory',
+        tabs: [2]
       }
     ],
     bags: [

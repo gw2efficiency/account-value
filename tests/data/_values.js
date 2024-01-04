@@ -137,6 +137,27 @@ export default {
     6: {value: 1000, gemstore: 50}
   },
 
+  skiffs: {
+    401: {value: 3, gemstore: false},
+    402: {value: 6, gemstore: false},
+    403: {value: 19, gemstore: false},
+    406: {value: 1000, gemstore: 50}
+  },
+
+  emotes: {
+    playdead: {value: 3, gemstore: false},
+    rockout: {value: 6, gemstore: false},
+    shiver: {value: 19, gemstore: false},
+    step: {value: 1000, gemstore: 50}
+  },
+
+  jadebots: {
+    1: {value: 3, gemstore: false},
+    2: {value: 6, gemstore: false},
+    3: {value: 19, gemstore: false},
+    6: {value: 1000, gemstore: 50}
+  },
+
   craftingProfessions: {
     chef: {
       400: 1000

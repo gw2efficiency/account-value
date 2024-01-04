@@ -36,6 +36,9 @@ import walletData from './data/wallet'
 import dyesData from './data/dyes'
 import legendaryarmoryData from './data/legendaryarmory'
 import minisData from './data/minis'
+import skiffsData from './data/skiffs'
+import emotesData from './data/emotes'
+import jadebotsData from './data/jadebots'
 import mountsData from './data/mounts'
 import outfitsData from './data/outfits'
 import noveltiesData from './data/novelties'
@@ -68,6 +71,9 @@ const account = {
   finishers: finishersData,
   mailcarriers: mailcarriersData,
   gliders: glidersData,
+  skiffs: skiffsData,
+  emotes: emotesData,
+  jadebots: jadebotsData,
   home: {
     nodes: nodesData
   },
@@ -82,9 +88,9 @@ const expectedValues = {
   summary: {
     liquidBuy: 13218,
     liquidSell: 15394,
-    value: 3048878,
-    valueMinusGemItems: 3023319,
-    spentGems: 2355 + 50
+    value: 3048878 + 1028 * 3,
+    valueMinusGemItems: 3023319 + 28 * 3,
+    spentGems: 2405 + 50 * 3
   },
   bank: {
     liquidBuy: 12,
@@ -176,6 +182,21 @@ const expectedValues = {
     spentGems: 50
   },
   heroes: {
+    value: 1028,
+    valueMinusGemItems: 28,
+    spentGems: 50
+  },
+  skiffs: {
+    value: 1028,
+    valueMinusGemItems: 28,
+    spentGems: 50
+  },
+  emotes: {
+    value: 1028,
+    valueMinusGemItems: 28,
+    spentGems: 50
+  },
+  jadebots: {
     value: 1028,
     valueMinusGemItems: 28,
     spentGems: 50
@@ -302,6 +323,9 @@ describe('account value', () => {
       nodes: null,
       gliders: null,
       heroes: null,
+      skiffs: null,
+      emotes: null,
+      jadebots: null,
       skins: null,
       wallet: null,
       unlocks: null

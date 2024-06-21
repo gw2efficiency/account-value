@@ -7,6 +7,9 @@ export default function valueItems (items, values) {
   const withoutGemstore = items.filter(x => {
     return _get(itemValues[x.id], 'price.gems', false) === false
   })
+  const vendorItems = items.filter(x => {
+    return _get(itemValues[x.id], 'valueIsVendor', false) === true
+  })
 
   return {
     value: sumItems({
@@ -32,13 +35,25 @@ export default function valueItems (items, values) {
       itemValues,
       valueKey: 'buy.price',
       includeBound: false
-    })),
+    })) +
+      sumItems({
+        items: vendorItems,
+        itemValues,
+        valueKey: 'value',
+        includeBound: true
+      }),
     liquidSell: subFees(sumItems({
       items,
       itemValues,
       valueKey: 'sell.price',
       fallbackValueKey: 'buy.price',
       includeBound: false
-    }))
+    })) +
+      sumItems({
+        items: vendorItems,
+        itemValues,
+        valueKey: 'value',
+        includeBound: true
+      })
   }
 }

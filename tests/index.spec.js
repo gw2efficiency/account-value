@@ -987,4 +987,34 @@ describe('account value', () => {
     expect(equipmentItems({equipment: []})).to.deep.equal([])
     expect(inventoryItems({bags: []})).to.deep.equal([])
   })
+
+  it('can value valueIsVendor items as liquid value correctly.', () => {
+    let account = {
+      bank: [{
+        id: 82111,
+        count: 1,
+        binding: 'Account'
+      },
+      {
+        id: 24343,
+        count: 1
+
+      }]
+    }
+    let values = {
+      items: {
+        82111: {value: 100, valueIsVendor: true},
+        24343: {value: 300, sell: {price: 300}, buy: {price: 200}}
+      }
+    }
+    expect(accountValue(account, values)).to.deep.include({
+      bank: {
+        liquidBuy: 270,
+        liquidSell: 355,
+        value: 400,
+        spentGems: 0,
+        valueMinusGemItems: 400
+      }
+    })
+  })
 })

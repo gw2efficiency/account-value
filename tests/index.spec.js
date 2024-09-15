@@ -296,6 +296,15 @@ describe('account value', () => {
     expect(accountValue(account, values)).to.deep.equal(expectedValues)
   })
 
+  it('calculates the account value correctly with no commerce data', () => {
+    const result = accountValue({
+      ...account,
+      commerce: { buys: null, sells: null, delivery: null }
+    }, values)
+
+    expect(result.summary.value).to.deep.equal(expectedValues.summary.value - expectedValues.commerce.value)
+  })
+
   it('calculates the account value fast', () => {
     let start = new Date()
     accountValue(account, values)

@@ -48,7 +48,10 @@ export default {
     67071: {value: 250, price: {gems: 100}}, // shared bag
     42932: {value: 1000, price: {gems: 100}}, // storage expander
     42970: {value: 333, price: {gems: 100}}, // additional crafting licence
-    19993: {value: 1000, price: {gems: 100}} // bag slot
+    19993: {value: 1000, price: {gems: 100}}, // bag slot
+
+    // Homestead Fake Item
+    2001000000035: {value: 4085, price: {gems: false}}
   },
 
   skins: {

@@ -21,6 +21,7 @@ import {emotesValue} from './emotes'
 import {jadebotsValue} from './jadebots'
 import {commerceValue, commerceItems} from './commerce'
 import {unlocksValue, unlocksItems} from './unlocks'
+import {homesteadDecorationsValue, homesteadDecorationsItems} from './homesteadDecorations'
 import {summaryValue} from './summary'
 
 export default function accountValue (accountData, values) {
@@ -53,6 +54,7 @@ export default function accountValue (accountData, values) {
   account.jadebots = jadebotsValue(accountData, values)
   account.characters = charactersValue(accountData, values)
   account.unlocks = unlocksValue(accountData, values)
+  account.homesteadDecorations = homesteadDecorationsValue(accountData, values)
 
   // Calculate the total summary
   account.summary = summaryValue(account)
@@ -86,7 +88,8 @@ export function allItemIds (accountData) {
     commerceItems(accountData),
     sharedInventoryItems(accountData),
     unlocksItems(accountData),
-    legendaryarmoryItems(accountData)
+    legendaryarmoryItems(accountData),
+    homesteadDecorationsItems(accountData)
   ]
 
   return items

@@ -27,6 +27,7 @@ import {
   equipmentItems,
   inventoryItems
 } from '../src/characters'
+import {homesteadDecorationsValue} from '../src/homesteadDecorations'
 import accountData from './data/account'
 import bankData from './data/bank'
 import sharedData from './data/shared'
@@ -50,6 +51,7 @@ import glidersData from './data/gliders'
 import heroesData from './data/heroes'
 import commerceData from './data/commerce'
 import charactersData from './data/characters'
+import homesteadData from './data/homestead'
 import values from './data/_values'
 
 const account = {
@@ -81,15 +83,16 @@ const account = {
     heroes: heroesData
   },
   commerce: commerceData,
-  characters: charactersData
+  characters: charactersData,
+  homestead: homesteadData
 }
 
 const expectedValues = {
   summary: {
     liquidBuy: 13218,
     liquidSell: 15394,
-    value: 3048878 + 1028 * 3,
-    valueMinusGemItems: 3023319 + 28 * 3,
+    value: 3057048 + 1028 * 3,
+    valueMinusGemItems: 3031489 + 28 * 3,
     spentGems: 2405 + 50 * 3
   },
   bank: {
@@ -200,6 +203,13 @@ const expectedValues = {
     value: 1028,
     valueMinusGemItems: 28,
     spentGems: 50
+  },
+  homesteadDecorations: {
+    liquidBuy: 0,
+    liquidSell: 0,
+    spentGems: 0,
+    value: 8170,
+    valueMinusGemItems: 8170
   },
   unlocks: {
     value: 3005433,
@@ -337,6 +347,7 @@ describe('account value', () => {
       jadebots: null,
       skins: null,
       wallet: null,
+      homesteadDecorations: null,
       unlocks: null
     }
 
@@ -388,7 +399,8 @@ describe('account value', () => {
       92203,
       92206,
       30699,
-      81957
+      81957,
+      2001000000035
     ])
 
     expect(allItemIds({})).to.deep.equal([])
@@ -1025,5 +1037,11 @@ describe('account value', () => {
         valueMinusGemItems: 400
       }
     })
+  })
+
+  it('calculates the homestead decorations value correctly', () => {
+    expect(homesteadDecorationsValue(account, values)).to.deep.equal(expectedValues.homesteadDecorations)
+    expect(homesteadDecorationsValue({homestead: {decorations: [{id: 1, count: 2}, {id: 3, count: 4}]}}, {items: {2001000000002: {value: false, gemstore: false}}}))
+      .to.deep.equal({liquidBuy: 0, liquidSell: 0, value: 0, valueMinusGemItems: 0, spentGems: 0})
   })
 })

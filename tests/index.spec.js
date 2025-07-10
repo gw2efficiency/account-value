@@ -53,6 +53,7 @@ import commerceData from './data/commerce'
 import charactersData from './data/characters'
 import homesteadData from './data/homestead'
 import values from './data/_values'
+import {homesteadGlyphsItems, homesteadGlyphsValue} from '../src/homesteadGlyphs'
 
 const account = {
   account: accountData,
@@ -91,8 +92,8 @@ const expectedValues = {
   summary: {
     liquidBuy: 13218,
     liquidSell: 15394,
-    value: 3057048 + 1028 * 3,
-    valueMinusGemItems: 3031489 + 28 * 3,
+    value: 4007043 + 1028 * 3,
+    valueMinusGemItems: 3981484 + 28 * 3,
     spentGems: 2405 + 50 * 3
   },
   bank: {
@@ -210,6 +211,13 @@ const expectedValues = {
     spentGems: 0,
     value: 8170,
     valueMinusGemItems: 8170
+  },
+  homesteadGlyphs: {
+    liquidBuy: 0,
+    liquidSell: 0,
+    spentGems: 0,
+    value: 949995,
+    valueMinusGemItems: 949995
   },
   unlocks: {
     value: 3005433,
@@ -348,6 +356,7 @@ describe('account value', () => {
       skins: null,
       wallet: null,
       homesteadDecorations: null,
+      homesteadGlyphs: null,
       unlocks: null
     }
 
@@ -400,7 +409,8 @@ describe('account value', () => {
       92206,
       30699,
       81957,
-      2001000000035
+      2001000000035,
+      90664
     ])
 
     expect(allItemIds({})).to.deep.equal([])
@@ -1043,5 +1053,16 @@ describe('account value', () => {
     expect(homesteadDecorationsValue(account, values)).to.deep.equal(expectedValues.homesteadDecorations)
     expect(homesteadDecorationsValue({homestead: {decorations: [{id: 1, count: 2}, {id: 3, count: 4}]}}, {items: {2001000000002: {value: false, gemstore: false}}}))
       .to.deep.equal({liquidBuy: 0, liquidSell: 0, value: 0, valueMinusGemItems: 0, spentGems: 0})
+  })
+
+  it('calculates the homestead glyphs value correctly', () => {
+    expect(homesteadGlyphsValue(account, values)).to.deep.equal(expectedValues.homesteadGlyphs)
+    expect(homesteadGlyphsValue({homestead: {glyphs: ['crucible_harvesting']}}, {items: {90538: {value: false, gemstore: false}}}))
+      .to.deep.equal({liquidBuy: 0, liquidSell: 0, value: 0, valueMinusGemItems: 0, spentGems: 0})
+  })
+
+  it('returns glyph items as account-bound', () => {
+    expect(homesteadGlyphsItems({homestead: {glyphs: ['crucible_logging']}}, {items: {}}))
+      .to.deep.equal([{id: 90538, count: 1, binding: 'Account'}])
   })
 })

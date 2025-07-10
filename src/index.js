@@ -23,6 +23,7 @@ import {commerceValue, commerceItems} from './commerce'
 import {unlocksValue, unlocksItems} from './unlocks'
 import {homesteadDecorationsValue, homesteadDecorationsItems} from './homesteadDecorations'
 import {summaryValue} from './summary'
+import {homesteadGlyphsItems, homesteadGlyphsValue} from './homesteadGlyphs'
 
 export default function accountValue (accountData, values) {
   let account = {}
@@ -55,6 +56,7 @@ export default function accountValue (accountData, values) {
   account.characters = charactersValue(accountData, values)
   account.unlocks = unlocksValue(accountData, values)
   account.homesteadDecorations = homesteadDecorationsValue(accountData, values)
+  account.homesteadGlyphs = homesteadGlyphsValue(accountData, values)
 
   // Calculate the total summary
   account.summary = summaryValue(account)
@@ -89,7 +91,8 @@ export function allItemIds (accountData) {
     sharedInventoryItems(accountData),
     unlocksItems(accountData),
     legendaryarmoryItems(accountData),
-    homesteadDecorationsItems(accountData)
+    homesteadDecorationsItems(accountData),
+    homesteadGlyphsItems(accountData)
   ]
 
   return items

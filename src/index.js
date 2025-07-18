@@ -24,9 +24,12 @@ import {unlocksValue, unlocksItems} from './unlocks'
 import {homesteadDecorationsValue, homesteadDecorationsItems} from './homesteadDecorations'
 import {summaryValue} from './summary'
 import {homesteadGlyphsItems, homesteadGlyphsValue} from './homesteadGlyphs'
+import calculateSummary from './helpers/calculateSummary'
 
 export default function accountValue (accountData, values) {
   let account = {}
+  const homesteadDecorations = homesteadDecorationsValue(accountData, values)
+  const homesteadGlyphs = homesteadGlyphsValue(accountData, values)
 
   // Grab all the account's items (for the calculation of the skin values)
   const items = boundItemIds(accountData)
@@ -55,8 +58,7 @@ export default function accountValue (accountData, values) {
   account.jadebots = jadebotsValue(accountData, values)
   account.characters = charactersValue(accountData, values)
   account.unlocks = unlocksValue(accountData, values)
-  account.homesteadDecorations = homesteadDecorationsValue(accountData, values)
-  account.homesteadGlyphs = homesteadGlyphsValue(accountData, values)
+  account.homestead = !homesteadDecorations && !homesteadGlyphs ? null : calculateSummary({homesteadDecorations, homesteadGlyphs})
 
   // Calculate the total summary
   account.summary = summaryValue(account)

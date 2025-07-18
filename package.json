@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "fast-get": "^1.0.1",
+    "@gw2efficiency/game-data": "^0.1.63",
     "gw2e-tradingpost-fees": "^1.0.1",
     "sum-by": "^1.0.1"
   },

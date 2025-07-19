@@ -51,7 +51,9 @@ export default {
     19993: {value: 1000, price: {gems: 100}}, // bag slot
 
     // Homestead Fake Item
-    2001000000035: {value: 4085, price: {gems: false}}
+    2001000000035: {value: 4085, price: {gems: false}},
+    // Glyph Unused Item
+    90664: {value: 949995, price: {gems: false}}
   },
 
   skins: {

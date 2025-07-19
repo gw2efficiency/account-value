@@ -18,6 +18,7 @@
     "abc-environment": "^2.0.0"
   },
   "dependencies": {
+    "@gw2efficiency/game-data": "^0.1.64",
     "fast-get": "^1.0.1",
     "gw2e-tradingpost-fees": "^1.0.1",
     "sum-by": "^1.0.1"

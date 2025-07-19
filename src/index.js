@@ -58,7 +58,7 @@ export default function accountValue (accountData, values) {
   account.jadebots = jadebotsValue(accountData, values)
   account.characters = charactersValue(accountData, values)
   account.unlocks = unlocksValue(accountData, values)
-  account.homestead = !homesteadDecorations && !homesteadGlyphs ? null : calculateSummary({homesteadDecorations, homesteadGlyphs})
+  account.homestead = homesteadDecorations === null && homesteadGlyphs === null ? null : calculateSummary({homesteadDecorations, homesteadGlyphs})
 
   // Calculate the total summary
   account.summary = summaryValue(account)

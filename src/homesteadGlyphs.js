@@ -1,6 +1,6 @@
 import getItemIds from './helpers/getItemIds'
 import valueItems from './helpers/valueItems'
-import GAME_DATA_HOME_GLYPHS from '@gw2efficiency/game-data/build/home/glyphs'
+import GAME_DATA_HOME_GLYPHS from '@gw2efficiency/game-data/home/glyphs'
 
 export function homesteadGlyphsValue (accountData, values) {
   if (!accountData.homestead || !accountData.homestead.glyphs || accountData.homestead.glyphs.length === 0) {

@@ -28,8 +28,6 @@ import calculateSummary from './helpers/calculateSummary'
 
 export default function accountValue (accountData, values) {
   let account = {}
-  const homesteadDecorations = homesteadDecorationsValue(accountData, values)
-  const homesteadGlyphs = homesteadGlyphsValue(accountData, values)
 
   // Grab all the account's items (for the calculation of the skin values)
   const items = boundItemIds(accountData)
@@ -58,10 +56,19 @@ export default function accountValue (accountData, values) {
   account.jadebots = jadebotsValue(accountData, values)
   account.characters = charactersValue(accountData, values)
   account.unlocks = unlocksValue(accountData, values)
-  account.homestead = homesteadDecorations === null && homesteadGlyphs === null ? null : calculateSummary({homesteadDecorations, homesteadGlyphs})
+  account.homesteadDecorations = homesteadDecorationsValue(accountData, values)
+  account.homesteadGlyphs = homesteadGlyphsValue(accountData, values)
+  account.homestead =
+    account.homesteadDecorations === null && account.homesteadGlyphs === null
+      ? null
+      : calculateSummary({
+        homesteadDecorations: account.homesteadDecorations,
+        homesteadGlyphs: account.homesteadGlyphs
+      })
 
-  // Calculate the total summary
-  account.summary = summaryValue(account)
+  // Calculate the total summary without the single homestead values to avoid double counting
+  const { homesteadDecorations, homesteadGlyphs, ...accountWithoutDuplicates } = account
+  account.summary = summaryValue(accountWithoutDuplicates)
   return account
 }
 

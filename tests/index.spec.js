@@ -206,6 +206,20 @@ const expectedValues = {
     valueMinusGemItems: 28,
     spentGems: 50
   },
+  homesteadDecorations: {
+    liquidBuy: 0,
+    liquidSell: 0,
+    spentGems: 0,
+    value: 8170,
+    valueMinusGemItems: 8170
+  },
+  homesteadGlyphs: {
+    liquidBuy: 0,
+    liquidSell: 0,
+    spentGems: 0,
+    value: 949995,
+    valueMinusGemItems: 949995
+  },
   homestead: {
     liquidBuy: 0,
     liquidSell: 0,
@@ -349,6 +363,8 @@ describe('account value', () => {
       jadebots: null,
       skins: null,
       wallet: null,
+      homesteadDecorations: null,
+      homesteadGlyphs: null,
       homestead: null,
       unlocks: null
     }

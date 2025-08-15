@@ -47,7 +47,6 @@ const LEGENDARY_ITEM_IDS = [
   71383, // Nevermore
   71563, // Salvaged Brilliance
   71597, // Lessons in Metallurgy
-  71820, // Mystic Tribute
   72659, // Salvaged Dignity
   72713, // HOPE
   72757, // Lessons in Arbology

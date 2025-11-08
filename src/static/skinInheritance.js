@@ -362,6 +362,31 @@ const data = [
   ],
 
   // ------------------------------------------------------------
+  // ARMOR (Visions of Eternity)
+  // ------------------------------------------------------------
+
+  [
+    106178, // Selachimorpha (heavy)
+    105738, // Agaleus (heavy)
+    106400, // Agaleus (medium)
+    105438 // Agaleus (light)
+  ],
+
+  [
+    106658, // Selachimorpha (medium)
+    105738, // Agaleus (heavy)
+    106400, // Agaleus (medium)
+    105438 // Agaleus (light)
+  ],
+
+  [
+    105921, // Selachimorpha (light)
+    105738, // Agaleus (heavy)
+    106400, // Agaleus (medium)
+    105438 // Agaleus (light)
+  ],
+
+  // ------------------------------------------------------------
   // SPECIALS
   // ------------------------------------------------------------
 

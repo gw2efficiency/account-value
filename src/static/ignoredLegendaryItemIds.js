@@ -525,7 +525,12 @@ const LEGENDARY_ITEM_IDS = [
   104413, // Relic of the Eagle
   104296, // Relic of Thorns
   104308, // Relic of Fire
-  104491 // Relic of Altruism
+  104491, // Relic of Altruism
+  106178, // Selachimorpha (heavy)
+  106658, // Selachimorpha (medium)
+  105921, // Selachimorpha (light)
+  106273, // Ancora Bellum
+  105653 // Ancora Pax
 ]
 
 export default LEGENDARY_ITEM_IDS

@@ -530,7 +530,13 @@ const LEGENDARY_ITEM_IDS = [
   106658, // Selachimorpha (medium)
   105921, // Selachimorpha (light)
   106273, // Ancora Bellum
-  105653 // Ancora Pax
+  105653, // Ancora Pax
+  106081, // Relic of the First Revenant
+  105877, // Relic of Castora
+  105420, // Relic of the Mist Stranger
+  106637, // Relic of the Pirate Queen
+  106650, // Relic of the Scoundrel
+  106098 // Relic of the Biomancer
 ]
 
 export default LEGENDARY_ITEM_IDS

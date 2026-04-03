@@ -7,7 +7,6 @@ const LEGENDARY_ITEM_IDS = [
   19642, // Eel Statue
   19675, // Mystic Clover
   19676, // Icy Runestone
-  19678, // Gift of Battle
   19925, // Obsidian Shard
   19977, // Pact Victory Token
   20797, // Bloodstone Shard
@@ -536,7 +535,14 @@ const LEGENDARY_ITEM_IDS = [
   105420, // Relic of the Mist Stranger
   106637, // Relic of the Pirate Queen
   106650, // Relic of the Scoundrel
-  106098 // Relic of the Biomancer
+  106098, // Relic of the Biomancer
+  107022, // Endless Summer
+  107120, // Relic of Shackles
+  106958, // Relic of the Nautical Beast
+  107009, // Relic of Fog
+  107174, // Relic of the Coral Heart
+  107168, // Relic of the Forest Dweller
+  106921 // Relic of the Alliance
 ]
 
 export default LEGENDARY_ITEM_IDS

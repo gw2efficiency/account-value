@@ -542,7 +542,9 @@ const LEGENDARY_ITEM_IDS = [
   107009, // Relic of Fog
   107174, // Relic of the Coral Heart
   107168, // Relic of the Forest Dweller
-  106921 // Relic of the Alliance
+  106921, // Relic of the Alliance
+  109070, // Stella Radians
+  109012 // Strife Unending
 ]
 
 export default LEGENDARY_ITEM_IDS

@@ -544,7 +544,13 @@ const LEGENDARY_ITEM_IDS = [
   107168, // Relic of the Forest Dweller
   106921, // Relic of the Alliance
   109070, // Stella Radians
-  109012 // Strife Unending
+  109012, // Strife Unending
+  109094, // Relic of Galdra
+  109159, // Relic of the Sacred Grounds
+  109053, // Relic of the Doyen
+  109139, // Relic of Watch
+  109034, // Relic of the Cruel Overseer
+  108992 // Relic of the Director
 ]
 
 export default LEGENDARY_ITEM_IDS
